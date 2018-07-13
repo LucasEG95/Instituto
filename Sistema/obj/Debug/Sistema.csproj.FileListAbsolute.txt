@@ -16,3 +16,5 @@ C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\bin\Debug\Sistema.exe
 C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\bin\Debug\Sistema.pdb
 C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.exe
 C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.pdb
+C:\Users\Lucas\Documents\Visual Studio 2015\Projects\Instituto\Sistema\obj\Debug\Sistema.exe
+C:\Users\Lucas\Documents\Visual Studio 2015\Projects\Instituto\Sistema\obj\Debug\Sistema.pdb
