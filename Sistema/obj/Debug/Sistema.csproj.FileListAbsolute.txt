@@ -1,1 +1,18 @@
 c:\users\lucas\documents\visual studio 2015\Projects\Instituto\Sistema\bin\Debug\Sistema.exe.config
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.csprojResolveAssemblyReference.cache
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CambiarContraseña1.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CargaPersona.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CargarCarrera.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CargarMateria.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.Correlativas.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.EvaluacionesNotas.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.Ingreso.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.MateriasEvaluacion.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.MenuPrincipal.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.Properties.Resources.resources
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.csproj.GenerateResource.Cache
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\bin\Debug\Sistema.exe.config
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\bin\Debug\Sistema.exe
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\bin\Debug\Sistema.pdb
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.exe
+C:\Users\Agustin\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.pdb

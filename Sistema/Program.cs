@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema.FE;
 
-namespace InstitutoBien
+namespace Sistema
 {
     static class Program
     {
