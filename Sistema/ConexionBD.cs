@@ -11,7 +11,8 @@ using System.Configuration;
 using System.Configuration.Assemblies;
 
 
-namespace Instituto
+namespace Sistema
+
 {
     static class ConexionBD
     {
