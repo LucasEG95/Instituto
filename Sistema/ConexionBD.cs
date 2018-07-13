@@ -19,6 +19,10 @@ namespace Sistema
         public static SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["Instituto"].ToString());
 
         #region Conectar
+
+        /// <summary>
+        /// abre la conexion con el servidor.
+        /// </summary>
         public static void AbrirConeccion()
         {
             try
@@ -34,6 +38,9 @@ namespace Sistema
                 throw e;
             }
         }
+        /// <summary>
+        /// cierra la conexion con el servidor.
+        /// </summary>
         public static void cerrarConeccion()
         {
             try {
@@ -51,6 +58,12 @@ namespace Sistema
         #endregion
         #region consultas
 
+        /// <summary>
+        /// hay que pasar como parametro la consulta
+        /// y devuelve un dataset con todos los datos que esta devuelve
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns></returns>
         public static DataSet consultar(string consulta)
         {
             SqlDataAdapter adaptador;
@@ -66,6 +79,12 @@ namespace Sistema
                 throw e;
             }
         }
+        /// <summary>
+        /// pasar como parametro la consulta donde se piden los datos que se quieren
+        /// corroborar
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns></returns>
         public static bool existe(string consulta)
         {
             
@@ -88,6 +107,12 @@ namespace Sistema
             }
 
         }
+
+        /// <summary>
+        /// sirve para realizar updates a la base de datos.
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns></returns>
         public static bool Actualizar(string consulta)
         {
             SqlCommand comando = new SqlCommand(consulta, conection);
@@ -104,6 +129,12 @@ namespace Sistema
                 throw e;
             }
         }
+
+        /// <summary>
+        /// elimina datos de la base de datos.
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns></returns>
         public static bool Eliminar(string consulta)
         {
             SqlCommand sql = new SqlCommand(consulta,conection);
@@ -121,6 +152,12 @@ namespace Sistema
                 throw e;
             }
         }
+
+        /// <summary>
+        /// para insertar datos dentro de una tabla enviar la consulta.
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns></returns>
         public static bool Insertar(string consulta)
         {
             SqlCommand cmd = new SqlCommand(consulta,conection);
@@ -136,9 +173,13 @@ namespace Sistema
                 throw e;
             }
         }
-        public static bool Beguin()
+        /// <summary>
+        /// para iniciar una transaccion.
+        /// </summary>
+        /// <returns></returns>
+        public static bool Begin()
         {
-            SqlCommand cmd = new SqlCommand("BEGUIN TRAN", conection);
+            SqlCommand cmd = new SqlCommand("BEGIN TRAN", conection);
             try
             {
                 if(cmd.ExecuteNonQuery() > 0)
@@ -151,6 +192,11 @@ namespace Sistema
                 throw e;
             }
         }
+
+        /// <summary>
+        /// para aceptar la transaccion en caso que sea correcta.
+        /// </summary>
+        /// <returns></returns>
         public static bool Commit()
         {
             SqlCommand cmd = new SqlCommand("COMMIT", conection);
@@ -167,6 +213,10 @@ namespace Sistema
                 throw e;
             }
         }
+        /// <summary>
+        /// para rechazar la transaccion
+        /// </summary>
+        /// <returns></returns>
         public static bool Rollback()
         {
             SqlCommand cmd = new SqlCommand("ROLLBACK", conection);
@@ -183,6 +233,14 @@ namespace Sistema
                 throw e;
             }
         }
+
+
+        /// <summary>
+        /// nombreDelStored parametro,parametro,parametro
+        /// recorda que los string van entre ''
+        /// </summary>
+        /// <param name="stored"></param>
+        /// <returns></returns>
         public static DataSet StoredConDatos(string stored)
         {
             DataSet DS = new DataSet();
@@ -196,6 +254,12 @@ namespace Sistema
                 throw e;
             }
         }
+
+        /// <summary>
+        /// lo mismo que el que tiene datos pero este no devuelve un dataset XD
+        /// </summary>
+        /// <param name="stored"></param>
+        /// <returns></returns>
         public static bool StoredSinDatos(string stored)
         {
             try
