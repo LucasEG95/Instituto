@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using Sistema.BE;
 
 namespace Sistema.FE
 {
@@ -13,8 +13,13 @@ namespace Sistema.FE
 
         private void btIngresar_Click(object sender, EventArgs e)
         {
+            IngresoBE BEIngreso = new IngresoBE();
+            if (BEIngreso.CorroborarDatos(txtUsuario.Text, txtContraseña.Text)) {
+
+
+            } ;
             MenuPrincipal MP = new MenuPrincipal();
-            MP.Show(1);
+            
             
         }
 
