@@ -50,7 +50,7 @@
             // 
             // txtRespuesta
             // 
-            this.txtRespuesta.Location = new System.Drawing.Point(78, 107);
+            this.txtRespuesta.Location = new System.Drawing.Point(78, 106);
             this.txtRespuesta.Name = "txtRespuesta";
             this.txtRespuesta.Size = new System.Drawing.Size(231, 20);
             this.txtRespuesta.TabIndex = 4;
