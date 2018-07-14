@@ -14,11 +14,23 @@ namespace Sistema.FE
         private void btIngresar_Click(object sender, EventArgs e)
         {
             IngresoBE BEIngreso = new IngresoBE();
-            if (BEIngreso.CorroborarDatos(txtUsuario.Text, txtContraseña.Text)) {
-
-
-            } ;
             MenuPrincipal MP = new MenuPrincipal();
+            bool BoolUsuario = BEIngreso.CorroborarUsuario(txtUsuario.Text);
+            bool BoolContraseña = BEIngreso.CorroborarContraseña(txtContraseña.Text);
+            if (BoolUsuario & BoolContraseña)
+            {
+                MP.Show(BEIngreso.Privilegio(txtUsuario.Text));
+                this.Close();
+            }
+            else { if (!BoolContraseña && BoolUsuario)
+                {
+                    MessageBox.Show("Contraseña Incorrecta");
+
+                }
+                else {
+
+                    MessageBox.Show("Usuario Incorrecto");
+                } } ;
             
             
         }
