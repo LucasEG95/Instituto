@@ -236,18 +236,30 @@ namespace Sistema
 
 
         /// <summary>
-        /// nombreDelStored parametro,parametro,parametro
-        /// recorda que los string van entre ''
+        /// nombreDelStored y dataTable con 1 columna y dentro de esa columna los parametros.
         /// </summary>
         /// <param name="stored"></param>
         /// <returns></returns>
-        public static DataSet StoredConDatos(string stored)
+        public static DataSet StoredConDatos(string stored, DataTable Parametros)
         {
+            string Comando = $"exec {stored} " ;
             DataSet DS = new DataSet();
             try {
-                SqlCommand cmd = new SqlCommand("exec " + stored, conection);
+                foreach(DataRow d in Parametros.Rows)
+                {
+                    if (d[0].GetType() == Type.GetType("System.Int32")) {
+                        Comando += $", {d[0]}";
+                    }
+
+                    else {
+                        Comando += $", '{d[0]}'";
+                    }
+                    
+                }
+                SqlCommand cmd = new SqlCommand(Comando, conection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(DS);
+               
                 return DS;
             }catch(Exception e)
             {
@@ -260,11 +272,23 @@ namespace Sistema
         /// </summary>
         /// <param name="stored"></param>
         /// <returns></returns>
-        public static bool StoredSinDatos(string stored)
+        public static bool StoredSinDatos(string stored, DataTable Parametros)
         {
+            string comando = $"exec {stored} ";
             try
             {
-                SqlCommand cmd = new SqlCommand("exec "+stored,conection);
+                foreach (DataRow d in Parametros.Rows)
+                {
+                    if(d[0].GetType() == Type.GetType("System.Int32"))
+                    {
+                        comando += $", {d[0]}";
+                    }
+                    else
+                    {
+                        comando += $", '{d[0]}'";
+                    }
+                }
+                SqlCommand cmd = new SqlCommand(comando,conection);
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     return true;
@@ -274,6 +298,18 @@ namespace Sistema
             {
                 throw e;
             }
+        }
+
+
+        public static DataTable crearDT(object[] parametros)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("parametros");
+            foreach(object d in parametros)
+            {
+                dt.Rows.Add(parametros);
+            }
+            return dt;
         }
         
 
