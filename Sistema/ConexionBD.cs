@@ -239,9 +239,11 @@ namespace Sistema
         /// nombreDelStored y dataTable con 1 columna y dentro de esa columna los parametros.
         /// </summary>
         /// <param name="stored"></param>
-        /// <returns></returns>
+        /// <param name="Parametros"></param>
+        /// <returns>DataSet con datos</returns>
         public static DataSet StoredConDatos(string stored, DataTable Parametros)
         {
+            
             string Comando = $"exec {stored} " ;
             DataSet DS = new DataSet();
             try {
@@ -251,7 +253,17 @@ namespace Sistema
                         Comando += $", {d[0]}";
                     }
 
-                    else {
+                    else if (d[0].GetType() == Type.GetType("System.Decimal")) {
+
+                        Comando += $", " + convertirDecimal((Decimal)d[0]);
+
+                    }else if (d[0].GetType() == Type.GetType("System.DateTime"))
+                    {
+
+                        Comando += $", '{convertirFecha((DateTime)d[0]).Trim()}'";
+                    }
+                    else
+                    {
                         Comando += $", '{d[0]}'";
                     }
                     
@@ -279,14 +291,27 @@ namespace Sistema
             {
                 foreach (DataRow d in Parametros.Rows)
                 {
-                    if(d[0].GetType() == Type.GetType("System.Int32"))
+                    if (d[0].GetType() == Type.GetType("System.Int32"))
                     {
                         comando += $", {d[0]}";
+                    }
+
+                    else if (d[0].GetType() == Type.GetType("System.Decimal"))
+                    {
+
+                        comando += $", " + convertirDecimal((Decimal)d[0]);
+
+                    }
+                    else if (d[0].GetType() == Type.GetType("System.DateTime"))
+                    {
+
+                        comando += $", '{convertirFecha((DateTime)d[0]).Trim()}'";
                     }
                     else
                     {
                         comando += $", '{d[0]}'";
                     }
+
                 }
                 SqlCommand cmd = new SqlCommand(comando,conection);
                 if (cmd.ExecuteNonQuery() > 0)
@@ -301,15 +326,18 @@ namespace Sistema
         }
 
 
-        public static DataTable crearDT(object[] parametros)
+        private static string convertirFecha(DateTime fecha)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("parametros");
-            foreach(object d in parametros)
-            {
-                dt.Rows.Add(parametros);
-            }
-            return dt;
+            string lefecha = fecha.Date.ToString("yyyyMMdd");
+            return lefecha;
+        }
+
+        private static string convertirDecimal(Decimal par)
+        {
+            string dec = par.ToString().Trim();
+            dec = dec.Replace(".", ",");
+            return dec;
+           
         }
         
 
