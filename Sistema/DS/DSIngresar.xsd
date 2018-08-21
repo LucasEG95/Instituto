@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSIngresar" targetNamespace="http://tempuri.org/DSIngresar.xsd" xmlns:mstns="http://tempuri.org/DSIngresar.xsd" xmlns="http://tempuri.org/DSIngresar.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSIngresar" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSIngresar" msprop:Generator_UserDSName="DSIngresar">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Ingresar" msprop:Generator_TableClassName="IngresarDataTable" msprop:Generator_TableVarName="tableIngresar" msprop:Generator_TablePropName="Ingresar" msprop:Generator_RowDeletingName="IngresarRowDeleting" msprop:Generator_RowChangingName="IngresarRowChanging" msprop:Generator_RowEvHandlerName="IngresarRowChangeEventHandler" msprop:Generator_RowDeletedName="IngresarRowDeleted" msprop:Generator_UserTableName="Ingresar" msprop:Generator_RowChangedName="IngresarRowChanged" msprop:Generator_RowEvArgName="IngresarRowChangeEvent" msprop:Generator_RowClassName="IngresarRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario" type="xs:string" minOccurs="0" />
+              <xs:element name="Contraseña" msprop:Generator_ColumnVarNameInTable="columnContraseña" msprop:Generator_ColumnPropNameInRow="Contraseña" msprop:Generator_ColumnPropNameInTable="ContraseñaColumn" msprop:Generator_UserColumnName="Contraseña" type="xs:string" minOccurs="0" />
+              <xs:element name="Prioridad" msprop:Generator_ColumnVarNameInTable="columnPrioridad" msprop:Generator_ColumnPropNameInRow="Prioridad" msprop:Generator_ColumnPropNameInTable="PrioridadColumn" msprop:Generator_UserColumnName="Prioridad" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
