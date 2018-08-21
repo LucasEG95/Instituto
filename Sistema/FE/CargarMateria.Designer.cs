@@ -28,30 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHoras = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtAño = new System.Windows.Forms.TextBox();
+            this.txtResolucion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMateria = new System.Windows.Forms.TextBox();
+            this.txtAños = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.chkPromocional = new System.Windows.Forms.CheckBox();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
+            this.txtLupaCar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtProfesor = new System.Windows.Forms.TextBox();
             this.btnLupaProf = new System.Windows.Forms.Button();
             this.btnLupaMat = new System.Windows.Forms.Button();
-            this.btnLupaCar = new System.Windows.Forms.Button();
-            this.dSCarrera = new Sistema.DS.DSCarrera();
-            this.dSCarreraBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.carreraBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dSCarrera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSCarreraBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carreraBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEliminar
@@ -62,7 +55,6 @@
             this.btnEliminar.TabIndex = 21;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCargar
             // 
@@ -98,12 +90,12 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Año";
             // 
-            // txtAño
+            // txtResolucion
             // 
-            this.txtAño.Location = new System.Drawing.Point(107, 91);
-            this.txtAño.Name = "txtAño";
-            this.txtAño.Size = new System.Drawing.Size(156, 20);
-            this.txtAño.TabIndex = 15;
+            this.txtResolucion.Location = new System.Drawing.Point(107, 91);
+            this.txtResolucion.Name = "txtResolucion";
+            this.txtResolucion.Size = new System.Drawing.Size(156, 20);
+            this.txtResolucion.TabIndex = 15;
             // 
             // label2
             // 
@@ -114,12 +106,12 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Materia";
             // 
-            // txtMateria
+            // txtAños
             // 
-            this.txtMateria.Location = new System.Drawing.Point(107, 39);
-            this.txtMateria.Name = "txtMateria";
-            this.txtMateria.Size = new System.Drawing.Size(156, 20);
-            this.txtMateria.TabIndex = 13;
+            this.txtAños.Location = new System.Drawing.Point(107, 39);
+            this.txtAños.Name = "txtAños";
+            this.txtAños.Size = new System.Drawing.Size(156, 20);
+            this.txtAños.TabIndex = 13;
             // 
             // label1
             // 
@@ -150,14 +142,20 @@
             // 
             // cmbCarrera
             // 
-            this.cmbCarrera.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.carreraBindingSource, "Carrera", true));
-            this.cmbCarrera.DataSource = this.carreraBindingSource;
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(107, 12);
             this.cmbCarrera.Name = "cmbCarrera";
             this.cmbCarrera.Size = new System.Drawing.Size(156, 21);
             this.cmbCarrera.TabIndex = 24;
-            this.cmbCarrera.Text = "System.Data.DataViewManagerListItemTypeDescriptor";
+            // 
+            // txtLupaCar
+            // 
+            this.txtLupaCar.Location = new System.Drawing.Point(269, 10);
+            this.txtLupaCar.Name = "txtLupaCar";
+            this.txtLupaCar.Size = new System.Drawing.Size(28, 23);
+            this.txtLupaCar.TabIndex = 25;
+            this.txtLupaCar.Text = "Cargar";
+            this.txtLupaCar.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -193,40 +191,16 @@
             this.btnLupaMat.Text = "Cargar";
             this.btnLupaMat.UseVisualStyleBackColor = true;
             // 
-            // btnLupaCar
-            // 
-            this.btnLupaCar.Location = new System.Drawing.Point(270, 12);
-            this.btnLupaCar.Name = "btnLupaCar";
-            this.btnLupaCar.Size = new System.Drawing.Size(28, 23);
-            this.btnLupaCar.TabIndex = 30;
-            this.btnLupaCar.Text = "Cargar";
-            this.btnLupaCar.UseVisualStyleBackColor = true;
-            // 
-            // dSCarrera
-            // 
-            this.dSCarrera.DataSetName = "DSCarrera";
-            this.dSCarrera.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dSCarreraBindingSource
-            // 
-            this.dSCarreraBindingSource.DataSource = this.dSCarrera;
-            this.dSCarreraBindingSource.Position = 0;
-            // 
-            // carreraBindingSource
-            // 
-            this.carreraBindingSource.DataMember = "Carrera";
-            this.carreraBindingSource.DataSource = this.dSCarreraBindingSource;
-            // 
             // CargarMateria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 214);
-            this.Controls.Add(this.btnLupaCar);
             this.Controls.Add(this.btnLupaMat);
             this.Controls.Add(this.btnLupaProf);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtProfesor);
+            this.Controls.Add(this.txtLupaCar);
             this.Controls.Add(this.cmbCarrera);
             this.Controls.Add(this.chkPromocional);
             this.Controls.Add(this.label5);
@@ -235,17 +209,14 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtHoras);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtAño);
+            this.Controls.Add(this.txtResolucion);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtMateria);
+            this.Controls.Add(this.txtAños);
             this.Controls.Add(this.label1);
             this.Name = "CargarMateria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CargarMateria";
             this.Load += new System.EventHandler(this.CargarMateria_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dSCarrera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSCarreraBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carreraBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,20 +229,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtHoras;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtAño;
+        private System.Windows.Forms.TextBox txtResolucion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMateria;
+        private System.Windows.Forms.TextBox txtAños;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkPromocional;
         private System.Windows.Forms.ComboBox cmbCarrera;
+        private System.Windows.Forms.Button txtLupaCar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtProfesor;
         private System.Windows.Forms.Button btnLupaProf;
         private System.Windows.Forms.Button btnLupaMat;
-        private System.Windows.Forms.Button btnLupaCar;
-        private System.Windows.Forms.BindingSource dSCarreraBindingSource;
-        private DS.DSCarrera dSCarrera;
-        private System.Windows.Forms.BindingSource carreraBindingSource;
     }
 }

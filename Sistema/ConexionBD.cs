@@ -236,42 +236,18 @@ namespace Sistema
 
 
         /// <summary>
-        /// nombreDelStored y dataTable con 1 columna y dentro de esa columna los parametros.
+        /// nombreDelStored parametro,parametro,parametro
+        /// recorda que los string van entre ''
         /// </summary>
         /// <param name="stored"></param>
-        /// <param name="Parametros"></param>
-        /// <returns>DataSet con datos</returns>
-        public static DataSet StoredConDatos(string stored, DataTable Parametros)
+        /// <returns></returns>
+        public static DataSet StoredConDatos(string stored)
         {
-            
-            string Comando = $"exec {stored} " ;
             DataSet DS = new DataSet();
             try {
-                foreach(DataRow d in Parametros.Rows)
-                {
-                    if (d[0].GetType() == Type.GetType("System.Int32")) {
-                        Comando += $", {d[0]}";
-                    }
-
-                    else if (d[0].GetType() == Type.GetType("System.Decimal")) {
-
-                        Comando += $", " + convertirDecimal((Decimal)d[0]);
-
-                    }else if (d[0].GetType() == Type.GetType("System.DateTime"))
-                    {
-
-                        Comando += $", '{convertirFecha((DateTime)d[0]).Trim()}'";
-                    }
-                    else
-                    {
-                        Comando += $", '{d[0]}'";
-                    }
-                    
-                }
-                SqlCommand cmd = new SqlCommand(Comando, conection);
+                SqlCommand cmd = new SqlCommand("exec " + stored, conection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(DS);
-               
                 return DS;
             }catch(Exception e)
             {
@@ -284,36 +260,11 @@ namespace Sistema
         /// </summary>
         /// <param name="stored"></param>
         /// <returns></returns>
-        public static bool StoredSinDatos(string stored, DataTable Parametros)
+        public static bool StoredSinDatos(string stored)
         {
-            string comando = $"exec {stored} ";
             try
             {
-                foreach (DataRow d in Parametros.Rows)
-                {
-                    if (d[0].GetType() == Type.GetType("System.Int32"))
-                    {
-                        comando += $", {d[0]}";
-                    }
-
-                    else if (d[0].GetType() == Type.GetType("System.Decimal"))
-                    {
-
-                        comando += $", " + convertirDecimal((Decimal)d[0]);
-
-                    }
-                    else if (d[0].GetType() == Type.GetType("System.DateTime"))
-                    {
-
-                        comando += $", '{convertirFecha((DateTime)d[0]).Trim()}'";
-                    }
-                    else
-                    {
-                        comando += $", '{d[0]}'";
-                    }
-
-                }
-                SqlCommand cmd = new SqlCommand(comando,conection);
+                SqlCommand cmd = new SqlCommand("exec "+stored,conection);
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     return true;
@@ -323,21 +274,6 @@ namespace Sistema
             {
                 throw e;
             }
-        }
-
-
-        private static string convertirFecha(DateTime fecha)
-        {
-            string lefecha = fecha.Date.ToString("yyyyMMdd");
-            return lefecha;
-        }
-
-        private static string convertirDecimal(Decimal par)
-        {
-            string dec = par.ToString().Trim();
-            dec = dec.Replace(".", ",");
-            return dec;
-           
         }
         
 

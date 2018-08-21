@@ -137,7 +137,6 @@
             this.btnEliminar.TabIndex = 24;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCargar
             // 
@@ -147,7 +146,6 @@
             this.btnCargar.TabIndex = 22;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
-            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // label6
             // 
@@ -173,7 +171,6 @@
             this.btnLupaPersona.TabIndex = 27;
             this.btnLupaPersona.Text = "button4";
             this.btnLupaPersona.UseVisualStyleBackColor = true;
-            this.btnLupaPersona.Click += new System.EventHandler(this.btnLupaPersona_Click);
             // 
             // txtCelular
             // 
