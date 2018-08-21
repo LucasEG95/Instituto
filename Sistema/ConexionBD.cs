@@ -326,6 +326,10 @@ namespace Sistema
         }
 
 
+
+        #endregion
+
+        #region utiles
         private static string convertirFecha(DateTime fecha)
         {
             string lefecha = fecha.Date.ToString("yyyyMMdd");
@@ -335,12 +339,10 @@ namespace Sistema
         private static string convertirDecimal(Decimal par)
         {
             string dec = par.ToString().Trim();
-            dec = dec.Replace(".", ",");
+            dec = dec.Replace(",", ".");
             return dec;
-           
-        }
-        
 
+        }
         #endregion
     }
 }
