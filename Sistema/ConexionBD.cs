@@ -244,31 +244,34 @@ namespace Sistema
         public static DataSet StoredConDatos(string stored, DataTable Parametros)
         {
             
-            string Comando = $"exec {stored} " ;
+            string comando = $"exec {stored} " ;
+            for (int i = 0; i < Parametros.Columns.Count; i++)
+            {
+                Type t = Parametros.Columns[i].DataType;
+                if (i > 0)
+                {
+                    comando += ", ";
+                }
+                if (t.Equals(typeof(int)))
+                {
+                    comando += $"{Parametros.Rows[0][i]}";
+                }
+                else if (t.Equals(typeof(decimal)))
+                {
+                    comando += $"{convertirDecimal((decimal)Parametros.Rows[0][i])}";
+                }
+                else if (t.Equals(typeof(DateTime)))
+                {
+                    comando += $"'{convertirFecha((DateTime)Parametros.Rows[0][i])}'";
+                }
+                else if (t.Equals(typeof(string)))
+                {
+                    comando += $"'{Parametros.Rows[0][i]}'";
+                }
+            }
             DataSet DS = new DataSet();
             try {
-                foreach(DataRow d in Parametros.Rows)
-                {
-                    if (d[0].GetType() == Type.GetType("System.Int32")) {
-                        Comando += $", {d[0]}";
-                    }
-
-                    else if (d[0].GetType() == Type.GetType("System.Decimal")) {
-
-                        Comando += $", " + convertirDecimal((Decimal)d[0]);
-
-                    }else if (d[0].GetType() == Type.GetType("System.DateTime"))
-                    {
-
-                        Comando += $", '{convertirFecha((DateTime)d[0]).Trim()}'";
-                    }
-                    else
-                    {
-                        Comando += $", '{d[0]}'";
-                    }
-                    
-                }
-                SqlCommand cmd = new SqlCommand(Comando, conection);
+                SqlCommand cmd = new SqlCommand(comando, conection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(DS);
                
