@@ -33,11 +33,11 @@ namespace Sistema.DAL
 
             }
 
-        public void EliminarPersona(string bNombre)
+        public void EliminarCarrera(string bNombre)
         {
             try
             {
-                ConexionBD.StoredSinDatos("EliminarPersona", dscar.Carrera);
+                ConexionBD.StoredSinDatos("EliminarCarrera", dscar.Carrera);
             }
             catch (Exception ex)
             {
