@@ -28,67 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dgvMateriasExist = new System.Windows.Forms.DataGridView();
+            this.dgvMateriasAnotadas = new System.Windows.Forms.DataGridView();
+            this.bAgregarTodas = new System.Windows.Forms.Button();
+            this.cmbCarrera = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbAño = new System.Windows.Forms.ComboBox();
+            this.txtAlumno = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasExist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasAnotadas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvMateriasExist
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 174);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(256, 167);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvMateriasExist.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvMateriasExist.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvMateriasExist.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvMateriasExist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMateriasExist.ColumnHeadersVisible = false;
+            this.dgvMateriasExist.Location = new System.Drawing.Point(12, 174);
+            this.dgvMateriasExist.Name = "dgvMateriasExist";
+            this.dgvMateriasExist.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvMateriasExist.RowHeadersVisible = false;
+            this.dgvMateriasExist.Size = new System.Drawing.Size(256, 167);
+            this.dgvMateriasExist.TabIndex = 0;
             // 
-            // dataGridView2
+            // dgvMateriasAnotadas
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.ColumnHeadersVisible = false;
-            this.dataGridView2.Location = new System.Drawing.Point(407, 174);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(256, 167);
-            this.dataGridView2.TabIndex = 0;
+            this.dgvMateriasAnotadas.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvMateriasAnotadas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvMateriasAnotadas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvMateriasAnotadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMateriasAnotadas.ColumnHeadersVisible = false;
+            this.dgvMateriasAnotadas.Location = new System.Drawing.Point(407, 174);
+            this.dgvMateriasAnotadas.Name = "dgvMateriasAnotadas";
+            this.dgvMateriasAnotadas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvMateriasAnotadas.RowHeadersVisible = false;
+            this.dgvMateriasAnotadas.Size = new System.Drawing.Size(256, 167);
+            this.dgvMateriasAnotadas.TabIndex = 0;
             // 
-            // button1
+            // bAgregarTodas
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(299, 235);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "flechitas";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bAgregarTodas.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.bAgregarTodas.FlatAppearance.BorderSize = 0;
+            this.bAgregarTodas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAgregarTodas.Location = new System.Drawing.Point(299, 235);
+            this.bAgregarTodas.Name = "bAgregarTodas";
+            this.bAgregarTodas.Size = new System.Drawing.Size(75, 23);
+            this.bAgregarTodas.TabIndex = 1;
+            this.bAgregarTodas.Text = "flechitas";
+            this.bAgregarTodas.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // cmbCarrera
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(73, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(320, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cmbCarrera.FormattingEnabled = true;
+            this.cmbCarrera.Location = new System.Drawing.Point(73, 86);
+            this.cmbCarrera.Name = "cmbCarrera";
+            this.cmbCarrera.Size = new System.Drawing.Size(320, 21);
+            this.cmbCarrera.TabIndex = 2;
             // 
             // label1
             // 
@@ -110,20 +110,20 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Año";
             // 
-            // comboBox2
+            // cmbAño
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(471, 86);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(159, 21);
-            this.comboBox2.TabIndex = 4;
+            this.cmbAño.FormattingEnabled = true;
+            this.cmbAño.Location = new System.Drawing.Point(471, 86);
+            this.cmbAño.Name = "cmbAño";
+            this.cmbAño.Size = new System.Drawing.Size(159, 21);
+            this.cmbAño.TabIndex = 4;
             // 
-            // textBox1
+            // txtAlumno
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtAlumno.Location = new System.Drawing.Point(73, 32);
+            this.txtAlumno.Name = "txtAlumno";
+            this.txtAlumno.Size = new System.Drawing.Size(183, 20);
+            this.txtAlumno.TabIndex = 6;
             // 
             // label3
             // 
@@ -153,19 +153,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 353);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtAlumno);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbAño);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.cmbCarrera);
+            this.Controls.Add(this.bAgregarTodas);
+            this.Controls.Add(this.dgvMateriasAnotadas);
+            this.Controls.Add(this.dgvMateriasExist);
             this.Name = "IngresoAlumnoMateria";
             this.Text = "lalala";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasExist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasAnotadas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,14 +173,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dgvMateriasExist;
+        private System.Windows.Forms.DataGridView dgvMateriasAnotadas;
+        private System.Windows.Forms.Button bAgregarTodas;
+        private System.Windows.Forms.ComboBox cmbCarrera;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cmbAño;
+        private System.Windows.Forms.TextBox txtAlumno;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
     }
