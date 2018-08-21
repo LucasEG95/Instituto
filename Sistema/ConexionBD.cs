@@ -289,29 +289,26 @@ namespace Sistema
             string comando = $"exec {stored} ";
             try
             {
-                foreach (DataRow d in Parametros.Rows)
+                for(int i = 0; i < Parametros.Columns.Count; i++)
                 {
-                    if (d[0].GetType() == Type.GetType("System.Int32"))
+                    Type t = Parametros.Columns[i].DataType;
+                    if( i > 0)
                     {
-                        comando += $", {d[0]}";
+                        comando += ", ";
                     }
-
-                    else if (d[0].GetType() == Type.GetType("System.Decimal"))
+                    if (t.Equals(typeof(int)))
                     {
-
-                        comando += $", " + convertirDecimal((Decimal)d[0]);
-
-                    }
-                    else if (d[0].GetType() == Type.GetType("System.DateTime"))
+                        comando += $"{Parametros.Rows[0][i]}";
+                    }else if (t.Equals(typeof(decimal)))
                     {
-
-                        comando += $", '{convertirFecha((DateTime)d[0]).Trim()}'";
-                    }
-                    else
+                        comando += $"{convertirDecimal((decimal)Parametros.Rows[0][i])}";
+                    }else if (t.Equals(typeof(DateTime)))
                     {
-                        comando += $", '{d[0]}'";
+                        comando += $"'{convertirFecha((DateTime)Parametros.Rows[0][i])}'";
+                    }else if (t.Equals(typeof(string)))
+                    {
+                        comando += $"'{Parametros.Rows[0][i]}'";
                     }
-
                 }
                 SqlCommand cmd = new SqlCommand(comando,conection);
                 if (cmd.ExecuteNonQuery() > 0)
