@@ -233,7 +233,7 @@ namespace Sistema.FE
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
-        {   
+        {
 
         }
     }
