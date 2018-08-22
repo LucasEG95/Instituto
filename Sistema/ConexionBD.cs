@@ -271,13 +271,15 @@ namespace Sistema
                     comando += $"'{Parametros[i]}'";
                 }
             }
+            
             DataSet DS = new DataSet();
             try {
                 SqlCommand cmd = new SqlCommand(comando, conection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(DS);
-               
+
                 return DS;
+            
             }catch(Exception e)
             {
                 throw e;
@@ -317,6 +319,7 @@ namespace Sistema
                     {
                         comando += $"'{Parametros[i]}'";
                     }
+
                 }
                 SqlCommand cmd = new SqlCommand(comando,conection);
                 if (cmd.ExecuteNonQuery() > 0)
@@ -331,6 +334,10 @@ namespace Sistema
         }
 
 
+
+        #endregion
+
+        #region utiles
         private static string convertirFecha(DateTime fecha)
         {
             string lefecha = fecha.Date.ToString("yyyyMMdd");
@@ -340,12 +347,10 @@ namespace Sistema
         private static string convertirDecimal(Decimal par)
         {
             string dec = par.ToString().Trim();
-            dec = dec.Replace(".", ",");
+            dec = dec.Replace(",", ".");
             return dec;
-           
-        }
-        
 
+        }
         #endregion
     }
 }
