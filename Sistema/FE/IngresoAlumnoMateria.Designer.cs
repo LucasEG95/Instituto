@@ -164,6 +164,7 @@
             this.Controls.Add(this.dgvMateriasExist);
             this.Name = "IngresoAlumnoMateria";
             this.Text = "lalala";
+            this.Load += new System.EventHandler(this.IngresoAlumnoMateria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasExist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasAnotadas)).EndInit();
             this.ResumeLayout(false);

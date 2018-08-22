@@ -20,5 +20,14 @@ namespace Sistema.FE
         {
             InitializeComponent();
         }
+
+        private void IngresoAlumnoMateria_Load(object sender, EventArgs e)
+        {
+            DataSet ds = ConexionBD.consultar("select Nombre from Carrera");
+            foreach(DataRow d in ds.Tables[0].Rows)
+            {
+                cmbCarrera.Items.Add(d[0]);
+            }
+        }
     }
 }
