@@ -236,9 +236,7 @@ namespace Sistema
 
 
         /// <summary>
-        /// nombreDelStored y dataTable con los datos ordenados como vienen en el stored procedure.
-        /// ejemplo: "guardar", dsPersonas.Personas.
-        /// en la tabla del dataSet los datos tienen que estar organizados como en el stored procedure para que funcione correctamente.
+        /// NombreDelStored, Parametro1,parametro2,parametro3,etc...
         /// </summary>
         /// <param name="stored"></param>
         /// <param name="Parametros"></param>
