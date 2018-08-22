@@ -236,37 +236,39 @@ namespace Sistema
 
 
         /// <summary>
-        /// nombreDelStored y dataTable con 1 columna y dentro de esa columna los parametros.
+        /// nombreDelStored y dataTable con los datos ordenados como vienen en el stored procedure.
+        /// ejemplo: "guardar", dsPersonas.Personas.
+        /// en la tabla del dataSet los datos tienen que estar organizados como en el stored procedure para que funcione correctamente.
         /// </summary>
         /// <param name="stored"></param>
         /// <param name="Parametros"></param>
         /// <returns>DataSet con datos</returns>
-        public static DataSet StoredConDatos(string stored, DataTable Parametros)
+        public static DataSet StoredConDatos(string stored, params object[] Parametros)
         {
             
             string comando = $"exec {stored} " ;
-            for (int i = 0; i < Parametros.Columns.Count; i++)
+            for (int i = 0; i < Parametros.Length; i++)
             {
-                Type t = Parametros.Columns[i].DataType;
+                Type t = Parametros[i].GetType();
                 if (i > 0)
                 {
                     comando += ", ";
                 }
                 if (t.Equals(typeof(int)))
                 {
-                    comando += $"{Parametros.Rows[0][i]}";
+                    comando += $"{Parametros[i]}";
                 }
                 else if (t.Equals(typeof(decimal)))
                 {
-                    comando += $"{convertirDecimal((decimal)Parametros.Rows[0][i])}";
+                    comando += $"{convertirDecimal((decimal)Parametros[i])}";
                 }
                 else if (t.Equals(typeof(DateTime)))
                 {
-                    comando += $"'{convertirFecha((DateTime)Parametros.Rows[0][i])}'";
+                    comando += $"'{convertirFecha((DateTime)Parametros[i])}'";
                 }
                 else if (t.Equals(typeof(string)))
                 {
-                    comando += $"'{Parametros.Rows[0][i]}'";
+                    comando += $"'{Parametros[i]}'";
                 }
             }
             DataSet DS = new DataSet();
@@ -287,30 +289,33 @@ namespace Sistema
         /// </summary>
         /// <param name="stored"></param>
         /// <returns></returns>
-        public static bool StoredSinDatos(string stored, DataTable Parametros)
+        public static bool StoredSinDatos(string stored, params object[] Parametros)
         {
             string comando = $"exec {stored} ";
             try
             {
-                for(int i = 0; i < Parametros.Columns.Count; i++)
+                for (int i = 0; i < Parametros.Length; i++)
                 {
-                    Type t = Parametros.Columns[i].DataType;
-                    if( i > 0)
+                    Type t = Parametros[i].GetType();
+                    if (i > 0)
                     {
                         comando += ", ";
                     }
                     if (t.Equals(typeof(int)))
                     {
-                        comando += $"{Parametros.Rows[0][i]}";
-                    }else if (t.Equals(typeof(decimal)))
+                        comando += $"{Parametros[i]}";
+                    }
+                    else if (t.Equals(typeof(decimal)))
                     {
-                        comando += $"{convertirDecimal((decimal)Parametros.Rows[0][i])}";
-                    }else if (t.Equals(typeof(DateTime)))
+                        comando += $"{convertirDecimal((decimal)Parametros[i])}";
+                    }
+                    else if (t.Equals(typeof(DateTime)))
                     {
-                        comando += $"'{convertirFecha((DateTime)Parametros.Rows[0][i])}'";
-                    }else if (t.Equals(typeof(string)))
+                        comando += $"'{convertirFecha((DateTime)Parametros[i])}'";
+                    }
+                    else if (t.Equals(typeof(string)))
                     {
-                        comando += $"'{Parametros.Rows[0][i]}'";
+                        comando += $"'{Parametros[i]}'";
                     }
                 }
                 SqlCommand cmd = new SqlCommand(comando,conection);

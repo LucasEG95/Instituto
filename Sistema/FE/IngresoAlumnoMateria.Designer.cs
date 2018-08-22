@@ -89,6 +89,7 @@
             this.cmbCarrera.Name = "cmbCarrera";
             this.cmbCarrera.Size = new System.Drawing.Size(320, 21);
             this.cmbCarrera.TabIndex = 2;
+            this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -117,6 +118,7 @@
             this.cmbAño.Name = "cmbAño";
             this.cmbAño.Size = new System.Drawing.Size(159, 21);
             this.cmbAño.TabIndex = 4;
+            this.cmbAño.SelectedIndexChanged += new System.EventHandler(this.cmbAño_SelectedIndexChanged);
             // 
             // txtAlumno
             // 

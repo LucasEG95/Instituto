@@ -23,11 +23,57 @@ namespace Sistema.FE
 
         private void IngresoAlumnoMateria_Load(object sender, EventArgs e)
         {
-            DataSet ds = ConexionBD.consultar("select Nombre from Carrera");
-            foreach(DataRow d in ds.Tables[0].Rows)
-            {
-                cmbCarrera.Items.Add(d[0]);
+            try {
+                DataTable dt = BE.BeAlumnoMaterias.ObtenerCarreras();
+                foreach (DataRow d in dt.Rows)
+                {
+                    cmbCarrera.Items.Add(d[0]);
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show(BE.BeAlumnoMaterias.error);
+                return;
+            }
+
+        }
+
+        private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbAño.Items.Clear();
+            cmbAño.Text = "";
+            ComboBox aux = (ComboBox)sender;
+            BE.BeAlumnoMaterias.Nombre = aux.Text;
+            int años = BE.BeAlumnoMaterias.ObtenerAños();
+            if (años < 0)
+            {
+                MessageBox.Show(BE.BeAlumnoMaterias.error);
+                return;
+            }
+            for (int i = años; i > 0; i--)
+            {
+                cmbAño.Items.Add(i);
+            }
+            
+
+            
+
+        }
+
+        private void ConfigurarGrilla(DataTable dt)
+        {
+            dgvMateriasExist.DataSource = dt;
+        }
+
+        private void cmbAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                BE.BeAlumnoMaterias.Año = Convert.ToInt32(cmbAño.Text.Trim());
+                BE.BeAlumnoMaterias.Carrera = cmbCarrera.Text;
+            ConfigurarGrilla(BE.BeAlumnoMaterias.ObtenerMaterias());
+
+           
+
+
         }
     }
 }
