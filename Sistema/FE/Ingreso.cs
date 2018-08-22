@@ -10,28 +10,22 @@ namespace Sistema.FE
         {
             InitializeComponent();
         }
-
+        public int privilegio=0;
         private void btIngresar_Click(object sender, EventArgs e)
         {
             IngresoBE BEIngreso = new IngresoBE();
             MenuPrincipal MP = new MenuPrincipal();
-            bool BoolUsuario = BEIngreso.CorroborarUsuario(txtUsuario.Text);
-            bool BoolContraseña = BEIngreso.CorroborarContraseña(txtContraseña.Text);
-            if (BoolUsuario & BoolContraseña)
+            privilegio = BEIngreso.login(txtUsuario.Text, txtContraseña.Text);
+            if ( privilegio == 0)
             {
-                MP.Show(BEIngreso.Privilegio(txtUsuario.Text));
+                MessageBox.Show("Usuario o Contraseña invalida");
+            }
+            else { MP.Show(privilegio);
                 this.Close();
             }
-            else { if (!BoolContraseña && BoolUsuario)
-                {
-                    MessageBox.Show("Contraseña Incorrecta");
 
-                }
-                else {
 
-                    MessageBox.Show("Usuario Incorrecto");
-                } } ;
-            
+
             
         }
 
