@@ -15,6 +15,7 @@ namespace Sistema
         [STAThread]
         static void Main()
         {
+            ConexionBD.AbrirConeccion();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new IngresoAlumnoMateria());
