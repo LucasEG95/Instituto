@@ -24,7 +24,7 @@ namespace Sistema.FE
             
             MenuPrincipal MP = new MenuPrincipal();
                 MP.ShowDialog(Prioridad);
-
+                this.Visible = false;
             }
         }
 
