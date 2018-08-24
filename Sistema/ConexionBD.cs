@@ -95,10 +95,12 @@ namespace Sistema
                 data = comando.ExecuteReader();
                 if (data.Read())
                 {
+                    data.Close();
                     return true;
                 }
                 else
                 {
+                    data.Close();
                     return false;
                 }
             }catch(Exception e)
