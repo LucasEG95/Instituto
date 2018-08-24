@@ -13,20 +13,25 @@ namespace Sistema.FE
     public partial class FormLupa : Form
     {
         //maxi
-        DataTable dtLupa = new DataTable();
+        private DataTable dtLupa = new DataTable();
         public object[] Valores;
         private string Tabla;
         private object[] Campos;
 
         
-
+        /// <summary>
+        /// para extraer datos de el click de la lupa se debe acceder al atributo publico Valores.
+        /// </summary>
+        /// <param name="Tabla"></param>
+        /// <param name="Campos"></param>
         public FormLupa(string Tabla, string[] Campos)
         {
             
             InitializeComponent();
             this.Tabla = Tabla;
             this.Campos = Campos;
-            dtLupa = ConexionBD.consultar(LupaDinamica()).Tables[0]; 
+            dtLupa = ConexionBD.consultar(LupaDinamica()).Tables[0];
+            this.GrillaLupa.DataSource = dtLupa;
         }
 
         private string LupaDinamica()
@@ -61,11 +66,14 @@ namespace Sistema.FE
 
         private void FormLupa_Load(object sender, EventArgs e)
         {
-            this.GrillaLupa.DataSource = dtLupa;
+            
             //maxi
             for (int i = 0; i < GrillaLupa.Columns.Count; i++)
             {
-                cmbFiltro.Items.Add(GrillaLupa.Columns[i].HeaderText);
+                if (GrillaLupa.Columns[i].Visible == true)
+                {
+                    cmbFiltro.Items.Add(GrillaLupa.Columns[i].HeaderText);
+                }
             }
             cmbFiltro.Text = cmbFiltro.Items[0].ToString();
         }
@@ -84,7 +92,13 @@ namespace Sistema.FE
         }
         //guarda el valor del DNI elegido, de un booleano y cierra el programa.
 
-
+        public void ConfigurarGrilla(int[] camposInvisibles)
+        {
+            for(int i = 0; i < camposInvisibles.Length; i++)
+            {
+                GrillaLupa.Columns[camposInvisibles[i]].Visible = false;
+            }
+        }
             
         private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
