@@ -188,7 +188,12 @@ namespace Sistema.FE
                 }
              
             }
-            this.ShowDialog();
+            this.Show();
+        }
+
+        private void MenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         //    private void BTCarrera_Click(object sender, EventArgs e)

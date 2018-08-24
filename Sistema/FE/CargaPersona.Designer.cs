@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 0;
@@ -60,22 +60,22 @@
             // 
             // txtNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(67, 8);
+            this.txtNombres.Location = new System.Drawing.Point(67, 35);
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(192, 20);
             this.txtNombres.TabIndex = 1;
             // 
             // txtDNI
             // 
-            this.txtDNI.Location = new System.Drawing.Point(67, 63);
+            this.txtDNI.Location = new System.Drawing.Point(67, 9);
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(192, 20);
-            this.txtDNI.TabIndex = 3;
+            this.txtDNI.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 66);
+            this.label2.Location = new System.Drawing.Point(12, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 2;
@@ -86,7 +86,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(67, 89);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(192, 20);
-            this.txtTelefono.TabIndex = 5;
+            this.txtTelefono.TabIndex = 3;
             // 
             // label3
             // 
@@ -102,7 +102,7 @@
             this.txtEmail.Location = new System.Drawing.Point(67, 141);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(192, 20);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 5;
             // 
             // label4
             // 
@@ -118,7 +118,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(67, 193);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(192, 20);
-            this.txtDireccion.TabIndex = 9;
+            this.txtDireccion.TabIndex = 7;
             // 
             // label5
             // 
@@ -134,7 +134,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(175, 228);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 24;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -144,7 +144,7 @@
             this.btnCargar.Location = new System.Drawing.Point(46, 228);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
-            this.btnCargar.TabIndex = 22;
+            this.btnCargar.TabIndex = 8;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
@@ -152,7 +152,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 38);
+            this.label6.Location = new System.Drawing.Point(12, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 25;
@@ -160,17 +160,17 @@
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(67, 34);
+            this.txtApellidos.Location = new System.Drawing.Point(67, 61);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(192, 20);
-            this.txtApellidos.TabIndex = 26;
+            this.txtApellidos.TabIndex = 2;
             // 
             // btnLupaPersona
             // 
             this.btnLupaPersona.Location = new System.Drawing.Point(265, 12);
             this.btnLupaPersona.Name = "btnLupaPersona";
             this.btnLupaPersona.Size = new System.Drawing.Size(30, 23);
-            this.btnLupaPersona.TabIndex = 27;
+            this.btnLupaPersona.TabIndex = 10;
             this.btnLupaPersona.Text = "button4";
             this.btnLupaPersona.UseVisualStyleBackColor = true;
             this.btnLupaPersona.Click += new System.EventHandler(this.btnLupaPersona_Click);
@@ -180,7 +180,7 @@
             this.txtCelular.Location = new System.Drawing.Point(67, 115);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(192, 20);
-            this.txtCelular.TabIndex = 29;
+            this.txtCelular.TabIndex = 4;
             // 
             // label7
             // 
@@ -196,7 +196,7 @@
             this.txtLocalidad.Location = new System.Drawing.Point(67, 167);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(192, 20);
-            this.txtLocalidad.TabIndex = 31;
+            this.txtLocalidad.TabIndex = 6;
             // 
             // label8
             // 

@@ -4,24 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sistema.DAL;
+using System.Windows.Forms;
+using System.Data;
 
 namespace Sistema.BE
 {
     
     class BePersonas
     {
-        DalPersonas DalPer;
-        public void CargarPersonas(string bNombre, string bApellido, string bDNI, string bLocalidad, string bDireccion, string bTelefono, string bCelular, string bEmail)
+        DalPersonas DalPer = new DalPersonas();
+
+        public void CargarPersonas(string bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad)
         {
-            DalPer = new DalPersonas();
-            int dDNI, dTelefono, dCelular;
-            dDNI = Convert.ToInt32(bDNI);
-            dTelefono = Convert.ToInt32(bTelefono);
-            dCelular = Convert.ToInt32(bCelular);
+            #region Validacion
+
+            if (bNombre.Length <= 0)
+            {
+                MessageBox.Show("Debe ingresar el Apellido");
+                return;
+            }
+            if (bApellido.Length <= 0)
+            {
+                MessageBox.Show("Debe ingresar el Nombre");
+                return;
+            }
+            if (bDNI.Length <= 0)
+            {
+                MessageBox.Show("Debe ingresar el DNI");
+                return;
+            }
+            if (bTelefono.Length <= 0)
+            {
+                bTelefono = "0";
+            }
+            if (bCelular.Length <= 0)
+            {
+                bCelular = "0";
+            }
+
+            #endregion
+
 
             try
             {
-                DalPer.CargarPersona(bNombre, bApellido, dDNI, bLocalidad, bDireccion, dTelefono, dCelular, bEmail);
+                DalPer.CargarPersona(Convert.ToInt32(bDNI), bNombre, bApellido, Convert.ToInt32(bTelefono), Convert.ToInt32(bCelular), bEmail, bDireccion, bLocalidad);
+                
             }
             catch (Exception ex)
             {
@@ -31,23 +58,21 @@ namespace Sistema.BE
 
         public void EliminarPersonas(string bDNI)
         {
-            DalPer = new DalPersonas();
-            int dDNI;
-            dDNI = Convert.ToInt32(bDNI);
 
             try
             {
-                DalPer.EliminarPersonas(dDNI);
+                DalPer.EliminarPersonas(Convert.ToInt32(bDNI));
+                MessageBox.Show("Persona Eliminada");
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+
+
+
+
         }
-
-
-
-
-
     }
 }
