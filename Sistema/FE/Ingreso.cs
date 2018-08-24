@@ -23,11 +23,17 @@ namespace Sistema.FE
             } else {
             
             MenuPrincipal MP = new MenuPrincipal();
-            MP.Show(Prioridad);
+                MP.ShowDialog(Prioridad);
+                this.Visible = false;
             }
         }
 
         private void Ingreso_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
         {
 
         }

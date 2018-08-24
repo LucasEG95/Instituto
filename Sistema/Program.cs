@@ -18,7 +18,8 @@ namespace Sistema
             ConexionBD.AbrirConeccion();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IngresoAlumnoMateria());
+            Application.Run(new Ingreso());
+            
         }
     }
 }

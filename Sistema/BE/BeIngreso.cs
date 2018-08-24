@@ -10,18 +10,19 @@ namespace Sistema.BE
 {
     class BeIngreso
     {
-        DalIngreso DalIng;
-        public int Login(string Usuario, string Contra)
-       {
-            DalIng = new DalIngreso;
-        try
-        {
-            return DalIng.
-        }
-        catch (Exception ex)
-        { 
-            throw ex;          
-        }
 
-}
+        public int Login(string Usuario, string Contra)
+        {
+            DalIngreso DalIng = new DalIngreso();
+            try
+            {
+                return Convert.ToInt32(DalIng.ValidadIngreso(Usuario, Contra));
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+        }
+    }
 }
