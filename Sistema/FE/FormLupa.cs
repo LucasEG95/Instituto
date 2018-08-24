@@ -15,6 +15,8 @@ namespace Sistema.FE
         //maxi
         private DataTable dtLupa = new DataTable();
         public object[] Valores;
+
+        private string Consulta = null;
         private string Tabla;
         private object[] Campos;
 
@@ -33,9 +35,20 @@ namespace Sistema.FE
             dtLupa = ConexionBD.consultar(LupaDinamica()).Tables[0];
             this.GrillaLupa.DataSource = dtLupa;
         }
+        public FormLupa(string consulta)
+        {
 
+            InitializeComponent();
+            this.Consulta = consulta;
+            dtLupa = ConexionBD.consultar(LupaDinamica()).Tables[0];
+            this.GrillaLupa.DataSource = dtLupa;
+        }
         private string LupaDinamica()
         {
+            if(Consulta != null)
+            {
+                return Consulta;
+            }
             string select = "Select ";
             for (int i = 0; i < this.Campos.Length; i++)
             {
@@ -47,9 +60,7 @@ namespace Sistema.FE
                 
                 
             }
-
             select += $" from {this.Tabla}";
-            
             return select;
         }
         private void Filtrar(string Consulta)
@@ -61,8 +72,6 @@ namespace Sistema.FE
             GrillaLupa.DataSource = dtLupa;
            
         }
-        //Concatena texto y variables string de forma que quede una consulta de sql, ejecuta dicha consulta y guarda la tabla resultante.
-        //agrega los campos de la consulta a el combobox
 
         private void FormLupa_Load(object sender, EventArgs e)
         {
