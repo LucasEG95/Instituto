@@ -9,37 +9,32 @@ namespace Sistema.DAL
 {
     class DalMateria
     {
-        DsMateria dsmat = new DsMateria();
-
-        public void CargarMateria (string bCarrera, string bNombre, string bProfesor, int bAño, int bHoras, bool bPromocional)
+        
+        public bool CargarMateria (int bCarrera, string bNombre, int bProfesor, int bAño, int bHoras, int bPromocional)
         {
-            dsmat.Materia.Row[0]["Carrera"] = Convert.ToString(bCarrera);
-            dsmat.Materia.Row[0]["Materia"] = Convert.ToString(bNombre);
-            dsmat.Materia.Row[0]["Profesor"] = Convert.ToString(bProfesor);
-            dsmat.Materia.Row[0]["Año"] = Convert.ToInt32(bAño);
-            dsmat.Materia.row[0]["Horas"] = Convert.ToInt32(bHoras);
-            dsmat.Materia.Row[0]["Promocional"] = Convert.ToBoolean(bPromocional);
-
+            string Aux = "insert into Materia values ("+bCarrera+","+bProfesor+",'"+bNombre+"'," + bAño + "," + bHoras + ","+bPromocional+")";
             try
             {
-                ConexionBD.StoredSinDatos($"GuardarMateria + '{dsmat.Materia.Row[0]["Carrera"]}', '{dsmat.Materia.Row[0]["Materia"]}', '{dsmat.Materia.Row[0]["Profesor"]}', '{dsmat.Materia.Row[0]["Año"]}', '{dsmat.Materia.Row[0]["Horas"]}', '{dsmat.Materia.Row[0]["Promocional"]}',");
+                ConexionBD.Insertar(Aux);
+                return true;
 
             }
 
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
-        public void EliminarMateria (string bNombre)
+         public bool EliminarMateria (int IDMateria)
         {
             try
             {
-                ConexionBD.StoredSinDatos("EliminarMateria", dsmat.Materia);
+                ConexionBD.Eliminar("delete from Materia where MateriaID =" + IDMateria );
+                return true;
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
     }

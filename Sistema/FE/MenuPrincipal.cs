@@ -33,7 +33,7 @@ namespace Sistema.FE
             Button BTMateria = new Button();
             BTMateria.Text = "Materias";
 
-  //          BTMateria.Click += new EventHandler(BTMateria_Click);
+            BTMateria.Click += new EventHandler(BTMateria_Click);
 
             Button BTPersona = new Button();
             BTPersona.Text = "Persona";
@@ -197,11 +197,11 @@ namespace Sistema.FE
         //CC.ShowDialog();
         // }
 
-        //        private void BTMateria_Click(object sender, EventArgs e) {
-        //
-        // CargarMateria CM = new CargarMateria();
-        // CM.ShowDialog();
-        //}
+                private void BTMateria_Click(object sender, EventArgs e) {
+        
+         CargaMateria CM = new CargaMateria();
+         CM.ShowDialog();
+        }
 
 
         //        private void BTPersona_Click(object sender, EventArgs e) {
