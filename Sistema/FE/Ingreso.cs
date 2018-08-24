@@ -19,7 +19,7 @@ namespace Sistema.FE
             Prioridad = beIng.Login(txtUsuario.Text, txtContraseña.Text);
             if (Prioridad == 0)
                 {
-                MessageBox.Show("Usuario o contraseña mal");
+                MessageBox.Show("Usuario o Contraseña incorrecta");
             } else {
             
             MenuPrincipal MP = new MenuPrincipal();

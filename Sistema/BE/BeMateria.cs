@@ -9,25 +9,30 @@ namespace Sistema.BE
 {
     class BeMaterias
     {
-        DalMateria DalMat;
-        public void CargarMateria(string bCarrera, string bNombre, string bProfesor, string bAño, string bHoras, string bPromocional)
+       public DalMateria DalMat;
+        public bool CargarMateria(int bCarrera, string bNombre, int bProfesor, string bAño, string bHoras, bool bPromocional)
         {
             DalMat = new DalMateria();
-            int dAños, dHoras;
-            bool dPromocional;
-            dAños = Convert.ToInt32(bAño);
-            dHoras = Convert.ToInt32(bHoras);
-            dPromocional = Convert.ToBoolean(bPromocional);
-
-            try
+            int dPromocional;
+            int dAños = Convert.ToInt32(bAño);
+            int dHoras = Convert.ToInt32(bHoras);
+            if (bPromocional)
             {
-                DalMat.CargarMateria(bCarrera, bNombre, bProfesor, bAño, bHoras, bPromocional);
+                dPromocional = 1;
             }
-            catch (Exception ex)
-            {
-                throw ex;
+            else {
+                dPromocional = 0;
+            };
 
-            }
+            
+               return DalMat.CargarMateria(bCarrera, bNombre, bProfesor, dAños, dHoras, dPromocional );
+            
+        }
+
+        public bool EliminarMateria(int id)
+        {
+            DalMateria DM = new DalMateria();
+            return DM.EliminarMateria(id);
         }
     }
 }
