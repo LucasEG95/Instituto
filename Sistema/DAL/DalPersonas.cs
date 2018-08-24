@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sistema.DS;
+using System.Windows.Forms;
+using System.Data;
 
 namespace Sistema.DAL
 {
@@ -11,27 +13,28 @@ namespace Sistema.DAL
 
     class DalPersonas
     {
-        DsPersonas dsPer = new DsPersonas();
-
-        public void CargarPersona(string bNombre, string bApellido, int bDNI, string bLocalidad, string bDireccion, int bTelefono, int bCelular, string bEmail)
+        
+        public void CargarPersona(int bDNI, string bNombre, string bApellido, int bTelefono, int bCelular, string bEmail, string bDireccion, string bLocalidad)
         {
-
-            dsPer.Persona.Rows[0]["Nombre"] = Convert.ToString(bNombre);
-            dsPer.Persona.Rows[0]["Apellido"] = Convert.ToString(bApellido);
-            dsPer.Persona.Rows[0]["DNI"] = Convert.ToInt32(bDNI);
-            dsPer.Persona.Rows[0]["Localidad"] = Convert.ToString(bLocalidad);
-            dsPer.Persona.Rows[0]["Direccion"] = Convert.ToString(bDireccion);
-            dsPer.Persona.Rows[0]["Email"] = Convert.ToString(bEmail);
-            dsPer.Persona.Rows[0]["Telefono"] = Convert.ToInt32(bTelefono);
-            dsPer.Persona.Rows[0]["Celular"] = Convert.ToInt32(bCelular);
-
-            try {
-                ConexionBD.StoredSinDatos( $"PersonasGuardar + '{dsPer.Persona.Rows[0]["Nombre"]}', '{dsPer.Persona.Rows[0]["Apellido"]}', '{dsPer.Persona.Rows[0]["DNI"].ToString()}', '{dsPer.Persona.Rows[1]["DNI"]}'" ); }
-            catch (Exception ex)
+            if (!ConexionBD.existe("select DNI from Personas where DNI="+ bDNI))
             {
-                throw ex;
+                ConexionBD.StoredSinDatos("PersonasGuardar", bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad);
+                MessageBox.Show("Persona Guardada");
             }
-
+            else
+            {
+                
+                if(MessageBox.Show("Esta persona ya existe, desea modificarla?", "Comprovación", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    
+                    ConexionBD.StoredSinDatos("PersonasModificar", bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad);
+                    MessageBox.Show("Persona Modificada");
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
 
 
@@ -40,18 +43,13 @@ namespace Sistema.DAL
         {
             try
             {
-                ConexionBD.StoredSinDatos("EliminarPersonas", dsPer.Persona);
-            }
+                ConexionBD.StoredSinDatos("PersonasEliminar", bDNI);
+        }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-
-
-
-
-
         }
+        
     }
 }
