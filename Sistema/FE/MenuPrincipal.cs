@@ -38,7 +38,7 @@ namespace Sistema.FE
             Button BTPersona = new Button();
             BTPersona.Text = "Persona";
 
-    //        BTPersona.Click += new EventHandler(BTPersona_Click);
+            BTPersona.Click += new EventHandler(BTPersona_Click);
 
             Button BTEvaluaciones = new Button();
             BTEvaluaciones.Text = "Evaluaciones";
@@ -209,10 +209,11 @@ namespace Sistema.FE
         //}
 
 
-        //        private void BTPersona_Click(object sender, EventArgs e) {
-        //CargaPersona CP = new CargaPersona();
-        //CP.ShowDialog();
-        //    }
+        private void BTPersona_Click(object sender, EventArgs e)
+        {
+            CargaPersona CP = new CargaPersona();
+            CP.ShowDialog();
+        }
 
 
         //private void BTEvaluaciones_Click(object sender, EventArgs e) {

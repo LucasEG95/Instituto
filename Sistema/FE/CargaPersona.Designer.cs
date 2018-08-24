@@ -68,6 +68,7 @@
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(67, 9);
+            this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(192, 20);
             this.txtDNI.TabIndex = 0;

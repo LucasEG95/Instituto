@@ -71,12 +71,12 @@ namespace Sistema.FE
 
         private void btnLupaPersona_Click(object sender, EventArgs e)
         {
-            FormLupa FML = new FormLupa();
-            FML.LupaDinamica("Personas", new string[] { "DNI", "Nombres", "Apellidos" });
+            FormLupa FML = new FormLupa("Personas", new string[] { "DNI", "Nombres", "Apellidos" });
             FML.ShowDialog();
-            if (FML.dclick == true)
+
+            if (FML.Valores != null)
             {
-                Llenartxt(FML.DNILupa);
+                Llenartxt((int)FML.Valores[0]);
             }
 
         }
