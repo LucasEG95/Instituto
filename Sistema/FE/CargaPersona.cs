@@ -73,6 +73,7 @@ namespace Sistema.FE
         {
             FormLupa FML = new FormLupa();
             FML.LupaDinamica("Personas", new string[] { "DNI", "Nombres", "Apellidos" });
+            FML.ShowDialog();
             if (FML.dclick == true)
             {
                 Llenartxt(FML.DNILupa);
