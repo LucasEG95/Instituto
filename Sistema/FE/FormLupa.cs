@@ -13,14 +13,18 @@ namespace Sistema.FE
     public partial class FormLupa : Form
     {
         //maxi
-        private DataTable dtLupa = new DataTable();
+        #region variables
+        
         public object[] Valores;
 
+
+        private DataTable dtLupa = new DataTable();
         private string Consulta = null;
         private string Tabla;
-        private object[] Campos;
-
-        
+        private string[] Campos;
+        private int Index =0;
+        #endregion
+        #region Constructores
         /// <summary>
         /// para extraer datos de el click de la lupa se debe acceder al atributo publico Valores.
         /// </summary>
@@ -43,9 +47,11 @@ namespace Sistema.FE
             dtLupa = ConexionBD.consultar(LupaDinamica()).Tables[0];
             this.GrillaLupa.DataSource = dtLupa;
         }
+        #endregion
+        #region internos
         private string LupaDinamica()
         {
-            if(Consulta != null)
+            if (Consulta != null)
             {
                 return Consulta;
             }
@@ -57,22 +63,81 @@ namespace Sistema.FE
                     select += ", ";
                 }
                 select += this.Campos[i];
-                
-                
+
+
             }
             select += $" from {this.Tabla}";
             return select;
         }
+        private void obtenerAlias()
+        {
+            int indexInicio =0;
+            string aux,aux2 = "";
+            List<string> CamposyAlias = new List<string>();
+            
+            for(int i = 0; i < Consulta.Length; i++)
+            {
+                if(Consulta.Substring(i,4) == "from" || Consulta.Substring(i, 4) == "From")
+                {
+                    indexInicio = i;
+                    break;
+                }
+
+            }
+            aux = Consulta.Substring(7,indexInicio-7);
+
+            for(int i = 0; i < aux.Length; i++)
+            {
+                if (aux.Substring(i,1) == ",")
+                {
+                    CamposyAlias.Add(aux2);
+                    aux2 = "";
+                    i++;
+                }
+                else {aux2 += aux.Substring(i, 1);}
+                if(i == aux.Length - 1)
+                {
+                    CamposyAlias.Add(aux2);
+                }
+            }
+            
+            Campos = new string[CamposyAlias.Count];
+            for(int i =0; i < CamposyAlias.Count; i++)
+            {
+                Campos[i] = CamposyAlias[i];
+            }
+
+        }
+        private string obtenerCampos()
+        {
+            string campo = "";
+            if(Campos == null)
+            {
+                obtenerAlias();
+            }
+            for (int i = 0; i < Campos[Index].Length; i++)
+            {
+
+                if (Campos[Index].Substring(i, 1) == " ")
+                {
+                    break;
+                }
+                campo += Campos[Index].Substring(i, 1);
+            }
+            return campo;
+        }
         private void Filtrar(string Consulta)
         {
-            Consulta += $" where {cmbFiltro.Text} like '%{txtFiltro.Text.Trim()}%'";
-            
-            dtLupa =ConexionBD.consultar(Consulta).Tables[0];
+
+            Consulta += $" where {obtenerCampos()} like '%{txtFiltro.Text.Trim()}%'";
+
+            dtLupa = ConexionBD.consultar(Consulta).Tables[0];
             dtLupa.AcceptChanges();
             GrillaLupa.DataSource = dtLupa;
-           
-        }
 
+        }
+        #endregion
+        #region funciones
         private void FormLupa_Load(object sender, EventArgs e)
         {
             
@@ -99,8 +164,21 @@ namespace Sistema.FE
             this.Close();
 
         }
-        //guarda el valor del DNI elegido, de un booleano y cierra el programa.
 
+        //guarda el valor del DNI elegido, de un booleano y cierra el programa.
+        private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtFiltro.Focus();
+            ComboBox aux = (ComboBox)sender;
+            Index = aux.SelectedIndex;
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            Filtrar(LupaDinamica());
+        }
+        #endregion
+        #region publicas
         public void ConfigurarGrilla(int[] camposInvisibles)
         {
             for(int i = 0; i < camposInvisibles.Length; i++)
@@ -108,15 +186,7 @@ namespace Sistema.FE
                 GrillaLupa.Columns[camposInvisibles[i]].Visible = false;
             }
         }
-            
-        private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtFiltro.Focus();
-        }
+        #endregion
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            Filtrar(LupaDinamica());
-        }
     }
 }
