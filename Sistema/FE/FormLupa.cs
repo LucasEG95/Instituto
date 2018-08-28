@@ -115,6 +115,10 @@ namespace Sistema.FE
             {
                 obtenerAlias();
             }
+            if (Campos[0].Contains("*"))
+            {
+                return cmbFiltro.Text;
+            }
             for (int i = 0; i < Campos[Index].Length; i++)
             {
 
