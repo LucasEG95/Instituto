@@ -69,30 +69,48 @@ namespace Sistema.FE
             select += $" from {this.Tabla}";
             return select;
         }
-        private void obtenerAlias()
+        private void obtenerCamposYalias()
         {
+            //Variables locales
             int indexInicio =0;
             string aux,aux2 = "";
             List<string> CamposyAlias = new List<string>();
-            
+            /*+--------------------------------------------------------------+
+              +este for busca entre la consulta enviada el segmento donde se +
+              +encuentra el inicio de la palabra reservada FROM y luego      +
+              +guarda ese indice en la variable entera IndexInicio.          +
+              +--------------------------------------------------------------+*/
             for(int i = 0; i < Consulta.Length; i++)
             {
-                if(Consulta.Substring(i,4) == "from" || Consulta.Substring(i, 4) == "From")
+                if(Consulta.Substring(i,4) == "from" || Consulta.Substring(i, 4) == "From" || Consulta.Substring(i, 4) == "FROM")
                 {
                     indexInicio = i;
                     break;
                 }
 
             }
+            /*--------------------------------------------
+            + guardo en la variable auxiliar la subcadena 
+            + donde se encuentran los parametros de la tabla
+            ----------------------------------------------*/
             aux = Consulta.Substring(7,indexInicio-7);
-
-            for(int i = 0; i < aux.Length; i++)
+            /*--------------------------------------------
+            + este for se encarga de llenar la lista con
+            + los parametros separados por coma.
+            + en el caso de que despues de un parametro halla
+            + un espacio le suma 1 a el indice del for.
+            ----------------------------------------------*/
+            for (int i = 0; i < aux.Length; i++)
             {
                 if (aux.Substring(i,1) == ",")
                 {
                     CamposyAlias.Add(aux2);
                     aux2 = "";
-                    i++;
+                    if(aux.Substring(i+1, 1) == " ")
+                    {
+                        i++;
+                    }
+                    
                 }
                 else {aux2 += aux.Substring(i, 1);}
                 if(i == aux.Length - 1)
@@ -100,7 +118,12 @@ namespace Sistema.FE
                     CamposyAlias.Add(aux2);
                 }
             }
-            
+            /*--------------------------------------------
+            + una vez completa la lista con todos los campos
+            + y alias de la consulta, procedemos a llenar la
+            + el arreglo de variables string Campos con
+            + los parametros en la lista.
+            ----------------------------------------------*/
             Campos = new string[CamposyAlias.Count];
             for(int i =0; i < CamposyAlias.Count; i++)
             {
@@ -113,7 +136,7 @@ namespace Sistema.FE
             string campo = "";
             if(Campos == null)
             {
-                obtenerAlias();
+                obtenerCamposYalias();
             }
             if (Campos[0].Contains("*"))
             {
