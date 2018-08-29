@@ -27,6 +27,9 @@ namespace Sistema.FE
         #region Constructores
         /// <summary>
         /// para extraer datos de el click de la lupa se debe acceder al atributo publico Valores.
+        /// en el caso que se quieran poner alias a las variables que contengan espacios o puntuaciones
+        /// se deben realizar "Campo [Alias]" en la consulta o en el pasaje de campos.
+        /// para poner invisible un campo el metodo ConfigurarGrilla es util.
         /// </summary>
         /// <param name="Tabla"></param>
         /// <param name="Campos"></param>
@@ -172,12 +175,54 @@ namespace Sistema.FE
             //toma la variable consulta y luego aplica un filtro a la misma
             //obteniendo como resultado todos los valores que se acerquen al texto
             //en el txtFiltro.
-            Consulta += $" where {obtenerCampos()} like '%{txtFiltro.Text.Trim()}%'";
+            
+            if(Consulta.Contains("order by")|| Consulta.Contains("Order By")|| Consulta.Contains("ORDER BY"))
+            {
+                string[] Partes = ObtenerPartes();
+                Consulta = Pegarwhere(Partes[0]);
+                Consulta += Partes[1];
+            }else
+            {
+               Consulta = Pegarwhere(Consulta);
+            }
 
             dtLupa = ConexionBD.consultar(Consulta).Tables[0];
             dtLupa.AcceptChanges();
             GrillaLupa.DataSource = dtLupa;
 
+        }
+
+        private string[] ObtenerPartes()
+        {
+            string consultaParte1="";
+            string consultaParte2="";
+            string aux;
+            for(int i = 0; i< Consulta.Length; i++)
+            {
+                aux = Consulta.Substring(i, 8);
+                if (aux == "order by"|| aux == "Order by"|| aux == "order By"|| aux == "ORDER BY")
+                {
+                    consultaParte1 = Consulta.Substring(0, i - 1);
+                    consultaParte2 = Consulta.Substring(i);
+                    break;
+                }
+            }
+             string[] Partes = new string[] { consultaParte1, consultaParte2 };
+
+            return Partes;
+        }
+        private string Pegarwhere(string consulta)
+        {
+            if (consulta.Contains("where") || consulta.Contains("Where") || consulta.Contains("WHERE"))
+            {
+                consulta += $" and {obtenerCampos()} like '%{txtFiltro.Text.Trim()}%' ";
+            }
+            else
+            {
+                consulta += $" where {obtenerCampos()} like '%{txtFiltro.Text.Trim()}%' ";
+            }
+
+            return consulta;
         }
         #endregion
         #region funciones
