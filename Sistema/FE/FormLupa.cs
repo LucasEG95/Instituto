@@ -133,29 +133,45 @@ namespace Sistema.FE
         }
         private string obtenerCampos()
         {
+            /*-----------------------------
+              - Metodo encargado de separar
+              - los campos de el alias
+              -----------------------------*/
+              //variable local
             string campo = "";
+            //si la variable global Campos esta vacia
+            //otiene el campo y alias con un metodo interno
             if(Campos == null)
             {
                 obtenerCamposYalias();
             }
+            //en el caso de que el primer valor de la 
+            //variable Campos sea * directamente toma
+            //el nombre de el campo del comboBox de
+            //la lupa.
             if (Campos[0].Contains("*"))
             {
                 return cmbFiltro.Text;
             }
+            //en este for se recorre el campo seleccionado en el comboBox
+            //y luego separa el nombre del campo de el nombre del aleas
             for (int i = 0; i < Campos[Index].Length; i++)
             {
-
+                
                 if (Campos[Index].Substring(i, 1) == " ")
                 {
                     break;
                 }
                 campo += Campos[Index].Substring(i, 1);
             }
+            //devuelve el nombre del campo seleccionado para aplicar el filtro.
             return campo;
         }
         private void Filtrar(string Consulta)
         {
-
+            //toma la variable consulta y luego aplica un filtro a la misma
+            //obteniendo como resultado todos los valores que se acerquen al texto
+            //en el txtFiltro.
             Consulta += $" where {obtenerCampos()} like '%{txtFiltro.Text.Trim()}%'";
 
             dtLupa = ConexionBD.consultar(Consulta).Tables[0];
