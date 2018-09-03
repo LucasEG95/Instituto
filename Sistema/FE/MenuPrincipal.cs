@@ -27,8 +27,11 @@ namespace Sistema.FE
             
             Button BTCarrera = new Button();
             BTCarrera.Text = "Carreras";
+            //          BTCarrera.Click += new EventHandler(BTCarrera_Click);
 
-//            BTCarrera.Click += new EventHandler(BTCarrera_Click);
+            Button BTAlumnoMateria = new Button();
+            BTAlumnoMateria.Text = "Inscripcion a Materias";
+            BTAlumnoMateria.Click += new EventHandler(BTAlumnoMateria_Click);
 
             Button BTMateria = new Button();
             BTMateria.Text = "Materias";
@@ -68,6 +71,9 @@ namespace Sistema.FE
             BTCarrera.Width = BTWidth;
             BTCarrera.Height = BTHeight;
 
+            BTAlumnoMateria.Width = BTWidth;
+            BTAlumnoMateria.Height = BTHeight;
+
             BTMateria.Width = BTWidth;
             BTMateria.Height = BTHeight;
 
@@ -94,6 +100,7 @@ namespace Sistema.FE
 
             if (num == 1)
             {
+
                 this.Controls.Add(BTCarrera);
                 BTCarrera.Top = BTTop;
                 BTCarrera.Left = DistanciaBT;
@@ -118,6 +125,9 @@ namespace Sistema.FE
                 this.Controls.Add(BTCorrelativas);
                 BTCorrelativas.Top = BTCarrera.Bottom + 30;
                 BTCorrelativas.Left = DistanciaBT;
+                this.Controls.Add(BTAlumnoMateria);
+                BTAlumnoMateria.Top = BTMateria.Bottom + 30;
+                BTAlumnoMateria.Left = BTCorrelativas.Right + DistanciaBT;
             }
             else { if (num == 2)
                 {
@@ -204,10 +214,14 @@ namespace Sistema.FE
 
                 private void BTMateria_Click(object sender, EventArgs e) {
         
-         CargaMateria CM = new CargaMateria();
-         CM.ShowDialog();
+         //CargaMateria CM = new CargaMateria();
+         //CM.ShowDialog();
         }
-
+        private void BTAlumnoMateria_Click(object sender, EventArgs e)
+        {
+            IngresoAlumnoMateria IAM = new IngresoAlumnoMateria();
+            IAM.ShowDialog();
+        }
 
         private void BTPersona_Click(object sender, EventArgs e)
         {

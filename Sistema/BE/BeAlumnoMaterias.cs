@@ -18,11 +18,12 @@ namespace Sistema.BE
         {
             try
             {
-               return DAL.DalAlumnoMaterias.ConsultarCarreras().Tables[0];
+                
+                return DAL.DalAlumnoMaterias.ConsultarCarreras().Tables[0];
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                error = "no se pudo obtener carreras.";
+                error = e.Message;
                 return null;
             }
         }
@@ -38,6 +39,7 @@ namespace Sistema.BE
                 error = e.Message;
                 return -1;
             }
+            
         }
 
 
@@ -45,7 +47,10 @@ namespace Sistema.BE
         {
             try
             {
-                return DAL.DalAlumnoMaterias.ObtenerMaterias(Año,Carrera).Tables[0];
+                
+               return DAL.DalAlumnoMaterias.ObtenerMaterias(Año, Carrera).Tables[0];
+
+                
             }catch(Exception e)
             {
                 error = e.Message;

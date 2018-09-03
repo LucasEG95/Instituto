@@ -17,9 +17,9 @@ namespace Sistema.DAL
                 DataSet ds = ConexionBD.consultar("select Nombre from Carrera");
                 return ds;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("error al obtener las carreras de la bd");
+                throw new Exception("error al obtener las carreras.",e);
             }
             
         }
@@ -32,25 +32,20 @@ namespace Sistema.DAL
                 int años = (int)ds.Tables[0].Rows[0][0];
                 return años;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("error al obtener los años de la carrera.");
+                throw new Exception("error al obtener los años de la carrera.",e);
             }
-        }
-
-        public static void aver(params int[] vl)
-        {
-
         }
         public static DataSet ObtenerMaterias(int Año, string Nombre)
         {
             try
             {
-               return ConexionBD.StoredConDatos("ObtenerMaterias",Nombre,Año);
+               return ConexionBD.StoredConDatos("ObtenerMaterias",Año,Nombre);
             }
-            catch
+            catch(Exception e)
             {
-                throw new Exception("error al obtener las materias");
+                throw new Exception("error al obtener las materias",e);
             }
 
         }
