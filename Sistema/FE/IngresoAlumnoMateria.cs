@@ -13,7 +13,7 @@ namespace Sistema.FE
     public partial class IngresoAlumnoMateria : Form
     {
 
-        private int PersonaID;
+        private int AlumnoID;
         private DS.DSIngresoMaterias DSME = new DS.DSIngresoMaterias();
         private DS.DSIngresoMaterias DSMA = new DS.DSIngresoMaterias();
 
@@ -111,14 +111,24 @@ namespace Sistema.FE
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormLupa Lupa = new FormLupa("select Nombres,Apellidos, p.PersonaID from Personas p inner join Alumnos a on p.PersonaID = a.PersonaID");
+            FormLupa Lupa = new FormLupa("select Nombres,Apellidos, a.AlumnoID from Personas p inner join Alumnos a on p.PersonaID = a.PersonaID");
             Lupa.ConfigurarGrilla(new int[] {2});
             Lupa.ShowDialog();
 
             if(Lupa.Valores != null)
             {
+                DSMA.Materias.Clear();
                 txtAlumno.Text = $"{Lupa.Valores[0].ToString().Trim()} {Lupa.Valores[1].ToString().Trim()}";
-                PersonaID = (int)Lupa.Valores[2];
+                AlumnoID = (int)Lupa.Valores[2];
+                DataTable dt = BE.BeAlumnoMaterias.obtenerAlumnoMaterias(AlumnoID);
+                if (dt == null) return;
+                if (dt.Rows.Count == 0) return;
+                foreach(DataRow d in dt.Rows)
+                {
+                    DSMA.Materias.AddMateriasRow((string)d[0],(int)d[1]);
+                }
+
+
             }
         }
 
@@ -139,6 +149,28 @@ namespace Sistema.FE
         {
             int indexRow = dgvMateriasAnotadas.CurrentCell.RowIndex;
             DSMA.Materias.Rows.RemoveAt(indexRow);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!BE.BeAlumnoMaterias.GuardarAlumnoMaterias(DSMA.Materias,this.AlumnoID))
+            {
+                MessageBox.Show(BE.BeAlumnoMaterias.error);
+                return;
+            }
+            MessageBox.Show("Materias Cargadas Correctamente!");
+            Vaciar();
+        }
+
+        private void Vaciar()
+        {
+            DSMA.Clear();
+            DSME.Clear();
+            AlumnoID = 0;
+            txtAlumno.Clear();
+            cmbAño.Items.Clear();
+            cmbAño.Text = "";
+            cmbCarrera.Text = "";
         }
     }
 }

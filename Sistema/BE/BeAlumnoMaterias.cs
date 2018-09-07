@@ -58,5 +58,37 @@ namespace Sistema.BE
             }
         }
 
+        public static bool GuardarAlumnoMaterias(DataTable Materias,int AlumnoID)
+        {
+            try
+            {
+                if (AlumnoID == 0)throw new Exception("ingrese Alumno");
+                if (Materias.Rows.Count == 0) throw new Exception("Ingrese Materias");
+
+                if (!DAL.DalAlumnoMaterias.guardarMateriasAlumnos(Materias, AlumnoID))
+                {
+                    return false;
+                }
+                return true;
+
+            }catch(Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+        }
+
+        public static DataTable obtenerAlumnoMaterias(int AlumnoID)
+        {
+            try
+            {
+                return DAL.DalAlumnoMaterias.obtenerAlumnosMaterias(AlumnoID);
+            }catch(Exception e)
+            {
+                error = e.Message;
+                return null;
+            }
+        }
+
     }
 }
