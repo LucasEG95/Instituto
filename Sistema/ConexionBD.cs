@@ -143,15 +143,15 @@ namespace Sistema
             try
             {
 
-                    if(sql.ExecuteNonQuery() > 0)
-                    {
-                        return true;
-                }
-                throw new Exception("no existe el campo seleccionado");
+                sql.ExecuteNonQuery();
+                    
+                    return true;
+                
+                
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception("no existe el campo seleccionado");
             }
         }
 
