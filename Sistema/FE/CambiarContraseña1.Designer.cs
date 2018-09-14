@@ -28,46 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtRespuesta = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtContra = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtContraRepet = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPregunta = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtContraAnt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Pregunta";
-            // 
-            // txtRespuesta
-            // 
-            this.txtRespuesta.Location = new System.Drawing.Point(78, 106);
-            this.txtRespuesta.Name = "txtRespuesta";
-            this.txtRespuesta.Size = new System.Drawing.Size(231, 20);
-            this.txtRespuesta.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(123, 143);
+            this.button1.Location = new System.Drawing.Point(123, 104);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 15);
+            this.label3.Location = new System.Drawing.Point(10, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 13);
             this.label3.TabIndex = 6;
@@ -75,7 +58,7 @@
             // 
             // txtContra
             // 
-            this.txtContra.Location = new System.Drawing.Point(112, 12);
+            this.txtContra.Location = new System.Drawing.Point(112, 39);
             this.txtContra.Name = "txtContra";
             this.txtContra.Size = new System.Drawing.Size(197, 20);
             this.txtContra.TabIndex = 7;
@@ -83,7 +66,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 47);
+            this.label4.Location = new System.Drawing.Point(10, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 13);
             this.label4.TabIndex = 8;
@@ -91,41 +74,39 @@
             // 
             // txtContraRepet
             // 
-            this.txtContraRepet.Location = new System.Drawing.Point(112, 44);
+            this.txtContraRepet.Location = new System.Drawing.Point(112, 65);
             this.txtContraRepet.Name = "txtContraRepet";
             this.txtContraRepet.Size = new System.Drawing.Size(197, 20);
             this.txtContraRepet.TabIndex = 9;
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 110);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Respuesta";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Contraseña Anterior";
             // 
-            // txtPregunta
+            // txtContraAnt
             // 
-            this.txtPregunta.Location = new System.Drawing.Point(78, 80);
-            this.txtPregunta.Name = "txtPregunta";
-            this.txtPregunta.Size = new System.Drawing.Size(231, 20);
-            this.txtPregunta.TabIndex = 11;
+            this.txtContraAnt.Location = new System.Drawing.Point(112, 12);
+            this.txtContraAnt.Name = "txtContraAnt";
+            this.txtContraAnt.Size = new System.Drawing.Size(197, 20);
+            this.txtContraAnt.TabIndex = 7;
             // 
             // CambiarContraseña1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(321, 175);
-            this.Controls.Add(this.txtPregunta);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(321, 134);
             this.Controls.Add(this.txtContraRepet);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtContraAnt);
             this.Controls.Add(this.txtContra);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtRespuesta);
-            this.Controls.Add(this.label2);
             this.Name = "CambiarContraseña1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CambiarContraseña1";
@@ -136,14 +117,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtRespuesta;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtContra;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtContraRepet;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPregunta;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtContraAnt;
     }
 }

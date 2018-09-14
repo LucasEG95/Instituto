@@ -47,7 +47,6 @@ namespace Sistema.FE
 
             Button BTPersona = new Button();
             BTPersona.Text = "Persona";
-
             BTPersona.Click += new EventHandler(BTPersona_Click);
 
             Button BTEvaluaciones = new Button();
@@ -67,8 +66,7 @@ namespace Sistema.FE
 
             Button BTCambiarContr = new Button();
             BTCambiarContr.Text = "Cambiar Contraseña";
-
-//            BTCambiarContr.Click += new EventHandler(BTCambiarContr_Click);
+            BTCambiarContr.Click += new EventHandler(BTCambiarContr_Click);
 
             Button BTCorrelativas = new Button();
             BTCorrelativas.Text = "Correlativas";
@@ -127,8 +125,7 @@ namespace Sistema.FE
                 BTConsulta.Top = BTTop;
                 BTConsulta.Left = BTInformes.Right + DistanciaBT;
                 this.Controls.Add(BTCambiarContr);
-            //    BTCambiarContr.Top = this.Bottom - 125;
-             //   BTCambiarContr.Left = this.Right - 282;
+                BTCambiarContr.Dock = DockStyle.Bottom;
                 this.Controls.Add(BTCorrelativas);
                 BTCorrelativas.Top = BTCarrera.Bottom + 30;
                 BTCorrelativas.Left = DistanciaBT;
@@ -249,10 +246,11 @@ namespace Sistema.FE
         //}
 
 
-        //        private void BTCambiarContr_Click(object sender, EventArgs e) {
-        //CambiarContraseña1 CContraseña = new CambiarContraseña1();
-        //CContraseña.ShowDialog();
-        //}
+        private void BTCambiarContr_Click(object sender, EventArgs e)
+        {
+            CambiarContraseña1 CContraseña = new CambiarContraseña1();
+            CContraseña.ShowDialog();
+        }
 
 
         // private void BTInformes_Click(object sender, EventArgs e) {
