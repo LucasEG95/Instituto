@@ -35,13 +35,10 @@ namespace Sistema.FE
             BTCarrera.Text = "Carreras";
             //          BTCarrera.Click += new EventHandler(BTCarrera_Click);
 
-<<<<<<< HEAD
-            //            BTCarrera.Click += new EventHandler(BTCarrera_Click);
-=======
             Button BTAlumnoMateria = new Button();
             BTAlumnoMateria.Text = "Inscripcion a Materias";
             BTAlumnoMateria.Click += new EventHandler(BTAlumnoMateria_Click);
->>>>>>> 870e074d5b56c8892d5c4793fe4ce725772a9161
+
 
             Button BTMateria = new Button();
             BTMateria.Text = "Materias";
@@ -224,21 +221,20 @@ namespace Sistema.FE
 
         //        private void BTMateria_Click(object sender, EventArgs e) {
         
-<<<<<<< HEAD
+
         // CargaMateria CM = new CargaMateria();
         // CM.ShowDialog();
         //}
 
-=======
+
          //CargaMateria CM = new CargaMateria();
          //CM.ShowDialog();
-        }
         private void BTAlumnoMateria_Click(object sender, EventArgs e)
         {
             IngresoAlumnoMateria IAM = new IngresoAlumnoMateria();
             IAM.ShowDialog();
         }
->>>>>>> 870e074d5b56c8892d5c4793fe4ce725772a9161
+
 
         private void BTPersona_Click(object sender, EventArgs e)
         {
