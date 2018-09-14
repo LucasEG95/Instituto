@@ -23,17 +23,23 @@ namespace Sistema.FE
         public int BTTop = 50;
         public int BTWidth = 200;
         public int BTHeight = 80;
-        public void ShowDialog(int num) {
+
+
+
+
+
+        public void ShowDialog(int num)
+        {
             
             Button BTCarrera = new Button();
             BTCarrera.Text = "Carreras";
 
-//            BTCarrera.Click += new EventHandler(BTCarrera_Click);
+            //            BTCarrera.Click += new EventHandler(BTCarrera_Click);
 
             Button BTMateria = new Button();
             BTMateria.Text = "Materias";
 
-            BTMateria.Click += new EventHandler(BTMateria_Click);
+            //BTMateria.Click += new EventHandler(BTMateria_Click);
 
             Button BTPersona = new Button();
             BTPersona.Text = "Persona";
@@ -63,7 +69,7 @@ namespace Sistema.FE
             Button BTCorrelativas = new Button();
             BTCorrelativas.Text = "Correlativas";
 
-  //          BTCorrelativas.Click += new EventHandler(BTCorrelativas_Click);
+            BTCorrelativas.Click += new EventHandler(BTCorrelativas_Click);
 
             BTCarrera.Width = BTWidth;
             BTCarrera.Height = BTHeight;
@@ -202,11 +208,11 @@ namespace Sistema.FE
         //CC.ShowDialog();
         // }
 
-                private void BTMateria_Click(object sender, EventArgs e) {
+        //        private void BTMateria_Click(object sender, EventArgs e) {
         
-         CargaMateria CM = new CargaMateria();
-         CM.ShowDialog();
-        }
+        // CargaMateria CM = new CargaMateria();
+        // CM.ShowDialog();
+        //}
 
 
         private void BTPersona_Click(object sender, EventArgs e)
@@ -237,11 +243,11 @@ namespace Sistema.FE
 
         //    }
 
-        // private void BTCorrelativas_Click(object sender, EventArgs e)
-        //{
-        //Correlativas Correlativas = new Correlativas();
-        //Correlativas.ShowDialog();
-        //}
+        private void BTCorrelativas_Click(object sender, EventArgs e)
+        {
+            Correlativas Correlativas = new Correlativas();
+            Correlativas.ShowDialog();
+        }
 
         // private void MenuPrincipal_Load(object sender, EventArgs e)
         //{
