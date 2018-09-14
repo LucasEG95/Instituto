@@ -42,6 +42,11 @@ namespace Sistema.FE
             dtLupa = ConexionBD.consultar(LupaDinamica()).Tables[0];
             this.GrillaLupa.DataSource = dtLupa;
         }
+        /// <summary>
+        /// este constructor permite pasar una consulta con where y demas 
+        /// para armar una tabla mas especifica.
+        /// </summary>
+        /// <param name="consulta"></param>
         public FormLupa(string consulta)
         {
 
@@ -267,6 +272,12 @@ namespace Sistema.FE
         }
         #endregion
         #region publicas
+
+        /// <summary>
+        /// este metodo permite esconder algunos campos de la grilla de la lupa aun que si se podran obtener desde
+        /// la variable Valores[indice].
+        /// </summary>
+        /// <param name="camposInvisibles"></param>
         public void ConfigurarGrilla(int[] camposInvisibles)
         {
             for(int i = 0; i < camposInvisibles.Length; i++)

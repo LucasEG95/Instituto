@@ -179,16 +179,14 @@ namespace Sistema
         /// para iniciar una transaccion.
         /// </summary>
         /// <returns></returns>
-        public static bool Begin()
+        public static void Begin()
         {
             SqlCommand cmd = new SqlCommand("BEGIN TRAN", conection);
             try
             {
-                if(cmd.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                throw new Exception("error al ejecutar comando");
+                cmd.ExecuteNonQuery();
+               
+               
             }catch(Exception e)
             {
                 throw e;
@@ -199,16 +197,13 @@ namespace Sistema
         /// para aceptar la transaccion en caso que sea correcta.
         /// </summary>
         /// <returns></returns>
-        public static bool Commit()
+        public static void Commit()
         {
             SqlCommand cmd = new SqlCommand("COMMIT", conection);
             try
             {
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                throw new Exception("error al ejecutar comando");
+                cmd.ExecuteNonQuery();
+              
             }
             catch (Exception e)
             {
@@ -219,16 +214,12 @@ namespace Sistema
         /// para rechazar la transaccion
         /// </summary>
         /// <returns></returns>
-        public static bool Rollback()
+        public static void Rollback()
         {
             SqlCommand cmd = new SqlCommand("ROLLBACK", conection);
             try
             {
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                throw new Exception("error al ejecutar comando");
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {

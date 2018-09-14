@@ -18,11 +18,12 @@ namespace Sistema.BE
         {
             try
             {
-               return DAL.DalAlumnoMaterias.ConsultarCarreras().Tables[0];
+                
+                return DAL.DalAlumnoMaterias.ConsultarCarreras().Tables[0];
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                error = "no se pudo obtener carreras.";
+                error = e.Message;
                 return null;
             }
         }
@@ -38,6 +39,7 @@ namespace Sistema.BE
                 error = e.Message;
                 return -1;
             }
+            
         }
 
 
@@ -45,7 +47,42 @@ namespace Sistema.BE
         {
             try
             {
-                return DAL.DalAlumnoMaterias.ObtenerMaterias(Año,Carrera).Tables[0];
+                
+               return DAL.DalAlumnoMaterias.ObtenerMaterias(Año, Carrera).Tables[0];
+
+                
+            }catch(Exception e)
+            {
+                error = e.Message;
+                return null;
+            }
+        }
+
+        public static bool GuardarAlumnoMaterias(DataTable Materias,int AlumnoID)
+        {
+            try
+            {
+                if (AlumnoID == 0)throw new Exception("ingrese Alumno");
+                if (Materias.Rows.Count == 0) throw new Exception("Ingrese Materias");
+
+                if (!DAL.DalAlumnoMaterias.guardarMateriasAlumnos(Materias, AlumnoID))
+                {
+                    return false;
+                }
+                return true;
+
+            }catch(Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+        }
+
+        public static DataTable obtenerAlumnoMaterias(int AlumnoID)
+        {
+            try
+            {
+                return DAL.DalAlumnoMaterias.obtenerAlumnosMaterias(AlumnoID);
             }catch(Exception e)
             {
                 error = e.Message;
