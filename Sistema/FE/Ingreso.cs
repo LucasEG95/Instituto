@@ -26,7 +26,7 @@ namespace Sistema.FE
                 {
                 MessageBox.Show("Usuario o Contraseña incorrecta");
             } else {
-            
+                Program.usuario =Convert.ToInt32(txtUsuario.Text.Trim());
             MenuPrincipal MP = new MenuPrincipal();
                 MP.ShowDialog(Prioridad);
                 this.Visible = false;

@@ -35,10 +35,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(957, 447);
+            this.ClientSize = new System.Drawing.Size(957, 371);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuPrincipal";
+            this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 40);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

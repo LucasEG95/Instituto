@@ -23,7 +23,13 @@ namespace Sistema.FE
         public int BTTop = 50;
         public int BTWidth = 200;
         public int BTHeight = 80;
-        public void ShowDialog(int num) {
+
+
+
+
+
+        public void ShowDialog(int num)
+        {
             
             Button BTCarrera = new Button();
             BTCarrera.Text = "Carreras";
@@ -33,14 +39,14 @@ namespace Sistema.FE
             BTAlumnoMateria.Text = "Inscripcion a Materias";
             BTAlumnoMateria.Click += new EventHandler(BTAlumnoMateria_Click);
 
+
             Button BTMateria = new Button();
             BTMateria.Text = "Materias";
 
-            BTMateria.Click += new EventHandler(BTMateria_Click);
+            //BTMateria.Click += new EventHandler(BTMateria_Click);
 
             Button BTPersona = new Button();
             BTPersona.Text = "Persona";
-
             BTPersona.Click += new EventHandler(BTPersona_Click);
 
             Button BTEvaluaciones = new Button();
@@ -60,13 +66,12 @@ namespace Sistema.FE
 
             Button BTCambiarContr = new Button();
             BTCambiarContr.Text = "Cambiar Contraseña";
-
-//            BTCambiarContr.Click += new EventHandler(BTCambiarContr_Click);
+            BTCambiarContr.Click += new EventHandler(BTCambiarContr_Click);
 
             Button BTCorrelativas = new Button();
             BTCorrelativas.Text = "Correlativas";
 
-  //          BTCorrelativas.Click += new EventHandler(BTCorrelativas_Click);
+            BTCorrelativas.Click += new EventHandler(BTCorrelativas_Click);
 
             BTCarrera.Width = BTWidth;
             BTCarrera.Height = BTHeight;
@@ -120,8 +125,7 @@ namespace Sistema.FE
                 BTConsulta.Top = BTTop;
                 BTConsulta.Left = BTInformes.Right + DistanciaBT;
                 this.Controls.Add(BTCambiarContr);
-            //    BTCambiarContr.Top = this.Bottom - 125;
-             //   BTCambiarContr.Left = this.Right - 282;
+                BTCambiarContr.Dock = DockStyle.Bottom;
                 this.Controls.Add(BTCorrelativas);
                 BTCorrelativas.Top = BTCarrera.Bottom + 30;
                 BTCorrelativas.Left = DistanciaBT;
@@ -212,16 +216,22 @@ namespace Sistema.FE
         //CC.ShowDialog();
         // }
 
-                private void BTMateria_Click(object sender, EventArgs e) {
+        //        private void BTMateria_Click(object sender, EventArgs e) {
         
+
+        // CargaMateria CM = new CargaMateria();
+        // CM.ShowDialog();
+        //}
+
+
          //CargaMateria CM = new CargaMateria();
          //CM.ShowDialog();
-        }
         private void BTAlumnoMateria_Click(object sender, EventArgs e)
         {
             IngresoAlumnoMateria IAM = new IngresoAlumnoMateria();
             IAM.ShowDialog();
         }
+
 
         private void BTPersona_Click(object sender, EventArgs e)
         {
@@ -236,10 +246,11 @@ namespace Sistema.FE
         //}
 
 
-        //        private void BTCambiarContr_Click(object sender, EventArgs e) {
-        //CambiarContraseña1 CContraseña = new CambiarContraseña1();
-        //CContraseña.ShowDialog();
-        //}
+        private void BTCambiarContr_Click(object sender, EventArgs e)
+        {
+            CambiarContraseña1 CContraseña = new CambiarContraseña1();
+            CContraseña.ShowDialog();
+        }
 
 
         // private void BTInformes_Click(object sender, EventArgs e) {
@@ -251,11 +262,11 @@ namespace Sistema.FE
 
         //    }
 
-        // private void BTCorrelativas_Click(object sender, EventArgs e)
-        //{
-        //Correlativas Correlativas = new Correlativas();
-        //Correlativas.ShowDialog();
-        //}
+        private void BTCorrelativas_Click(object sender, EventArgs e)
+        {
+            Correlativas Correlativas = new Correlativas();
+            Correlativas.ShowDialog();
+        }
 
         // private void MenuPrincipal_Load(object sender, EventArgs e)
         //{

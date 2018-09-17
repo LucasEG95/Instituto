@@ -9,6 +9,8 @@ namespace Sistema
 {
     static class Program
     {
+
+        public static int usuario = 0;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
