@@ -30,7 +30,6 @@
         {
             this.txtCarrera = new System.Windows.Forms.TextBox();
             this.btnLupaCar = new System.Windows.Forms.Button();
-            this.btnLupaMat = new System.Windows.Forms.Button();
             this.btnLupaProf = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtProfesor = new System.Windows.Forms.TextBox();
@@ -46,12 +45,14 @@
             this.txtMateria = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btBuscarMateria = new System.Windows.Forms.Button();
+            this.bModificar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCarrera
             // 
             this.txtCarrera.Location = new System.Drawing.Point(101, 46);
             this.txtCarrera.Name = "txtCarrera";
+            this.txtCarrera.ReadOnly = true;
             this.txtCarrera.Size = new System.Drawing.Size(156, 20);
             this.txtCarrera.TabIndex = 48;
             // 
@@ -63,15 +64,7 @@
             this.btnLupaCar.TabIndex = 47;
             this.btnLupaCar.Text = "Cargar";
             this.btnLupaCar.UseVisualStyleBackColor = true;
-            // 
-            // btnLupaMat
-            // 
-            this.btnLupaMat.Location = new System.Drawing.Point(263, 71);
-            this.btnLupaMat.Name = "btnLupaMat";
-            this.btnLupaMat.Size = new System.Drawing.Size(28, 23);
-            this.btnLupaMat.TabIndex = 46;
-            this.btnLupaMat.Text = "Cargar";
-            this.btnLupaMat.UseVisualStyleBackColor = true;
+            this.btnLupaCar.Click += new System.EventHandler(this.btnLupaCar_Click);
             // 
             // btnLupaProf
             // 
@@ -81,6 +74,7 @@
             this.btnLupaProf.TabIndex = 45;
             this.btnLupaProf.Text = "Cargar";
             this.btnLupaProf.UseVisualStyleBackColor = true;
+            this.btnLupaProf.Click += new System.EventHandler(this.btnLupaProf_Click);
             // 
             // label6
             // 
@@ -95,6 +89,7 @@
             // 
             this.txtProfesor.Location = new System.Drawing.Point(101, 99);
             this.txtProfesor.Name = "txtProfesor";
+            this.txtProfesor.ReadOnly = true;
             this.txtProfesor.Size = new System.Drawing.Size(156, 20);
             this.txtProfesor.TabIndex = 43;
             // 
@@ -118,7 +113,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(166, 209);
+            this.btnEliminar.Location = new System.Drawing.Point(204, 209);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 40;
@@ -128,7 +123,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(41, 209);
+            this.btnCargar.Location = new System.Drawing.Point(15, 209);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
             this.btnCargar.TabIndex = 39;
@@ -201,16 +196,27 @@
             this.btBuscarMateria.TabIndex = 49;
             this.btBuscarMateria.Text = "Buscar Materia";
             this.btBuscarMateria.UseVisualStyleBackColor = true;
+            this.btBuscarMateria.Click += new System.EventHandler(this.btBuscarMateria_Click);
+            // 
+            // bModificar
+            // 
+            this.bModificar.Location = new System.Drawing.Point(112, 209);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(75, 23);
+            this.bModificar.TabIndex = 50;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
             // CargaMateria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 244);
+            this.Controls.Add(this.bModificar);
             this.Controls.Add(this.btBuscarMateria);
             this.Controls.Add(this.txtCarrera);
             this.Controls.Add(this.btnLupaCar);
-            this.Controls.Add(this.btnLupaMat);
             this.Controls.Add(this.btnLupaProf);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtProfesor);
@@ -225,7 +231,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMateria);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CargaMateria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CargaMateria";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -236,7 +245,6 @@
 
         private System.Windows.Forms.TextBox txtCarrera;
         private System.Windows.Forms.Button btnLupaCar;
-        private System.Windows.Forms.Button btnLupaMat;
         private System.Windows.Forms.Button btnLupaProf;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtProfesor;
@@ -252,5 +260,6 @@
         private System.Windows.Forms.TextBox txtMateria;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btBuscarMateria;
+        private System.Windows.Forms.Button bModificar;
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.bAceptarCambiar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtContra = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,15 +37,15 @@
             this.txtContraAnt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // bAceptarCambiar
             // 
-            this.button1.Location = new System.Drawing.Point(123, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bAceptarCambiar.Location = new System.Drawing.Point(123, 104);
+            this.bAceptarCambiar.Name = "bAceptarCambiar";
+            this.bAceptarCambiar.Size = new System.Drawing.Size(75, 23);
+            this.bAceptarCambiar.TabIndex = 5;
+            this.bAceptarCambiar.Text = "Aceptar";
+            this.bAceptarCambiar.UseVisualStyleBackColor = true;
+            this.bAceptarCambiar.Click += new System.EventHandler(this.bAceptarCambiar_Click);
             // 
             // label3
             // 
@@ -106,7 +106,9 @@
             this.Controls.Add(this.txtContra);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bAceptarCambiar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CambiarContraseña1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CambiarContraseña1";
@@ -117,7 +119,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bAceptarCambiar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtContra;
         private System.Windows.Forms.Label label4;

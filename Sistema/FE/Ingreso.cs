@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Sistema.BE;
+using System.Data;
 
 
 namespace Sistema.FE
@@ -12,23 +13,28 @@ namespace Sistema.FE
             InitializeComponent();
         }
 
-        public int Prioridad = 0;
+        private int Prioridad = 0;
+        
         private void btIngresar_Click(object sender, EventArgs e)
         {
             BeIngreso beIng = new BeIngreso();
+           
             if (beIng.PrimeraLogin(txtUsuario.Text, txtContraseña.Text)) {
 
                 PrimeraContraseña PC = new PrimeraContraseña();
                 txtContraseña.Text = PC.ResultContra(txtUsuario.Text);
             }
+
+            
             Prioridad = beIng.Login(txtUsuario.Text, txtContraseña.Text);
+         
             if (Prioridad == 0)
                 {
                 MessageBox.Show("Usuario o Contraseña incorrecta");
             } else {
                 Program.usuario =Convert.ToInt32(txtUsuario.Text.Trim());
             MenuPrincipal MP = new MenuPrincipal();
-                MP.ShowDialog(Prioridad);
+                MP.ShowDialog(Prioridad,txtContraseña.Text , txtUsuario.Text);
                 this.Visible = false;
             }
         }
