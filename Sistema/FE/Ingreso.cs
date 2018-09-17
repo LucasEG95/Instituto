@@ -16,6 +16,11 @@ namespace Sistema.FE
         private void btIngresar_Click(object sender, EventArgs e)
         {
             BeIngreso beIng = new BeIngreso();
+            if (beIng.PrimeraLogin(txtUsuario.Text, txtContraseña.Text)) {
+
+                PrimeraContraseña PC = new PrimeraContraseña();
+                txtContraseña.Text = PC.ResultContra(txtUsuario.Text);
+            }
             Prioridad = beIng.Login(txtUsuario.Text, txtContraseña.Text);
             if (Prioridad == 0)
                 {
