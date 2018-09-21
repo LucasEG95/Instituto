@@ -47,6 +47,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.rbDirect = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbAlumn = new System.Windows.Forms.RadioButton();
+            this.rbProf = new System.Windows.Forms.RadioButton();
+            this.rbSecret = new System.Windows.Forms.RadioButton();
+            this.chkUsuario = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -132,7 +144,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(175, 228);
+            this.btnEliminar.Location = new System.Drawing.Point(127, 228);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 9;
@@ -208,11 +220,133 @@
             this.label8.TabIndex = 30;
             this.label8.Text = "Localidad";
             // 
+            // txtContraseña
+            // 
+            this.txtContraseña.Location = new System.Drawing.Point(389, 61);
+            this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.ReadOnly = true;
+            this.txtContraseña.Size = new System.Drawing.Size(151, 20);
+            this.txtContraseña.TabIndex = 32;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(327, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Contraseña";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(389, 35);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.ReadOnly = true;
+            this.txtUsuario.Size = new System.Drawing.Size(151, 20);
+            this.txtUsuario.TabIndex = 31;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(327, 38);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Usuario";
+            // 
+            // rbDirect
+            // 
+            this.rbDirect.AutoSize = true;
+            this.rbDirect.Location = new System.Drawing.Point(59, 19);
+            this.rbDirect.Name = "rbDirect";
+            this.rbDirect.Size = new System.Drawing.Size(73, 17);
+            this.rbDirect.TabIndex = 43;
+            this.rbDirect.TabStop = true;
+            this.rbDirect.Text = "Director/a";
+            this.rbDirect.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbAlumn);
+            this.groupBox1.Controls.Add(this.rbProf);
+            this.groupBox1.Controls.Add(this.rbSecret);
+            this.groupBox1.Controls.Add(this.rbDirect);
+            this.groupBox1.Location = new System.Drawing.Point(330, 87);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(210, 119);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Permisos";
+            // 
+            // rbAlumn
+            // 
+            this.rbAlumn.AutoSize = true;
+            this.rbAlumn.Location = new System.Drawing.Point(59, 87);
+            this.rbAlumn.Name = "rbAlumn";
+            this.rbAlumn.Size = new System.Drawing.Size(71, 17);
+            this.rbAlumn.TabIndex = 46;
+            this.rbAlumn.TabStop = true;
+            this.rbAlumn.Text = "Alumno/a";
+            this.rbAlumn.UseVisualStyleBackColor = true;
+            // 
+            // rbProf
+            // 
+            this.rbProf.AutoSize = true;
+            this.rbProf.Location = new System.Drawing.Point(59, 65);
+            this.rbProf.Name = "rbProf";
+            this.rbProf.Size = new System.Drawing.Size(75, 17);
+            this.rbProf.TabIndex = 45;
+            this.rbProf.TabStop = true;
+            this.rbProf.Text = "Profesor/a";
+            this.rbProf.UseVisualStyleBackColor = true;
+            // 
+            // rbSecret
+            // 
+            this.rbSecret.AutoSize = true;
+            this.rbSecret.Location = new System.Drawing.Point(59, 42);
+            this.rbSecret.Name = "rbSecret";
+            this.rbSecret.Size = new System.Drawing.Size(84, 17);
+            this.rbSecret.TabIndex = 44;
+            this.rbSecret.TabStop = true;
+            this.rbSecret.Text = "Secretario/a";
+            this.rbSecret.UseVisualStyleBackColor = true;
+            // 
+            // chkUsuario
+            // 
+            this.chkUsuario.AutoSize = true;
+            this.chkUsuario.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chkUsuario.Location = new System.Drawing.Point(265, 72);
+            this.chkUsuario.Name = "chkUsuario";
+            this.chkUsuario.Size = new System.Drawing.Size(47, 31);
+            this.chkUsuario.TabIndex = 45;
+            this.chkUsuario.Text = "Usuario";
+            this.chkUsuario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.chkUsuario.UseVisualStyleBackColor = true;
+            this.chkUsuario.CheckedChanged += new System.EventHandler(this.chkUsuario_CheckedChanged);
+            this.chkUsuario.Click += new System.EventHandler(this.chkUsuario_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(208, 228);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 46;
+            this.button1.Text = "Nuevo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CargaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 266);
+            this.ClientSize = new System.Drawing.Size(312, 266);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.chkUsuario);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtContraseña);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.txtLocalidad);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCelular);
@@ -236,6 +370,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cargar Personas";
             this.Load += new System.EventHandler(this.CargaPersona_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +398,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtLocalidad;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtContraseña;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RadioButton rbDirect;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbAlumn;
+        private System.Windows.Forms.RadioButton rbProf;
+        private System.Windows.Forms.RadioButton rbSecret;
+        private System.Windows.Forms.CheckBox chkUsuario;
+        private System.Windows.Forms.Button button1;
     }
 }

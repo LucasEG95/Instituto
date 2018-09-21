@@ -14,7 +14,7 @@ namespace Sistema.BE
     {
         DalPersonas DalPer = new DalPersonas();
 
-        public void CargarPersonas(string bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad)
+        public void CargarPersonas(string bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad, bool usu, string bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta)
         {
             #region Validacion
 
@@ -41,13 +41,17 @@ namespace Sistema.BE
             {
                 bCelular = "0";
             }
+            if(bUsuario.Length <= 0)
+            {
+                bUsuario = "0";
+            }
 
             #endregion
 
 
             try
             {
-                DalPer.CargarPersona(Convert.ToInt32(bDNI), bNombre, bApellido, Convert.ToInt32(bTelefono), Convert.ToInt32(bCelular), bEmail, bDireccion, bLocalidad);
+                DalPer.CargarPersona(Convert.ToInt32(bDNI), bNombre, bApellido, Convert.ToInt32(bTelefono), Convert.ToInt32(bCelular), bEmail, bDireccion, bLocalidad, usu, Convert.ToInt32(bUsuario), bContraseña, Convert.ToInt32(bPermiso), bRespuesta, bPregunta);
                 
             }
             catch (Exception ex)
@@ -56,22 +60,47 @@ namespace Sistema.BE
             }
         }
 
-        public void EliminarPersonas(string bDNI)
+        public void EliminarPersonas(string bDNI, bool usu)
         {
 
             try
             {
-                DalPer.EliminarPersonas(Convert.ToInt32(bDNI));
-                MessageBox.Show("Persona Eliminada");
+                DalPer.EliminarPersonas(Convert.ToInt32(bDNI), usu);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            
+
+        }
+
+        public DataTable ObtenerPersona(int DNI)
+        {
+            try
+            {
+                return DalPer.ObtenerPersonaDAL(DNI);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error en BE ObtenerPersona");
+                throw ex;
+            }
+
+        }
 
 
-
-
+        public DataTable ObtenerUsuario(int DNI)
+        {
+            try
+            {
+                return DalPer.ObtenerUsuarioDAL(DNI);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en BE ObtenerUsuario");
+                throw ex;
+            }
 
         }
     }
