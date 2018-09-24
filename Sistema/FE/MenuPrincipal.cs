@@ -35,12 +35,12 @@ namespace Sistema.FE
             ContraseñaActual = contraseña;
             Button BTCarrera = new Button();
             BTCarrera.Text = "Carreras";
-            //          BTCarrera.Click += new EventHandler(BTCarrera_Click);
+           // BTCarrera.Click += new EventHandler(BTCarrera_Click);
 
 
          Button BTAlumnoMateria = new Button();
           BTAlumnoMateria.Text = "Inscripcion a Materias";
-   //         BTAlumnoMateria.Click += new EventHandler(BTAlumnoMateria_Click);
+            BTAlumnoMateria.Click += new EventHandler(BTAlumnoMateria_Click);
 
 
             Button BTMateria = new Button();
@@ -50,7 +50,7 @@ namespace Sistema.FE
 
            Button BTPersona = new Button();
            BTPersona.Text = "Persona";
-   //         BTPersona.Click += new EventHandler(BTPersona_Click);
+            BTPersona.Click += new EventHandler(BTPersona_Click);
 
             Button BTEvaluaciones = new Button();
             BTEvaluaciones.Text = "Evaluaciones";
@@ -74,7 +74,7 @@ namespace Sistema.FE
             Button BTCorrelativas = new Button();
             BTCorrelativas.Text = "Correlativas";
 
-      //      BTCorrelativas.Click += new EventHandler(BTCorrelativas_Click);
+            BTCorrelativas.Click += new EventHandler(BTCorrelativas_Click);
 
             BTCarrera.Width = BTWidth;
             BTCarrera.Height = BTHeight;
@@ -233,33 +233,27 @@ namespace Sistema.FE
         }
 
 
-         //CargaMateria CM = new CargaMateria();
-         //CM.ShowDialog();
-         //   private void BTAlumnoMateria_Click(object sender, EventArgs e)
-         //   {
-         //     IngresoAlumnoMateria IAM = new IngresoAlumnoMateria();
-         //   IAM.ShowDialog();
-         //}
+        private void BTAlumnoMateria_Click(object sender, EventArgs e)
+        {
+            IngresoAlumnoMateria IAM = new IngresoAlumnoMateria();
+            IAM.ShowDialog();
+        }
 
 
-        //     private void BTPersona_Click(object sender, EventArgs e)
-        //    {
-        //       CargaPersona CP = new CargaPersona();
-        //      CP.ShowDialog();
-        // }
+        private void BTPersona_Click(object sender, EventArgs e)
+        {
+            CargaPersona CP = new CargaPersona();
+            CP.ShowDialog();
+        }
 
 
-        //private void BTEvaluaciones_Click(object sender, EventArgs e) {
-        //EvaluacionesNotas EN = new EvaluacionesNotas();
-        //EN.ShowDialog();
+        //private void BTEvaluaciones_Click(object sender, EventArgs e)
+        //{
+        //    EvaluacionesNotas EN = new EvaluacionesNotas();
+        //    EN.ShowDialog();
         //}
 
 
-        //    private void BTCambiarContr_Click(object sender, EventArgs e)
-        //      {
-        ///         CambiarContraseña1 CContraseña = new CambiarContraseña1();
-        //         CContraseña.ShowDialog();
-        //     }
 
 
         // private void BTInformes_Click(object sender, EventArgs e) {
@@ -271,16 +265,16 @@ namespace Sistema.FE
 
         //    }
 
-        //   private void BTCorrelativas_Click(object sender, EventArgs e)
-        //     {
-        //         Correlativas Correlativas = new Correlativas();
-        //Correlativas.ShowDialog();
-        //       }
+        private void BTCorrelativas_Click(object sender, EventArgs e)
+        {
+            Correlativas Correlativas = new Correlativas();
+            Correlativas.ShowDialog();
+        }
 
-        // private void MenuPrincipal_Load(object sender, EventArgs e)
+        //private void MenuPrincipal_Load(object sender, EventArgs e)
         //{
 
-        //    }
+        //}
     }
 }
 

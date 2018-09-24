@@ -196,7 +196,7 @@
             this.Controls.Add(this.dgvMateriasAnotadas);
             this.Controls.Add(this.dgvMateriasExist);
             this.Name = "IngresoAlumnoMateria";
-            this.Text = "lalala";
+            this.Text = "Inscripcion a materias";
             this.Load += new System.EventHandler(this.IngresoAlumnoMateria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasExist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasAnotadas)).EndInit();

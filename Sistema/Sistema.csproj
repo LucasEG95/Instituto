@@ -47,12 +47,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BE\BeAlumnoMaterias.cs" />
+    <Compile Include="BE\BeCambioContraseña.cs" />
+    <Compile Include="BE\BeCorrelativas.cs" />
+    <Compile Include="BE\BeIngreso.cs" />
+    <Compile Include="BE\BeMateria.cs" />
+    <Compile Include="BE\BePersonas.cs" />
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="DAL\DalAlumnoMaterias.cs" />
+    <Compile Include="DAL\DalCambioContraseña.cs" />
+    <Compile Include="DAL\DalCorrelativas.cs" />
+    <Compile Include="DAL\DalIngreso.cs" />
+    <Compile Include="DAL\DalMateria.cs" />
+    <Compile Include="DAL\DalPersonas.cs" />
+    <Compile Include="DS\DSIngresar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSIngresar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\DSIngresoMaterias.cs">
+      <DependentUpon>DSIngresoMaterias.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\DSIngresoMaterias.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSIngresoMaterias.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\DsMateria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsMateria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FE\CambiarContraseña1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FE\CambiarContraseña1.Designer.cs">
       <DependentUpon>CambiarContraseña1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FE\CargaMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\CargaMateria.Designer.cs">
+      <DependentUpon>CargaMateria.cs</DependentUpon>
     </Compile>
     <Compile Include="FE\CargaPersona.cs">
       <SubType>Form</SubType>
@@ -60,29 +96,17 @@
     <Compile Include="FE\CargaPersona.Designer.cs">
       <DependentUpon>CargaPersona.cs</DependentUpon>
     </Compile>
-    <Compile Include="FE\CargarCarrera.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FE\CargarCarrera.Designer.cs">
-      <DependentUpon>CargarCarrera.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FE\CargarMateria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FE\CargarMateria.Designer.cs">
-      <DependentUpon>CargarMateria.cs</DependentUpon>
-    </Compile>
     <Compile Include="FE\Correlativas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FE\Correlativas.Designer.cs">
       <DependentUpon>Correlativas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FE\EvaluacionesNotas.cs">
+    <Compile Include="FE\FormLupa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FE\EvaluacionesNotas.Designer.cs">
-      <DependentUpon>EvaluacionesNotas.cs</DependentUpon>
+    <Compile Include="FE\FormLupa.Designer.cs">
+      <DependentUpon>FormLupa.cs</DependentUpon>
     </Compile>
     <Compile Include="FE\Ingreso.cs">
       <SubType>Form</SubType>
@@ -90,11 +114,11 @@
     <Compile Include="FE\Ingreso.Designer.cs">
       <DependentUpon>Ingreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="FE\MateriasEvaluacion.cs">
+    <Compile Include="FE\IngresoAlumnoMateria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FE\MateriasEvaluacion.Designer.cs">
-      <DependentUpon>MateriasEvaluacion.cs</DependentUpon>
+    <Compile Include="FE\IngresoAlumnoMateria.Designer.cs">
+      <DependentUpon>IngresoAlumnoMateria.cs</DependentUpon>
     </Compile>
     <Compile Include="FE\MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -102,34 +126,40 @@
     <Compile Include="FE\MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FE\PrimeraContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\PrimeraContraseña.Designer.cs">
+      <DependentUpon>PrimeraContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FE\CambiarContraseña1.resx">
       <DependentUpon>CambiarContraseña1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FE\CargaMateria.resx">
+      <DependentUpon>CargaMateria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FE\CargaPersona.resx">
       <DependentUpon>CargaPersona.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FE\CargarCarrera.resx">
-      <DependentUpon>CargarCarrera.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FE\CargarMateria.resx">
-      <DependentUpon>CargarMateria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\Correlativas.resx">
       <DependentUpon>Correlativas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FE\EvaluacionesNotas.resx">
-      <DependentUpon>EvaluacionesNotas.cs</DependentUpon>
+    <EmbeddedResource Include="FE\FormLupa.resx">
+      <DependentUpon>FormLupa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\Ingreso.resx">
       <DependentUpon>Ingreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FE\MateriasEvaluacion.resx">
-      <DependentUpon>MateriasEvaluacion.cs</DependentUpon>
+    <EmbeddedResource Include="FE\IngresoAlumnoMateria.resx">
+      <DependentUpon>IngresoAlumnoMateria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\PrimeraContraseña.resx">
+      <DependentUpon>PrimeraContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -140,6 +170,39 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DS\DSIngresar.xsc">
+      <DependentUpon>DSIngresar.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DSIngresar.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSIngresar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS\DSIngresar.xss">
+      <DependentUpon>DSIngresar.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DSIngresoMaterias.xsc">
+      <DependentUpon>DSIngresoMaterias.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DSIngresoMaterias.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSIngresoMaterias.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DS\DSIngresoMaterias.xss">
+      <DependentUpon>DSIngresoMaterias.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DsMateria.xsc">
+      <DependentUpon>DsMateria.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DsMateria.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsMateria.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS\DsMateria.xss">
+      <DependentUpon>DsMateria.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,10 +216,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BE\" />
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

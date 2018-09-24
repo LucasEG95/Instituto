@@ -82,7 +82,7 @@ namespace Sistema.FE
             BE.BeAlumnoMaterias.Carrera = cmbCarrera.Text;
             DataTable dt = BE.BeAlumnoMaterias.ObtenerMaterias();
             DSME.Clear();
-            
+            if (dt == null) return;
             foreach (DataRow d in dt.Rows)
             {
                 bool aprovacion = true;
