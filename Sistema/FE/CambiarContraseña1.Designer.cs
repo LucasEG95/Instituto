@@ -39,12 +39,15 @@
             // 
             // bAceptarCambiar
             // 
-            this.bAceptarCambiar.Location = new System.Drawing.Point(123, 104);
+            this.bAceptarCambiar.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.bAceptarCambiar.FlatAppearance.BorderSize = 0;
+            this.bAceptarCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAceptarCambiar.Location = new System.Drawing.Point(89, 101);
             this.bAceptarCambiar.Name = "bAceptarCambiar";
-            this.bAceptarCambiar.Size = new System.Drawing.Size(75, 23);
+            this.bAceptarCambiar.Size = new System.Drawing.Size(155, 26);
             this.bAceptarCambiar.TabIndex = 5;
             this.bAceptarCambiar.Text = "Aceptar";
-            this.bAceptarCambiar.UseVisualStyleBackColor = true;
+            this.bAceptarCambiar.UseVisualStyleBackColor = false;
             this.bAceptarCambiar.Click += new System.EventHandler(this.bAceptarCambiar_Click);
             // 
             // label3
