@@ -123,9 +123,12 @@ namespace Sistema.FE
                 AlumnoID = (int)Lupa.Valores[2];
                 DataTable dt = BE.BeAlumnoMaterias.obtenerAlumnoMaterias(AlumnoID);
                 if (dt == null) return;
-                if (dt.Rows.Count == 0) return;
                 cmbAño.Enabled = true;
                 cmbCarrera.Enabled = true;
+
+
+                if (dt.Rows.Count == 0) return;
+
                 foreach(DataRow d in dt.Rows)
                 {
                     DSMA.Materias.AddMateriasRow((string)d[0],(int)d[1]);
