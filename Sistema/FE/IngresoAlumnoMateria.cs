@@ -112,7 +112,7 @@ namespace Sistema.FE
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormLupa Lupa = new FormLupa("select Nombres,Apellidos, a.AlumnoID from Personas p inner join Alumnos a on p.PersonaID = a.PersonaID");
+            FormLupa Lupa = new FormLupa("select Nombres,Apellidos,AlumnoID from Alumnos inner join Personas on Personas.PersonaID = Alumnos.AlumnoID");
             Lupa.ConfigurarGrilla(new int[] {2});
             Lupa.ShowDialog();
 
@@ -124,6 +124,8 @@ namespace Sistema.FE
                 DataTable dt = BE.BeAlumnoMaterias.obtenerAlumnoMaterias(AlumnoID);
                 if (dt == null) return;
                 if (dt.Rows.Count == 0) return;
+                cmbAño.Enabled = true;
+                cmbCarrera.Enabled = true;
                 foreach(DataRow d in dt.Rows)
                 {
                     DSMA.Materias.AddMateriasRow((string)d[0],(int)d[1]);

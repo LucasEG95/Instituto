@@ -63,7 +63,6 @@ namespace Sistema.BE
             try
             {
                 if (AlumnoID == 0)throw new Exception("ingrese Alumno");
-                if (Materias.Rows.Count == 0) throw new Exception("Ingrese Materias");
 
                 if (!DAL.DalAlumnoMaterias.guardarMateriasAlumnos(Materias, AlumnoID))
                 {

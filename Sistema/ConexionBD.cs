@@ -313,7 +313,7 @@ namespace Sistema
 
                 }
                 SqlCommand cmd = new SqlCommand(comando,conection);
-                if (cmd.ExecuteNonQuery() > 0)
+                if (cmd.ExecuteNonQuery() >= 0)
                 {
                     return true;
                 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoAlumnoMateria));
             this.dgvMateriasExist = new System.Windows.Forms.DataGridView();
             this.dgvMateriasAnotadas = new System.Windows.Forms.DataGridView();
             this.bAgregarTodas = new System.Windows.Forms.Button();
@@ -61,7 +62,7 @@
             this.dgvMateriasExist.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvMateriasExist.RowHeadersVisible = false;
             this.dgvMateriasExist.Size = new System.Drawing.Size(256, 167);
-            this.dgvMateriasExist.TabIndex = 0;
+            this.dgvMateriasExist.TabIndex = 4;
             this.dgvMateriasExist.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMateriasExist_CellDoubleClick);
             // 
             // dgvMateriasAnotadas
@@ -82,7 +83,7 @@
             this.dgvMateriasAnotadas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvMateriasAnotadas.RowHeadersVisible = false;
             this.dgvMateriasAnotadas.Size = new System.Drawing.Size(256, 167);
-            this.dgvMateriasAnotadas.TabIndex = 0;
+            this.dgvMateriasAnotadas.TabIndex = 5;
             this.dgvMateriasAnotadas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMateriasAnotadas_CellDoubleClick);
             // 
             // bAgregarTodas
@@ -93,13 +94,14 @@
             this.bAgregarTodas.Location = new System.Drawing.Point(299, 235);
             this.bAgregarTodas.Name = "bAgregarTodas";
             this.bAgregarTodas.Size = new System.Drawing.Size(75, 23);
-            this.bAgregarTodas.TabIndex = 1;
+            this.bAgregarTodas.TabIndex = 6;
             this.bAgregarTodas.Text = "flechitas";
             this.bAgregarTodas.UseVisualStyleBackColor = false;
             this.bAgregarTodas.Click += new System.EventHandler(this.bAgregarTodas_Click);
             // 
             // cmbCarrera
             // 
+            this.cmbCarrera.Enabled = false;
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(73, 86);
             this.cmbCarrera.Name = "cmbCarrera";
@@ -114,7 +116,7 @@
             this.label1.Location = new System.Drawing.Point(12, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 17);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 8;
             this.label1.Text = "Carrera";
             // 
             // label2
@@ -124,16 +126,17 @@
             this.label2.Location = new System.Drawing.Point(432, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 17);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 10;
             this.label2.Text = "Año";
             // 
             // cmbAño
             // 
+            this.cmbAño.Enabled = false;
             this.cmbAño.FormattingEnabled = true;
             this.cmbAño.Location = new System.Drawing.Point(471, 86);
             this.cmbAño.Name = "cmbAño";
             this.cmbAño.Size = new System.Drawing.Size(159, 21);
-            this.cmbAño.TabIndex = 4;
+            this.cmbAño.TabIndex = 3;
             this.cmbAño.SelectedIndexChanged += new System.EventHandler(this.cmbAño_SelectedIndexChanged);
             // 
             // txtAlumno
@@ -141,7 +144,7 @@
             this.txtAlumno.Location = new System.Drawing.Point(73, 32);
             this.txtAlumno.Name = "txtAlumno";
             this.txtAlumno.Size = new System.Drawing.Size(183, 20);
-            this.txtAlumno.TabIndex = 6;
+            this.txtAlumno.TabIndex = 0;
             // 
             // label3
             // 
@@ -150,19 +153,20 @@
             this.label3.Location = new System.Drawing.Point(12, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 17);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Alumno";
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(262, 32);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(43, 20);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "b";
+            this.button2.Size = new System.Drawing.Size(24, 20);
+            this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -174,7 +178,7 @@
             this.button1.Location = new System.Drawing.Point(290, 363);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 32);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
