@@ -8,11 +8,15 @@ namespace Sistema.FE
 {
     public partial class CargaPersona : Form
     {
-        BePersonas BeP = new BePersonas();
+        BePersonas BePer = new BePersonas();
+        BEUsuarios BeUs = new BEUsuarios();
+        BEProfesores BeProf = new BEProfesores();
+        BEAlumnos BeAl = new BEAlumnos();
 
         DataTable dtLupa = new DataTable();
         DataTable dtLlenar, dtLlenar2 = new DataTable();
-        bool usu;
+
+        bool usu, Alumn, Prof;
         int Permiso;
 
         public CargaPersona()
@@ -25,6 +29,7 @@ namespace Sistema.FE
             Nuevo();
             
         }
+
         
         private void Nuevo()
         {
@@ -38,57 +43,57 @@ namespace Sistema.FE
             txtTelefono.Text = "";
             chkUsuario.Checked = false;
             usu = false;
+            Alumn = false;
+            Prof = false;
             this.Width = 328;
             txtUsuario.Text = "";
             txtContraseña.Text = "";
             rbDirect.Checked = false;
             rbSecret.Checked = false;
-            rbProf.Checked = false;
-            rbAlumn.Checked = false;
+            chkProf.Checked = false;
+            chkAlumn.Checked = false;
         }
-        //Pone los txt en blanco
+
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (usu)
-                {
-                    if (rbDirect.Checked) Permiso = 1;
-                    else if (rbSecret.Checked) Permiso = 2;
-                    else if (rbProf.Checked) Permiso = 3;
-                    else if (rbAlumn.Checked) Permiso = 4;
+                Permiso = 0;
+                if (chkAlumn.Checked) { Permiso = 4; Alumn = true; }
+                if (chkProf.Checked & (Permiso > 3 | Permiso == 0)) { Permiso = 3; Prof = true; }
+                if (rbSecret.Checked & (Permiso > 2 | Permiso == 0)) Permiso = 2;
+                else if (rbDirect.Checked & (Permiso > 1 | Permiso == 0)) Permiso = 1;
+
+                BePer.CargarTodo(txtDNI.Text, txtNombres.Text, txtApellidos.Text, txtTelefono.Text, txtCelular.Text, txtEmail.Text, txtDireccion.Text, txtLocalidad.Text, txtUsuario.Text, txtContraseña.Text, Permiso, "", "", Alumn, Prof, usu);
                     
-                    BeP.CargarPersonas(txtDNI.Text, txtNombres.Text, txtApellidos.Text, txtTelefono.Text, txtCelular.Text, txtEmail.Text, txtDireccion.Text, txtLocalidad.Text, usu,  txtUsuario.Text, txtContraseña.Text, Permiso, "", "");
-                    Nuevo();
-                }
-                else
-                {
-                    BeP.CargarPersonas(txtDNI.Text, txtNombres.Text, txtApellidos.Text, txtTelefono.Text, txtCelular.Text, txtEmail.Text, txtDireccion.Text, txtLocalidad.Text, usu,  txtUsuario.Text, txtContraseña.Text, Permiso, "", "");
-                    Nuevo();
-                }
+                MessageBox.Show("Guardado Correctamente");
+                Nuevo();
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                MessageBox.Show("Error al cargar la Persona");
             }
         }
-        //Llama al metodo cargar del BE
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-           
-            try
+            if (MessageBox.Show("Seguro que desea Eliminar esta Persona y Usuario", "Confirmacion", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                BeP.EliminarPersonas(txtDNI.Text, usu);
-                Nuevo();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                try
+                {
+                    BePer.EliminarTodo(txtDNI.Text);
+                    MessageBox.Show("Eliminado Correctamente");
+                    Nuevo();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
-        //Llama al metodo eliminar del BE
+
 
         private void btnLupaPersona_Click(object sender, EventArgs e)
         {
@@ -101,15 +106,13 @@ namespace Sistema.FE
             }
 
         }
-        //Crea un formulario Lupa con los datos pasados en el metodo "LupaDinamica"(se pasa primero la tabla y despues de la coma los campos a traer)
-        //al hacer doble click en una celda de la lupa esta pone en verdadero un booleano para diferenciar la razon por la que se cerro la lupa. tambien guarda el valor del dni.
-        //llama al metodo Llenartxt, pasando el dni
+
 
         public void Llenartxt(int DNILupa)
         {
             Nuevo();
 
-            dtLlenar = BeP.ObtenerPersona(DNILupa);
+            dtLlenar = BePer.ObtenerPersona(DNILupa);
             
             txtDNI.Text = dtLlenar.Rows[0]["DNI"].ToString();
             txtNombres.Text = dtLlenar.Rows[0]["Nombres"].ToString();
@@ -120,7 +123,7 @@ namespace Sistema.FE
             txtDireccion.Text = dtLlenar.Rows[0]["Direccion"].ToString();
             txtLocalidad.Text = dtLlenar.Rows[0]["Localidad"].ToString();
 
-            dtLlenar2 = BeP.ObtenerUsuario(DNILupa);
+            dtLlenar2 = BeUs.ObtenerUsuario(DNILupa);
             
             if (dtLlenar2.Rows.Count != 0)
             {
@@ -136,16 +139,37 @@ namespace Sistema.FE
                     case 2:
                         rbSecret.Checked = true;
                         break;
-                    case 3:
-                        rbProf.Checked = true;
-                        break;
-                    case 4:
-                        rbAlumn.Checked = true;
-                        break;
                 }
+                if (BeAl.ExisteAlumno(DNILupa.ToString())) { chkAlumn.Checked = true; Alumn = true; }
+                if (BeProf.ExisteProfesor(DNILupa.ToString())) { chkProf.Checked = true; Prof = true; }
             }
         }
-        //hace una consulta a la bd tomando como parametro el dni referenciado, llena una datatable y con los datos de la misma llena los txt.
+
+
+        private void chkProf_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkProf.Checked == true)
+            {
+                Prof = true;
+            }
+            else
+            {
+                Prof = false;
+            }
+        }
+
+
+        private void chkAlumn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAlumn.Checked == true)
+            {
+                Alumn = true;
+            }
+            else
+            {
+                Alumn = false;
+            }
+        }
 
 
         private void chkUsuario_Click(object sender, EventArgs e)
@@ -158,19 +182,15 @@ namespace Sistema.FE
             }
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             Nuevo();
         }
 
+
         private void chkUsuario_CheckedChanged(object sender, EventArgs e)
         {
-            //if (txtDNI.Text.Trim().Length == 0)
-            //{
-            //    chkUsuario.Checked = false;
-            //    //MessageBox.Show("Ingresar los demas datos Primero");
-            //    return;
-            //}
             if (chkUsuario.Checked == true)
             {
                 this.Width = 567;

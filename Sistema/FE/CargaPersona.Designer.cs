@@ -53,8 +53,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.rbDirect = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbAlumn = new System.Windows.Forms.RadioButton();
-            this.rbProf = new System.Windows.Forms.RadioButton();
+            this.chkAlumn = new System.Windows.Forms.CheckBox();
+            this.chkProf = new System.Windows.Forms.CheckBox();
             this.rbSecret = new System.Windows.Forms.RadioButton();
             this.chkUsuario = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -267,8 +267,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rbAlumn);
-            this.groupBox1.Controls.Add(this.rbProf);
+            this.groupBox1.Controls.Add(this.chkAlumn);
+            this.groupBox1.Controls.Add(this.chkProf);
             this.groupBox1.Controls.Add(this.rbSecret);
             this.groupBox1.Controls.Add(this.rbDirect);
             this.groupBox1.Location = new System.Drawing.Point(330, 87);
@@ -278,27 +278,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Permisos";
             // 
-            // rbAlumn
+            // chkAlumn
             // 
-            this.rbAlumn.AutoSize = true;
-            this.rbAlumn.Location = new System.Drawing.Point(59, 87);
-            this.rbAlumn.Name = "rbAlumn";
-            this.rbAlumn.Size = new System.Drawing.Size(71, 17);
-            this.rbAlumn.TabIndex = 46;
-            this.rbAlumn.TabStop = true;
-            this.rbAlumn.Text = "Alumno/a";
-            this.rbAlumn.UseVisualStyleBackColor = true;
+            this.chkAlumn.AutoSize = true;
+            this.chkAlumn.Location = new System.Drawing.Point(59, 88);
+            this.chkAlumn.Name = "chkAlumn";
+            this.chkAlumn.Size = new System.Drawing.Size(72, 17);
+            this.chkAlumn.TabIndex = 47;
+            this.chkAlumn.Text = "Alumno/a";
+            this.chkAlumn.UseVisualStyleBackColor = true;
+            this.chkAlumn.CheckedChanged += new System.EventHandler(this.chkAlumn_CheckedChanged);
             // 
-            // rbProf
+            // chkProf
             // 
-            this.rbProf.AutoSize = true;
-            this.rbProf.Location = new System.Drawing.Point(59, 65);
-            this.rbProf.Name = "rbProf";
-            this.rbProf.Size = new System.Drawing.Size(75, 17);
-            this.rbProf.TabIndex = 45;
-            this.rbProf.TabStop = true;
-            this.rbProf.Text = "Profesor/a";
-            this.rbProf.UseVisualStyleBackColor = true;
+            this.chkProf.AutoSize = true;
+            this.chkProf.Location = new System.Drawing.Point(59, 65);
+            this.chkProf.Name = "chkProf";
+            this.chkProf.Size = new System.Drawing.Size(76, 17);
+            this.chkProf.TabIndex = 48;
+            this.chkProf.Text = "Profesor/a";
+            this.chkProf.UseVisualStyleBackColor = true;
+            this.chkProf.CheckedChanged += new System.EventHandler(this.chkProf_CheckedChanged);
             // 
             // rbSecret
             // 
@@ -339,7 +339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 266);
+            this.ClientSize = new System.Drawing.Size(581, 266);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chkUsuario);
             this.Controls.Add(this.groupBox1);
@@ -404,10 +404,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RadioButton rbDirect;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbAlumn;
-        private System.Windows.Forms.RadioButton rbProf;
         private System.Windows.Forms.RadioButton rbSecret;
         private System.Windows.Forms.CheckBox chkUsuario;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox chkProf;
+        private System.Windows.Forms.CheckBox chkAlumn;
     }
 }
