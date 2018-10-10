@@ -38,7 +38,8 @@
             this.txtHoras = new System.Windows.Forms.TextBox();
             this.btnCargar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnLupaCar = new System.Windows.Forms.Button();
+            this.btnlupC = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCarrera
@@ -107,7 +108,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(48, 127);
+            this.btnCargar.Location = new System.Drawing.Point(28, 127);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
             this.btnCargar.TabIndex = 8;
@@ -117,29 +118,40 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(161, 127);
+            this.btnEliminar.Location = new System.Drawing.Point(223, 127);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.button3_Click);
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_CLick);
             // 
-            // btnLupaCar
+            // btnlupC
             // 
-            this.btnLupaCar.Location = new System.Drawing.Point(279, 4);
-            this.btnLupaCar.Name = "btnLupaCar";
-            this.btnLupaCar.Size = new System.Drawing.Size(28, 23);
-            this.btnLupaCar.TabIndex = 29;
-            this.btnLupaCar.Text = "Cargar";
-            this.btnLupaCar.UseVisualStyleBackColor = true;
+            this.btnlupC.Location = new System.Drawing.Point(279, 6);
+            this.btnlupC.Name = "btnlupC";
+            this.btnlupC.Size = new System.Drawing.Size(55, 20);
+            this.btnlupC.TabIndex = 11;
+            this.btnlupC.Text = "Buscar";
+            this.btnlupC.UseVisualStyleBackColor = true;
+            this.btnlupC.Click += new System.EventHandler(this.btnlupC_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(126, 127);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 0;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // CargarCarrera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 162);
-            this.Controls.Add(this.btnLupaCar);
+            this.ClientSize = new System.Drawing.Size(344, 162);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnlupC);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.label4);
@@ -171,6 +183,7 @@
         private System.Windows.Forms.TextBox txtHoras;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnLupaCar;
+        private System.Windows.Forms.Button btnlupC;
+        private System.Windows.Forms.Button btnModificar;
     }
 }

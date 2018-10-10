@@ -5,45 +5,103 @@ using System.Collections.Generic;
 using System.Text;
 using Sistema.DAL;
 
+
 namespace Sistema.BE
 {
     class BeCarreras
     {
-        DALCarrera DalCar;
-        public void CargarCarrera (string bCarrera, string bAños, string bNºResolucion, string bHorarios)
+        public DaLCarrera dalc;
+        public bool CargarCarrera(string bNombre, string bAños, string bNumResolucion, string bHorarios)
         {
-            DalCar = new DALCarrera();
-            int dAños, dHorarios;
-            dAños = Convert.ToInt32(bAños);
-            dHorarios = Convert.ToInt32(bHorarios);
+            dalc = new DaLCarrera();
 
-            try
-            {
-                DalCar.CargarCarrera(bCarrera, dAños, bNºResolucion, dHorarios);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-          
-        }
-        public void EliminarCarrera(string bNombre)
-        {
-            DalCar = new DALCarrera();
-
-            try
-            {
-                DalCar.EliminarPersona(bNombre);
-                
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-
-            }
+            int dAños;
+            int dHorarios;
             
+            try
+            {
+                dAños = Convert.ToInt32(bAños);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            try
+            {
+                dHorarios = Convert.ToInt32(bHorarios);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+
+            return dalc.CargarCarrera(bNombre, dAños, bNumResolucion, dHorarios);
+
+
+
+        }
+        public bool EliminarCarrera(int ID)
+        {
+            DaLCarrera DC = new DaLCarrera();
+            return DC.EliminarCarrera(ID);
         }
 
+        public bool ModificarCarrera(int idCarrera, string bNombre, string bAños, string bNumResolucion, string bHorarios)
+        {
+            dalc = new DaLCarrera();
+            int daños;
+            int dhoras;
+            if((bNombre == "")|(bNumResolucion == ""))
+            {
+                return false;
+            }
+            try
+            {
+                daños = Convert.ToInt32(bAños);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            try
+            {
+                dhoras = Convert.ToInt32(bHorarios);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return dalc.ModificarCarrera(idCarrera, bNombre, daños, bNumResolucion, dhoras);
+       }
+
+       // internal bool ModificarCarrera(int iDCARRERA,  string Nombre, int Años, string NumResolucion, int Horarios)
+       // {
+       //     dalc = new DaLCarrera();
+       //     int daños;
+       //     int dhoras;
+       //     try
+       //     {
+       //         daños = Convert.ToInt32(Años);
+       //     }
+       //     catch (Exception)
+       //     {
+       //         return false;
+       //     }
+       //     try
+       //     {
+       //         dhoras = Convert.ToInt32(Horarios);
+       //     }
+       //     catch (Exception)
+       //     {
+       //         return false;
+       //     }
+       //     return dalc.ModificarCarrera(iDCARRERA, Nombre, daños, NumResolucion, dhoras);
+
+        }
     }
-}
+            
+ 
+
+    
