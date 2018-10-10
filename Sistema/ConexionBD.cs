@@ -260,6 +260,9 @@ namespace Sistema
                 else if (t.Equals(typeof(string)))
                 {
                     comando += $"'{Parametros[i]}'";
+                }else if (t.Equals(typeof(bool)))
+                {
+                    comando += $"{Parametros[i]}";
                 }
             }
             
@@ -309,6 +312,10 @@ namespace Sistema
                     else if (t.Equals(typeof(string)))
                     {
                         comando += $"'{Parametros[i]}'";
+                    }
+                    else if (t.Equals(typeof(bool)))
+                    {
+                        comando += $"{Parametros[i]}";
                     }
 
                 }
