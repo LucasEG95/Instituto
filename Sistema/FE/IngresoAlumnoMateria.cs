@@ -112,7 +112,7 @@ namespace Sistema.FE
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormLupa Lupa = new FormLupa("select Nombres,Apellidos,AlumnoID from Alumnos inner join Personas on Alumnos.PersonaID = Personas.PersonaID");
+            FormLupa Lupa = new FormLupa("select Nombres,Apellidos,AlumnoID from Alumnos inner join Personas on Alumnos.PersonaID = Personas.PersonaID where Alumnos.Inactivo = 0");
             Lupa.ConfigurarGrilla(new int[] {2});
             Lupa.ShowDialog();
 
