@@ -16,7 +16,7 @@ namespace Sistema.DAL
         {
             try
             {
-                return ConexionBD.consultar($"select u.Usuario, u.Contraseña, u.Permiso from Usuarios u inner join Personas p on p.PersonaID = u.PersonaID where p.DNI = {DNI}").Tables[0];
+                return ConexionBD.consultar($"select u.Usuario, u.Contraseña, u.Permiso, u.Inactivo from Usuarios u inner join Personas p on p.PersonaID = u.PersonaID where p.DNI = {DNI}").Tables[0];
             }
             catch (Exception ex)
             {
@@ -27,11 +27,11 @@ namespace Sistema.DAL
         }
 
 
-        public void CargarUsuario(int bDNI, int bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta)
+        public void CargarUsuario(int bDNI, int bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta, bool usu)
         {
             try
             {
-                ConexionBD.StoredSinDatos("UsuariosGuardar", bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta);
+                ConexionBD.StoredSinDatos("UsuariosGuardar", bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu);
             }
             catch (Exception ex)
             {
@@ -40,11 +40,11 @@ namespace Sistema.DAL
         }
 
 
-        public void ModificarUsuario(int bDNI, int bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta)
+        public void ModificarUsuario(int bDNI, int bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta, bool usu)
         {
             try
             {
-                ConexionBD.StoredSinDatos("UsuariosModificar", bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta);
+                ConexionBD.StoredSinDatos("UsuariosModificar", bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu);
             }
             catch(Exception ex)
             {

@@ -12,11 +12,11 @@ namespace Sistema.DAL
     class DalPersonas
     {
         
-        public void CargarPersona(int bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad)
+        public void CargarPersona(int bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad, bool Per)
         {
             try
             {
-                ConexionBD.StoredSinDatos("PersonasGuardar", bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad);
+                ConexionBD.StoredSinDatos("PersonasGuardar", bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad, Per);
             }
             catch (Exception ex)
             {
@@ -25,11 +25,11 @@ namespace Sistema.DAL
         }
 
 
-        public void ModificarPersona(int bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad)
+        public void ModificarPersona(int bDNI, string bNombre, string bApellido, string bTelefono, string bCelular, string bEmail, string bDireccion, string bLocalidad, bool Per)
         {
             try
             {
-                ConexionBD.StoredSinDatos("PersonasModificar", bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad);
+                ConexionBD.StoredSinDatos("PersonasModificar", bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad, Per);
             }
             catch(Exception ex)
             {
@@ -62,7 +62,7 @@ namespace Sistema.DAL
                 throw ex;
             }
         }
-
+        // Elimina a la Persona que corresponda al DNI ingresado
 
         public DataTable ObtenerPersonaDAL(int DNI)
         {
@@ -77,7 +77,7 @@ namespace Sistema.DAL
             }
 
         }
-
+        //Hace una consulta a la BD , la cual devuelte un DS y selecciona la Primera tabla del mismo.
 
 
 

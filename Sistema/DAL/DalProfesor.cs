@@ -12,13 +12,13 @@ namespace Sistema.DAL
     class DalProfesor
     {
 
-        public void CargarProfesor(int bDNI)
+        public void CargarProfesor(int bDNI, byte Prof)
         {
             try
             {
                 if (!ConexionBD.existe($"select ProfesorID from Profesores a inner join Personas p on p.PersonaID = a.PersonaID where p.DNI = {bDNI}"))
                 {
-                    ConexionBD.Insertar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) insert into Profesores(PersonaID) values (@persona)");
+                    ConexionBD.Insertar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) insert into Profesores(PersonaID, Inactivo) values (@persona, {Prof})");
                 }
             }
             catch (Exception ex)
@@ -28,11 +28,30 @@ namespace Sistema.DAL
         }
 
 
+        public void ModificarProfesor(int bDNI, byte Prof)
+        {
+            ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Profesores set PersonaID = @persona, Inactivo = {Prof}");
+        }
+
+
         public bool ExisteProfesor(int bDNI)
         {
             try
             {
                 return ConexionBD.existe($"select ProfesorID from Profesores a inner join Personas p on p.PersonaID = a.PersonaID where p.DNI = {bDNI}");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public bool ProfesorON(int bDNI)
+        {
+            try
+            {
+                return ConexionBD.existe($"select ProfesorID from Profesores a inner join Personas p on p.PersonaID = a.PersonaID where p.DNI = {bDNI} and a.Inactivo ={0}");
             }
             catch (Exception ex)
             {

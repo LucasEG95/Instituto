@@ -58,6 +58,7 @@
             this.rbSecret = new System.Windows.Forms.RadioButton();
             this.chkUsuario = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.chkInactivo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +145,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(127, 228);
+            this.btnEliminar.Location = new System.Drawing.Point(119, 231);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 9;
@@ -154,7 +155,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(46, 228);
+            this.btnCargar.Location = new System.Drawing.Point(38, 231);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
             this.btnCargar.TabIndex = 8;
@@ -327,7 +328,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(208, 228);
+            this.button1.Location = new System.Drawing.Point(200, 231);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 46;
@@ -335,11 +336,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // chkInactivo
+            // 
+            this.chkInactivo.AutoSize = true;
+            this.chkInactivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkInactivo.Location = new System.Drawing.Point(94, 260);
+            this.chkInactivo.Name = "chkInactivo";
+            this.chkInactivo.Size = new System.Drawing.Size(123, 17);
+            this.chkInactivo.TabIndex = 47;
+            this.chkInactivo.Text = "Deshabilitar Persona";
+            this.chkInactivo.UseVisualStyleBackColor = false;
+            this.chkInactivo.CheckedChanged += new System.EventHandler(this.chkInactivo_CheckedChanged);
+            // 
             // CargaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 266);
+            this.ClientSize = new System.Drawing.Size(581, 283);
+            this.Controls.Add(this.chkInactivo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chkUsuario);
             this.Controls.Add(this.groupBox1);
@@ -409,5 +423,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox chkProf;
         private System.Windows.Forms.CheckBox chkAlumn;
+        private System.Windows.Forms.CheckBox chkInactivo;
     }
 }

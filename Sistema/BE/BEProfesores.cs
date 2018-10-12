@@ -16,11 +16,16 @@ namespace Sistema.BE
 
 
 
-        public void CargarProfesor(string DNI)
+        public void CargarProfesor(string DNI, byte Prof)
         {
-            DalProf.CargarProfesor(Convert.ToInt32(DNI));
+            DalProf.CargarProfesor(Convert.ToInt32(DNI), Prof);
         }
 
+
+        public void ModificarProfesor(string bDNI, byte Prof)
+        {
+            DalProf.ModificarProfesor(Convert.ToInt32(bDNI), Prof);
+        }
 
 
         public bool ExisteProfesor(string DNI)
@@ -28,6 +33,11 @@ namespace Sistema.BE
             return DalProf.ExisteProfesor(Convert.ToInt32(DNI));
         }
 
+
+        public bool ProfesorON(string DNI)
+        {
+            return DalProf.ProfesorON(Convert.ToInt32(DNI));
+        }
 
 
         public void EliminarProfesor(string DNI)

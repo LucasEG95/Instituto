@@ -16,7 +16,7 @@ namespace Sistema.BE
 
 
 
-        public void CargarUsuarios(string bDNI, string bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta)
+        public void CargarUsuarios(string bDNI, string bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta, bool usu)
         {
             if (bUsuario.Length <= 0)
             {
@@ -30,7 +30,7 @@ namespace Sistema.BE
 
             try
             {
-                DalUs.CargarUsuario(Convert.ToInt32(bDNI), Convert.ToInt32(bUsuario), bContraseña, bPermiso, bRespuesta, bPregunta);
+                DalUs.CargarUsuario(Convert.ToInt32(bDNI), Convert.ToInt32(bUsuario), bContraseña, bPermiso, bRespuesta, bPregunta, usu);
             }
             catch (Exception ex)
             {
@@ -66,9 +66,9 @@ namespace Sistema.BE
         }
 
 
-        public void ModificarUsuario(string bDNI, string bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta)
+        public void ModificarUsuario(string bDNI, string bUsuario, string bContraseña, int bPermiso, string bRespuesta, string bPregunta, bool bInactivo)
         {
-            DalUs.ModificarUsuario(Convert.ToInt32(bDNI), Convert.ToInt32(bUsuario), bContraseña, bPermiso, bRespuesta, bPregunta);
+            DalUs.ModificarUsuario(Convert.ToInt32(bDNI), Convert.ToInt32(bUsuario), bContraseña, bPermiso, bRespuesta, bPregunta, bInactivo);
         }
     }
 }

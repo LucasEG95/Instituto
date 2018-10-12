@@ -16,15 +16,27 @@ namespace Sistema.BE
 
 
 
-        public void CargarAlumno(string DNI)
+        public void CargarAlumno(string DNI, byte Alumn)
         {
-            DalAl.CargarAlumno(Convert.ToInt32(DNI));
+            DalAl.CargarAlumno(Convert.ToInt32(DNI), Alumn);
+        }
+
+
+        public void ModificarAlumno(string bDNI, byte Alumn)
+        {
+            DalAl.ModificarAlumno(Convert.ToInt32(bDNI), Alumn);
         }
 
 
         public bool ExisteAlumno(string DNI)
         {
             return DalAl.ExisteAlumno(Convert.ToInt32(DNI));
+        }
+
+
+        public bool AlumnoON(string DNI)
+        {
+            return DalAl.AlumnoON(Convert.ToInt32(DNI));
         }
 
 
