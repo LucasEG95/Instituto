@@ -35,7 +35,7 @@ namespace Sistema.FE
             ContraseñaActual = contraseña;
             Button BTCarrera = new Button();
             BTCarrera.Text = "Carreras";
-           // BTCarrera.Click += new EventHandler(BTCarrera_Click);
+            BTCarrera.Click += new EventHandler(BTCarrera_Click);
 
 
          Button BTAlumnoMateria = new Button();
@@ -213,13 +213,13 @@ namespace Sistema.FE
             Application.Exit();
         }
 
-        //    private void BTCarrera_Click(object sender, EventArgs e)
-        //    {
-        //CargarCarrera CC = new CargarCarrera();
-        //CC.ShowDialog();
-        // }
+        private void BTCarrera_Click(object sender, EventArgs e)
+        {
+            CargarCarrera CC = new CargarCarrera();
+            CC.ShowDialog();
+        }
 
-              private void BTMateria_Click(object sender, EventArgs e) {
+        private void BTMateria_Click(object sender, EventArgs e) {
         
 
          CargaMateria CM = new CargaMateria();
