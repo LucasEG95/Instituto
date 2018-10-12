@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BE\BeAlumnoMaterias.cs" />
+    <Compile Include="BE\BEAlumnos.cs" />
     <Compile Include="BE\BeCambioContraseña.cs" />
     <Compile Include="BE\BeCorrelativas.cs" />
     <Compile Include="BE\BeIngreso.cs" />
