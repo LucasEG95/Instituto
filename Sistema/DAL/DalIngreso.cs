@@ -8,10 +8,10 @@ using System.Data;
 namespace Sistema.DAL
 {
     class DalIngreso
-    {   public bool PrimerIngreso(string Usuario, string Contraseña)
+    {   public bool PrimerIngreso(string Usuario)
         {
             DataSet DS = new DataSet();
-            return ConexionBD.existe("select * from Usuarios where Usuario="+Usuario+" and Contraseña='"+Usuario+"'");
+            return ConexionBD.existe("select * from Usuarios where Usuario="+Usuario+" and Pregunta=''");
 
 
         }

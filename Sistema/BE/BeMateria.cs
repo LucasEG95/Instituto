@@ -16,7 +16,9 @@ namespace Sistema.BE
             int dPromocional;
             int dAños;
             int dHoras;
+            
             try
+
             {
                 dAños = Convert.ToInt32(bAño);
             }
@@ -46,10 +48,19 @@ namespace Sistema.BE
             if (bCarrera == 0) {
                 return false;
             }
-               return DalMat.CargarMateria(bCarrera, bNombre, bProfesor, dAños, dHoras, dPromocional );
+            if (this.existemateria(bNombre, bCarrera, bAño) || (bNombre == ""))
+            {
+                return false;
+            }
+            return DalMat.CargarMateria(bCarrera, bNombre, bProfesor, dAños, dHoras, dPromocional );
         
     }
+        private bool existemateria(string Nombre, int carrera, string años)
+        { DalMateria DM = new DalMateria();
 
+            return DM.existemateria(Nombre, carrera, años); 
+
+        }
         public bool EliminarMateria(int id)
         {
             DalMateria DM = new DalMateria();

@@ -19,7 +19,7 @@ namespace Sistema.FE
         {
             BeIngreso beIng = new BeIngreso();
            
-            if (beIng.PrimeraLogin(txtUsuario.Text, txtContraseña.Text)) {
+            if (beIng.PrimeraLogin(txtUsuario.Text)) {
 
                 PrimeraContraseña PC = new PrimeraContraseña();
                 txtContraseña.Text = PC.ResultContra(txtUsuario.Text);

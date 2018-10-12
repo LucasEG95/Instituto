@@ -29,7 +29,7 @@ namespace Sistema.FE
 
                 this.Close();
             }
-            else { MessageBox.Show("No se cargo la materia, verifique los datos"); }
+            else { MessageBox.Show("No se cargo la materia, verifique los datos y que la materia no este cargada"); }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

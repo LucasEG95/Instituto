@@ -11,10 +11,10 @@ namespace Sistema.BE
 {
     class BeIngreso
     {
-        public bool PrimeraLogin(string Usuario, string Contra) {
+        public bool PrimeraLogin(string Usuario) {
 
             DalIngreso DalIng = new DalIngreso();
-            return DalIng.PrimerIngreso(Usuario,Contra);
+            return DalIng.PrimerIngreso(Usuario);
         }
         public int Login(string Usuario, string Contra)
         {
