@@ -42,12 +42,10 @@ namespace Sistema.FE
             txtEmail.Text = "";
             txtLocalidad.Text = "";
             txtTelefono.Text = "";
-            chkUsuario.Checked = false;
-            usu = true;
+            usu = false;
             Alumn = 1;
             Prof = 1;
             Per = false;
-            this.Width = 328;
             txtUsuario.Text = "";
             txtContraseña.Text = "";
             rbDirect.Checked = false;
@@ -132,7 +130,6 @@ namespace Sistema.FE
             
             if (dtLlenar2.Rows.Count != 0)
             {
-                if (!(Convert.ToBoolean(dtLlenar2.Rows[0]["Inactivo"]))) { chkUsuario.Checked = true; }
                 txtUsuario.Text = dtLlenar2.Rows[0]["Usuario"].ToString();
                 txtContraseña.Text = dtLlenar2.Rows[0]["Contraseña"].ToString();
                 Permiso = Convert.ToInt32(dtLlenar2.Rows[0]["Permiso"]);
@@ -153,75 +150,44 @@ namespace Sistema.FE
 
         private void chkProf_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkProf.Checked)
-            {
-                Prof = 0;
-            }
-            else
-            {
-                Prof = 1;
-            }
+            if (chkProf.Checked) Prof = 0;
+            else Prof = 1;
+        }
+        
+
+        private void txtDNI_Leave(object sender, EventArgs e)
+        {
+            txtUsuario.Text = txtDNI.Text;
+            txtContraseña.Text = txtDNI.Text;
+        }
+
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            rbDirect.Checked = false;
+            rbSecret.Checked = false;
+            chkAlumn.Checked = false;
+            chkProf.Checked = false;
         }
 
 
         private void chkAlumn_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkAlumn.Checked)
-            {
-                Alumn = 0;
-            }
-            else
-            {
-                Alumn = 1;
-            }
+            if (chkAlumn.Checked) Alumn = 0;
+            else Alumn = 1;
         }
 
 
         private void chkInactivo_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkInactivo.Checked)
-            {
-                Per = true;
-            }
-            else
-            {
-                Per = false;
-            }
+            if (chkInactivo.Checked) Per = true;
+            else Per = false;
         }
-
-
-        private void chkUsuario_Click(object sender, EventArgs e)
-        {
-            if (txtDNI.Text.Trim().Length == 0)
-            {
-                chkUsuario.Checked = false;
-                MessageBox.Show("Ingresar los demas datos Primero");
-                return;
-            }
-        }
-
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
             Nuevo();
-        }
-
-
-        private void chkUsuario_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkUsuario.Checked)
-            {
-                this.Width = 567;
-                txtUsuario.Text = txtDNI.Text.Trim();
-                txtContraseña.Text = txtDNI.Text.Trim();
-                usu = false;
-            }
-            else
-            {
-                this.Width = 328;
-                usu = true;
-            }
-            
         }
         
     }

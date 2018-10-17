@@ -46,6 +46,13 @@ namespace Sistema.BE
         }
 
 
+        public void ControlarProfesor(string bDNI, byte Prof, byte Profint)
+        {
+            if ((!ExisteProfesor(bDNI)) && (Prof == 0)) { CargarProfesor(bDNI, Profint); }
+            else if ((ProfesorON(bDNI)) && (Prof == 1)) { Profint = 1; ModificarProfesor(bDNI, Profint); }
+            else if ((!ProfesorON(bDNI)) && (Prof == 0)) { Profint = 0; ModificarProfesor(bDNI, Profint); }
+        }
+
 
     }
 }

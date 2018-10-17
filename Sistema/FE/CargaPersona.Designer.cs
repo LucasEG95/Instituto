@@ -56,9 +56,9 @@
             this.chkAlumn = new System.Windows.Forms.CheckBox();
             this.chkProf = new System.Windows.Forms.CheckBox();
             this.rbSecret = new System.Windows.Forms.RadioButton();
-            this.chkUsuario = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.chkInactivo = new System.Windows.Forms.CheckBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +85,7 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(192, 20);
             this.txtDNI.TabIndex = 0;
+            this.txtDNI.Leave += new System.EventHandler(this.txtDNI_Leave);
             // 
             // label2
             // 
@@ -145,7 +146,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(119, 231);
+            this.btnEliminar.Location = new System.Drawing.Point(109, 230);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 9;
@@ -155,7 +156,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(38, 231);
+            this.btnCargar.Location = new System.Drawing.Point(28, 230);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
             this.btnCargar.TabIndex = 8;
@@ -223,7 +224,7 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(389, 61);
+            this.txtContraseña.Location = new System.Drawing.Point(377, 36);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.ReadOnly = true;
             this.txtContraseña.Size = new System.Drawing.Size(151, 20);
@@ -232,7 +233,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(327, 64);
+            this.label9.Location = new System.Drawing.Point(315, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 36;
@@ -240,7 +241,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(389, 35);
+            this.txtUsuario.Location = new System.Drawing.Point(377, 10);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.ReadOnly = true;
             this.txtUsuario.Size = new System.Drawing.Size(151, 20);
@@ -249,7 +250,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(327, 38);
+            this.label11.Location = new System.Drawing.Point(315, 13);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 13);
             this.label11.TabIndex = 33;
@@ -258,7 +259,7 @@
             // rbDirect
             // 
             this.rbDirect.AutoSize = true;
-            this.rbDirect.Location = new System.Drawing.Point(59, 19);
+            this.rbDirect.Location = new System.Drawing.Point(24, 24);
             this.rbDirect.Name = "rbDirect";
             this.rbDirect.Size = new System.Drawing.Size(73, 17);
             this.rbDirect.TabIndex = 43;
@@ -268,11 +269,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.chkAlumn);
             this.groupBox1.Controls.Add(this.chkProf);
             this.groupBox1.Controls.Add(this.rbSecret);
             this.groupBox1.Controls.Add(this.rbDirect);
-            this.groupBox1.Location = new System.Drawing.Point(330, 87);
+            this.groupBox1.Location = new System.Drawing.Point(318, 62);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(210, 119);
             this.groupBox1.TabIndex = 44;
@@ -282,7 +284,7 @@
             // chkAlumn
             // 
             this.chkAlumn.AutoSize = true;
-            this.chkAlumn.Location = new System.Drawing.Point(59, 88);
+            this.chkAlumn.Location = new System.Drawing.Point(24, 93);
             this.chkAlumn.Name = "chkAlumn";
             this.chkAlumn.Size = new System.Drawing.Size(72, 17);
             this.chkAlumn.TabIndex = 47;
@@ -293,7 +295,7 @@
             // chkProf
             // 
             this.chkProf.AutoSize = true;
-            this.chkProf.Location = new System.Drawing.Point(59, 65);
+            this.chkProf.Location = new System.Drawing.Point(24, 70);
             this.chkProf.Name = "chkProf";
             this.chkProf.Size = new System.Drawing.Size(76, 17);
             this.chkProf.TabIndex = 48;
@@ -304,7 +306,7 @@
             // rbSecret
             // 
             this.rbSecret.AutoSize = true;
-            this.rbSecret.Location = new System.Drawing.Point(59, 42);
+            this.rbSecret.Location = new System.Drawing.Point(24, 47);
             this.rbSecret.Name = "rbSecret";
             this.rbSecret.Size = new System.Drawing.Size(84, 17);
             this.rbSecret.TabIndex = 44;
@@ -312,23 +314,9 @@
             this.rbSecret.Text = "Secretario/a";
             this.rbSecret.UseVisualStyleBackColor = true;
             // 
-            // chkUsuario
-            // 
-            this.chkUsuario.AutoSize = true;
-            this.chkUsuario.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkUsuario.Location = new System.Drawing.Point(265, 72);
-            this.chkUsuario.Name = "chkUsuario";
-            this.chkUsuario.Size = new System.Drawing.Size(47, 31);
-            this.chkUsuario.TabIndex = 45;
-            this.chkUsuario.Text = "Usuario";
-            this.chkUsuario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.chkUsuario.UseVisualStyleBackColor = true;
-            this.chkUsuario.CheckedChanged += new System.EventHandler(this.chkUsuario_CheckedChanged);
-            this.chkUsuario.Click += new System.EventHandler(this.chkUsuario_Click);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(200, 231);
+            this.button1.Location = new System.Drawing.Point(190, 230);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 46;
@@ -340,22 +328,31 @@
             // 
             this.chkInactivo.AutoSize = true;
             this.chkInactivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkInactivo.Location = new System.Drawing.Point(94, 260);
+            this.chkInactivo.Location = new System.Drawing.Point(412, 237);
             this.chkInactivo.Name = "chkInactivo";
-            this.chkInactivo.Size = new System.Drawing.Size(123, 17);
+            this.chkInactivo.Size = new System.Drawing.Size(117, 17);
             this.chkInactivo.TabIndex = 47;
-            this.chkInactivo.Text = "Deshabilitar Persona";
+            this.chkInactivo.Text = "Desabilitar Persona";
             this.chkInactivo.UseVisualStyleBackColor = false;
             this.chkInactivo.CheckedChanged += new System.EventHandler(this.chkInactivo_CheckedChanged);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(129, 50);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 48;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // CargaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 283);
+            this.ClientSize = new System.Drawing.Size(541, 265);
             this.Controls.Add(this.chkInactivo);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.chkUsuario);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.label9);
@@ -419,10 +416,10 @@
         private System.Windows.Forms.RadioButton rbDirect;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbSecret;
-        private System.Windows.Forms.CheckBox chkUsuario;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox chkProf;
         private System.Windows.Forms.CheckBox chkAlumn;
         private System.Windows.Forms.CheckBox chkInactivo;
+        private System.Windows.Forms.Button btnReset;
     }
 }

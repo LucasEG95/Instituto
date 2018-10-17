@@ -30,7 +30,7 @@ namespace Sistema.DAL
 
         public void ModificarProfesor(int bDNI, byte Prof)
         {
-            ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Profesores set PersonaID = @persona, Inactivo = {Prof}");
+            ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Profesores set Inactivo = {Prof} where PersonaID = @persona");
         }
 
 

@@ -196,37 +196,27 @@ namespace Sistema.BE
                 }
                 // Evita que el usuario ingrese personas Deshabilitadas
                 else if (Per) { InabilitarTodo(bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, Per, usu);}
-                else if (usu) { InabilitarTodo(bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, Per, usu);}
                 else
                 {
                     if (!ExistePersona(bDNI))
                     {
                         CargarPersonas(bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad, Per);
+                        BeUs.CargarUsuarios(bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu);
                     }
                     else
                     {
                         ModificarPersona(bDNI, bNombre, bApellido, bTelefono, bCelular, bEmail, bDireccion, bLocalidad, Per);
+                        BeUs.ModificarUsuario(bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu);
                     }
                     //carga o modifica la persona dependiendo de si la misma Existe en la BD
 
-                    if (!BeUs.ExisteUsuario(bDNI))
-                    {
-                        if (!usu) { BeUs.CargarUsuarios(bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu); }
-                    }
-                    else
-                    {
-                        if (!usu) { BeUs.ModificarUsuario(bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu); }
-                        else { BeUs.ModificarUsuario(bDNI, bUsuario, bContraseña, bPermiso, bRespuesta, bPregunta, usu); }
-                    }
-                    //carga o modifica el usuario dependiendo de si el mismo Existe en la BD
-
                     byte Alumnint = 0, Profint = 0;
-                    ControlarAlumno(bDNI, Alumn, Alumnint);
+                    BeAl.ControlarAlumno(bDNI, Alumn, Alumnint);
                     //si el alumno no existe (Metodo ExisteAlumno)y Alumn(chkAlumno) es 0(Chk tildado) entonces crea un alumno nuevo, si no pasa al siquiente
                     //Ejecuta el metodo AlumnoON (verifica que el alumno exista y ademas que su valor de Inactivo sea 0), si da verdadero entonces verifica si Alumn es 1,  si es asi modifica el alumno en la BD
                     //Si lo anterior no se cumple significa que el alumno existe pero su valor de Inactivo es 1 y que Alumn vale 0, por lo que modifica los valores en la BD
 
-                    ControlarProfesor(bDNI, Prof, Profint);
+                    BeProf.ControlarProfesor(bDNI, Prof, Profint);
                     //Mismo sistema que con los Alumnos pero aplicado a los Profesores
                 }
                 ConexionBD.Commit();
@@ -249,19 +239,9 @@ namespace Sistema.BE
         }
         //Si el valor de Per es verdadero(Persona desactivada) desactiva el Usuario, Alumno y Profesor (si existen) que esten relacionados con dicha persona 
 
-        public void ControlarAlumno(string bDNI, byte Alumn, byte Alumnint)
-        {
-            if (!BeAl.ExisteAlumno(bDNI)) { if (Alumn == 0) { BeAl.CargarAlumno(bDNI, Alumnint); } }
-            else if (BeAl.AlumnoON(bDNI)) { if (Alumn == 1) { Alumnint = 1; BeAl.ModificarAlumno(bDNI, Alumnint); } }
-            else { BeAl.ModificarAlumno(bDNI, Alumnint); }
-        }
+        
 
 
-        public void ControlarProfesor(string bDNI, byte Prof, byte Profint)
-        {
-            if (!BeProf.ExisteProfesor(bDNI)) { if (Prof == 0) { BeProf.CargarProfesor(bDNI, Profint); } }
-            else if (BeProf.ProfesorON(bDNI)) { if (Prof == 1) { Profint = 1; BeProf.ModificarProfesor(bDNI, Profint); } }
-            else { BeProf.ModificarProfesor(bDNI, Profint); }
-        }
+        
     }
 }

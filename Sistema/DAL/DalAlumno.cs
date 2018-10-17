@@ -31,7 +31,7 @@ namespace Sistema.DAL
 
         public void ModificarAlumno(int bDNI, byte Alumn)
         {
-            ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Alumnos set PersonaID = @persona, Inactivo = {Alumn}");
+            ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Alumnos set Inactivo = {Alumn} where PersonaID = @persona");
         }
 
 

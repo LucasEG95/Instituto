@@ -46,5 +46,13 @@ namespace Sistema.BE
         }
 
 
+        public void ControlarAlumno(string bDNI, byte Alumn, byte Alumnint)
+        {
+            if ((!ExisteAlumno(bDNI)) && (Alumn == 0)) { CargarAlumno(bDNI, Alumnint); }
+            else if ((AlumnoON(bDNI)) && (Alumn == 1)) { Alumnint = 1; ModificarAlumno(bDNI, Alumnint); }
+            else if ((!AlumnoON(bDNI)) && (Alumn == 0)) { Alumnint = 0; ModificarAlumno(bDNI, Alumnint); }
+        }
+
+
     }
 }
