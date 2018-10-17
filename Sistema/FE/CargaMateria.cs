@@ -29,7 +29,7 @@ namespace Sistema.FE
 
                 this.Close();
             }
-            else { MessageBox.Show("No se cargo la materia, verifique los datos"); }
+            else { MessageBox.Show("No se cargo la materia, verifique los datos y que la materia no este cargada"); }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace Sistema.FE
         private int IDMATERIA;
         private void btBuscarMateria_Click(object sender, EventArgs e)
         {
-            FormLupa Fl = new FormLupa("select Carrera.CarreraID, Carrera.Nombre 'Carrera',Materia.MateriaID ,Materia.Nombre 'Materia',Profesores.ProfesorID,Personas.Nombres'Nombre Profesor',Personas.Apellidos 'Apellido Profesor',Materia.Año,Materia.CargaHoraria'Carga Horaria',Materia.Promocional from Materia,Carrera,Profesores,Personas where Materia.CarreraID = Carrera.CarreraID and Profesores.ProfesorID = Materia.ProfesorID and Profesores.PersonaID = Personas.PersonaID");
+            FormLupa Fl = new FormLupa("select Carrera.CarreraID, Carrera.Nombre 'Carrera',Materia.MateriaID ,Materia.Nombre 'Materia',Profesores.ProfesorID,Personas.Nombres 'Nombre Profesor',Personas.Apellidos 'Apellido Profesor',Materia.Año,Materia.CargaHoraria 'Carga Horaria',Materia.Promocional from Materia,Carrera,Profesores,Personas where Materia.CarreraID = Carrera.CarreraID and Profesores.ProfesorID = Materia.ProfesorID and Profesores.PersonaID = Personas.PersonaID");
             Fl.ConfigurarGrilla(new int[] { 0, 2, 4 });
             Fl.ShowDialog();
             if (Fl.Valores != null)

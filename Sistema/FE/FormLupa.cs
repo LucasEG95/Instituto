@@ -263,7 +263,22 @@ namespace Sistema.FE
         {
             txtFiltro.Focus();
             ComboBox aux = (ComboBox)sender;
-            Index = aux.SelectedIndex;
+            if (GrillaLupa.Columns[aux.SelectedIndex].HeaderText == aux.Text)
+            {
+                Index = aux.SelectedIndex;
+            }
+            else
+            {
+                for(int i = 0; i< GrillaLupa.Columns.Count; i++)
+                {
+                    if(GrillaLupa.Columns[i].HeaderText == aux.Text)
+                    {
+                        Index = i;
+                    }
+                }
+            }
+            
+
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)

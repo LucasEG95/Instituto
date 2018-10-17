@@ -38,10 +38,22 @@ namespace Sistema.DAL
                 return false;
             }
         }
+        public bool existemateria(string nombre, int carrera, string años)
+        {
+            try
+            {
+                return ConexionBD.existe("select * from Materia where Nombre='" + nombre + "'and Año="+años+" and CarreraID="+carrera);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
          public bool EliminarMateria (int IDMateria)
         {
             try
             {
+                ConexionBD.Begin();
                 DataSet DS = ConexionBD.consultar("select * from Correlatividades where MateriaID=" + IDMateria + " or MateriaIDp =" + IDMateria);
                 if(DS.Tables[0].Rows.Count == 0) {
                     try
@@ -60,6 +72,7 @@ namespace Sistema.DAL
                 ConexionBD.Eliminar("delete from Correlatividades where MateriaID =" + IDMateria + " or MateriaIDp =" + IDMateria);
                 ConexionBD.Eliminar("delete from Materia where MateriaID =" + IDMateria);
                 return true;
+                ConexionBD.Commit();
             }
             catch (Exception)
             {
