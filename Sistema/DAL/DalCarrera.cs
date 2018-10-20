@@ -14,7 +14,7 @@ namespace Sistema.DAL
     
     class DaLCarrera
     {
-
+        public string error;
 
         public bool CargarCarrera(string bNombre, int bAños, string bNumResolucion, int bHorarios)
         {
@@ -60,34 +60,13 @@ namespace Sistema.DAL
                 {
                     if (ConexionBD.existe("select * from Materia where CarreraID=" + CarreraID))
                     {
-                        //if (ConexionBD.existe("select * from Correlatividades where MateriaID="))
-                        //{
+                        error = "Error, no se puede eliminar";
+                        return false;                  
+                    }
 
-                            // DataSet cds = 
-                            //ConexionBD.consultar("select MateriaID from Materia where CarreraID=" + CarreraID);
-
-
-
-                            //if (cds.Tables[0].Rows.Count == 0)
-                            //{
-                            //    ConexionBD.Eliminar($"delete from Materia where CarreraID =" + CarreraID)
-
-
-                              //  else
-                              //  {
-                              //      for (int i = 0; i < ; i++)
-                              //      {
-                              //          ConexionBD.Eliminar("delete from Materia where CarreraID=" + CarreraID);
-                              //      }
-                              //  }
-                            // }
-                            ConexionBD.Eliminar($"delete from Materia where CarreraID ={CarreraID}");
-                        }
-
-                        try
+                    ConexionBD.Eliminar($"delete from Materia where CarreraID ={CarreraID}");
+                    try
                         {
-
-
                             ConexionBD.Eliminar("delete from Materia where CarreraID=" + CarreraID);
                             ConexionBD.Eliminar("delete from Carrera where CarreraID= " + CarreraID);
 
