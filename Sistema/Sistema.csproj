@@ -50,17 +50,24 @@
     <Compile Include="BE\BeAlumnoMaterias.cs" />
     <Compile Include="BE\BEAlumnos.cs" />
     <Compile Include="BE\BeCambioContraseña.cs" />
+    <Compile Include="BE\BeCarrera.cs" />
     <Compile Include="BE\BeCorrelativas.cs" />
     <Compile Include="BE\BeIngreso.cs" />
     <Compile Include="BE\BeMateria.cs" />
     <Compile Include="BE\BePersonas.cs" />
+    <Compile Include="BE\BEProfesores.cs" />
+    <Compile Include="BE\BEUsuarios.cs" />
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="DAL\DalAlumno.cs" />
     <Compile Include="DAL\DalAlumnoMaterias.cs" />
     <Compile Include="DAL\DalCambioContraseña.cs" />
+    <Compile Include="DAL\DalCarrera.cs" />
     <Compile Include="DAL\DalCorrelativas.cs" />
     <Compile Include="DAL\DalIngreso.cs" />
     <Compile Include="DAL\DalMateria.cs" />
     <Compile Include="DAL\DalPersonas.cs" />
+    <Compile Include="DAL\DalProfesor.cs" />
+    <Compile Include="DAL\DalUsuario.cs" />
     <Compile Include="DS\DSIngresar.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +103,12 @@
     </Compile>
     <Compile Include="FE\CargaPersona.Designer.cs">
       <DependentUpon>CargaPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FE\CargarCarrera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\CargarCarrera.Designer.cs">
+      <DependentUpon>CargarCarrera.cs</DependentUpon>
     </Compile>
     <Compile Include="FE\Correlativas.cs">
       <SubType>Form</SubType>
@@ -143,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FE\CargaPersona.resx">
       <DependentUpon>CargaPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\CargarCarrera.resx">
+      <DependentUpon>CargarCarrera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\Correlativas.resx">
       <DependentUpon>Correlativas.cs</DependentUpon>

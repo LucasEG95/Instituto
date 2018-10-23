@@ -35,3 +35,4 @@ C:\Users\Maxi\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.Correlativ
 C:\Users\Maxi\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CambiarContraseña1.resources
 C:\Users\Maxi\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CargaMateria.resources
 C:\Users\Maxi\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.PrimeraContraseña.resources
+C:\Users\Maxi\Documents\GitHub\Instituto\Sistema\obj\Debug\Sistema.FE.CargarCarrera.resources
