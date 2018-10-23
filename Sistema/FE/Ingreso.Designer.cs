@@ -93,8 +93,6 @@
             this.Controls.Add(this.LabelUsuario);
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.btnIngresar);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Ingreso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Secion";
