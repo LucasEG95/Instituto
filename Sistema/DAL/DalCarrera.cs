@@ -7,12 +7,14 @@ using Sistema.DAL;
 using System.Data;
 
 
+
 namespace Sistema.DAL
 
 {
+    
     class DaLCarrera
     {
-
+        public string error;
 
         public bool CargarCarrera(string bNombre, int bAños, string bNumResolucion, int bHorarios)
         {
@@ -20,7 +22,8 @@ namespace Sistema.DAL
             bool boolaux = false;
             try
             {
-                boolaux = ConexionBD.existe("select Carrera.Nombre from Carrera where Nombre ='" + bNombre + "' ");
+                boolaux = ConexionBD.existe("select Carrera.Nombre from Carrera where Nombre ='" + bNombre + "'");
+                boolaux = ConexionBD.existe("select Carrera.NumResolucion from Carrera where NumResolucion='"+bNumResolucion+"'");
 
             }
             catch (Exception)
@@ -45,45 +48,40 @@ namespace Sistema.DAL
 
         public bool EliminarCarrera(int CarreraID)
         {
-           
+
 
             try
             {
-                //DataSet dsc = ConexionBD.consultar("select * from Materia where CarreraID=" + CarreraID);
-                //if(dsc.Tables[0].Rows.Count == 0)
+
                 ConexionBD.Begin();
 
-               
-                
-                if (ConexionBD.existe("select CarreraID from Carrera where CarreraID =" + CarreraID)) 
-                    
+                if (ConexionBD.existe("select CarreraID from Carrera where CarreraID =" + CarreraID))
+
                 {
                     if (ConexionBD.existe("select * from Materia where CarreraID=" + CarreraID))
                     {
-                        ConexionBD.Eliminar($"delete from Materia where CarreraID ={CarreraID}");
+                        error = "Error, no se puede eliminar";
+                        return false;                  
                     }
 
+                    ConexionBD.Eliminar($"delete from Materia where CarreraID ={CarreraID}");
                     try
                         {
-                        
+                            ConexionBD.Eliminar("delete from Materia where CarreraID=" + CarreraID);
+                            ConexionBD.Eliminar("delete from Carrera where CarreraID= " + CarreraID);
 
-                         ConexionBD.Eliminar("delete from Materia where CarreraID=" + CarreraID);
-                         ConexionBD.Eliminar("delete from Carrera where CarreraID= " + CarreraID);
-
-                        ConexionBD.Commit();
-                         return true;
-                         }
-                         catch (Exception)
-                         {
-                        ConexionBD.Rollback();
+                            ConexionBD.Commit();
+                            return true;
+                        }
+                        catch (Exception)
+                        {
+                            ConexionBD.Rollback();
                             return false;
-                         }
-                 }
-
-                //ConexionBD.Eliminar("")
-                //ConexionBD.Eliminar("delete from Materia where CarreraID=" + CarreraID);
+                        }
+                    }
                 ConexionBD.Rollback();
                 return false;
+                
             }
 
 
@@ -96,76 +94,35 @@ namespace Sistema.DAL
 
         }
 
-
-
-
-            //try
-            //{
-
-            //    DataSet DS = ConexionBD.consultar("select * from Materia where CarreraID=" + CarreraID );
-            //    if (DS.Tables[0].Rows.Count == 0)
-            //    {
-            //        try
-            //        {
-            //            ConexionBD.Eliminar("delete from Carrera where CarreraID ="+CarreraID);
-            //            return true;
-            //        }
-            //        catch (Exception)
-            //        {
-            //            return false;
-            //        }
-            //    }
-            //    ConexionBD.Eliminar("delete from Materia where CarreraID=" + CarreraID );
-            //    ConexionBD.Eliminar("delete from Carrera where CarreraID =" + CarreraID );
-            //    return true;
-            // }
-            //catch (Exception)
-            // {
-            //     return false;
-
-
-
-
-
             public bool ModificarCarrera(int idCarrera, string nombre, int años, string numresolucion, int horas)
             {
-                string Consulta = "update Carrera set Nombre='" + nombre + "',CantAños=" + años + ",NumResolucion='" + numresolucion + "',CargaHoraria=" + horas + " where CarreraID=" + idCarrera;
-                try
+           
+             string Consulta = "update Carrera set Nombre='" + nombre + "',CantAños=" + años + ",NumResolucion='" + numresolucion + "',CargaHoraria=" + horas + " where CarreraID=" + idCarrera;
+            bool vercar = false;
+            try
+            {
+                vercar = ConexionBD.existe("select Carrera.Nombre from Carrera where Nombre ='" + nombre + "'");
+                vercar = ConexionBD.existe("select Carrera.NumResolucion from Carrera where NumResolucion ='" + numresolucion + "' ");
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            try
+            {
+                if (!vercar)
                 {
-                    
                     ConexionBD.Actualizar(Consulta);
                     return true;
                 }
-                catch (Exception)
-                {
-                    return false;
-                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
             }
-        }
-    }
-
-
-
-
-
-
-            //ConexionBD.existe("SELECT * FROM Carrera WHERE CarreraID =" + CarreraID);
-            //try
-            //{
-            //    ConexionBD.Eliminar("DELETE FROM Carrera WHERE CarreraID=" + CarreraID);
-
-            //    return true;
-           // }
-
-           //catch (Exception )
-            //{
-              // return false;
-            //}
-           
-
-
-
-     
-
-
+     }
+ }

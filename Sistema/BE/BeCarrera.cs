@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
 using Sistema.DAL;
+using System.Windows.Forms;
 
 
 namespace Sistema.BE
@@ -44,7 +45,16 @@ namespace Sistema.BE
         public bool EliminarCarrera(int ID)
         {
             DaLCarrera DC = new DaLCarrera();
-            return DC.EliminarCarrera(ID);
+            if(DC.EliminarCarrera(ID))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(DC.error);
+                return false;
+            }
+               //return DC.EliminarCarrera(ID);
         }
 
         public bool ModificarCarrera(int idCarrera, string bNombre, string bAños, string bNumResolucion, string bHorarios)
@@ -76,32 +86,6 @@ namespace Sistema.BE
             return dalc.ModificarCarrera(idCarrera, bNombre, daños, bNumResolucion, dhoras);
        }
 
-       // internal bool ModificarCarrera(int iDCARRERA,  string Nombre, int Años, string NumResolucion, int Horarios)
-       // {
-       //     dalc = new DaLCarrera();
-       //     int daños;
-       //     int dhoras;
-       //     try
-       //     {
-       //         daños = Convert.ToInt32(Años);
-       //     }
-       //     catch (Exception)
-       //     {
-       //         return false;
-       //     }
-       //     try
-       //     {
-       //         dhoras = Convert.ToInt32(Horarios);
-       //     }
-       //     catch (Exception)
-       //     {
-       //         return false;
-       //     }
-       //     return dalc.ModificarCarrera(iDCARRERA, Nombre, daños, NumResolucion, dhoras);
-
-        }
-    }
-            
- 
-
-    
+      
+     }
+ }
