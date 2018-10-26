@@ -9,21 +9,31 @@ namespace Sistema.DAL
 {
     class DalMateria
     {
-        
-        public bool CargarMateria (int bCarrera, string bNombre, int bProfesor, int bAño, int bHoras, int bPromocional)
+
+        public bool CargarMateria(int bCarrera, string bNombre, int bProfesor, int bAño, int bHoras, int bPromocional)
         {
-            string Aux = "insert into Materia values ("+bCarrera+","+bProfesor+",'"+bNombre+"'," + bAño + "," + bHoras + ","+bPromocional+")";
-            try
+            if (this.cantAños(bCarrera) >= bAño)
             {
-                ConexionBD.Insertar(Aux);
-                return true;
+                string Aux = "insert into Materia values (" + bCarrera + "," + bProfesor + ",'" + bNombre + "'," + bAño + "," + bHoras + "," + bPromocional + ")";
+                try
+                {
+                    ConexionBD.Insertar(Aux);
+                    return true;
 
-            }
+                }
 
-            catch (Exception ex)
-            {
-                return false;
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
+            return false;
+        }
+        private int cantAños(int CarreraID)
+        {
+            DataSet ds = new DataSet();
+            ds = ConexionBD.consultar("select CantAños from Carrera where CarreraID=" + CarreraID);
+            return Convert.ToInt32( ds.Tables[0].Rows[0]["CantAños"].ToString());
         }
         public bool ModificarMateria (int idMateria,int idCarrera, string nombre, int IDProfesor, int año, int horas, int Promocional)
         {
@@ -49,7 +59,7 @@ namespace Sistema.DAL
                 return false;
             }
         }
-         public bool EliminarMateria (int IDMateria)
+        public bool EliminarMateria (int IDMateria)
         {
             try
             {
