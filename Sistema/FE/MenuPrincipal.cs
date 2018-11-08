@@ -154,8 +154,9 @@ namespace Sistema.FE
                     BTConsulta.Top = BTTop;
                     BTConsulta.Left = BTInformes.Right + DistanciaBT;
                     this.Controls.Add(BTCambiarContr);
-                 //   BTCambiarContr.Top = this.Bottom - 125;
-                  //  BTCambiarContr.Left = this.Right - 282;
+                    BTCambiarContr.Dock = DockStyle.Bottom;
+                    //   BTCambiarContr.Top = this.Bottom - 125;
+                    //  BTCambiarContr.Left = this.Right - 282;
                     this.Controls.Add(BTCorrelativas);
                     BTCorrelativas.Top = BTTop;
                     BTCorrelativas.Left = BTConsulta.Right + DistanciaBT;
@@ -174,6 +175,7 @@ namespace Sistema.FE
                         BTConsulta.Top = BTTop;
                         BTConsulta.Left = BTInformes.Right + DistanciaBT;
                         this.Controls.Add(BTCambiarContr);
+                        BTCambiarContr.Dock = DockStyle.Bottom;
                         //BTCambiarContr.Top = this.Bottom - 25;
                         //BTCambiarContr.Left = this.Right - 282;
                     }
@@ -185,8 +187,7 @@ namespace Sistema.FE
                             BTConsulta.Top = BTTop;
                             BTConsulta.Left = BTEvaluaciones.Right + DistanciaBT;
                             this.Controls.Add(BTCambiarContr);
-                            BTCambiarContr.Top = this.Bottom - 125;
-                            BTCambiarContr.Left = this.Right - 282;
+                            BTCambiarContr.Dock = DockStyle.Bottom;
 
 
                         }
@@ -196,8 +197,7 @@ namespace Sistema.FE
                                 BTConsulta.Top = BTTop;
                                 BTConsulta.Left = DistanciaBT;
                                 this.Controls.Add(BTCambiarContr);
-                                BTCambiarContr.Top = this.Bottom - 125;
-                                BTCambiarContr.Left = this.Right - 282;
+                                BTCambiarContr.Dock = DockStyle.Bottom;
 
                             }
                         }
