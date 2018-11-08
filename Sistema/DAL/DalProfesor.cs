@@ -21,8 +21,9 @@ namespace Sistema.DAL
                     ConexionBD.Insertar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) insert into Profesores(PersonaID, Inactivo) values (@persona, {Prof})");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                Exception ex = new Exception("Error en cargar profesor ");
                 throw ex;
             }
         }
@@ -30,7 +31,15 @@ namespace Sistema.DAL
 
         public void ModificarProfesor(int bDNI, byte Prof)
         {
-            ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Profesores set Inactivo = {Prof} where PersonaID = @persona");
+            try
+            { 
+                ConexionBD.Actualizar($"declare @persona int set @persona = (select PersonaID from Personas where DNI = {bDNI}) update Profesores set Inactivo = {Prof} where PersonaID = @persona");
+            }
+            catch (Exception)
+            {
+                Exception ex = new Exception("Error en modificar profesor");
+                throw ex;
+            }
         }
 
 
@@ -40,8 +49,9 @@ namespace Sistema.DAL
             {
                 return ConexionBD.existe($"select ProfesorID from Profesores a inner join Personas p on p.PersonaID = a.PersonaID where p.DNI = {bDNI}");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                Exception ex = new Exception("Error en existe profesor");
                 throw ex;
             }
         }
@@ -53,8 +63,9 @@ namespace Sistema.DAL
             {
                 return ConexionBD.existe($"select ProfesorID from Profesores a inner join Personas p on p.PersonaID = a.PersonaID where p.DNI = {bDNI} and a.Inactivo ={0}");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                Exception ex = new Exception("Error en profesorON");
                 throw ex;
             }
         }
@@ -66,8 +77,9 @@ namespace Sistema.DAL
             {
                 ConexionBD.Eliminar($"declare @PersonaID int set @PersonaID = (select PersonaID from Personas where DNI = {bDNI}) delete from Profesores where PersonaID = @PersonaID");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                Exception ex = new Exception("Error al eliminar el profesor");
                 throw ex;
             }
         }

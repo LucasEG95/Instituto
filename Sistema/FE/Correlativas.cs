@@ -50,63 +50,70 @@ namespace Sistema.FE
         private void btnLupaMat_Click(object sender, EventArgs e)
         {
             DataTable dsaux = new DataTable();
-            if ((txtCarrera.Text.Trim() != null)&&(txtCarrera.Text.Trim() != ""))
+            if ((txtCarrera.Text.Trim() != null)&&(txtCarrera.Text.Trim() != "")&& (cmbAño.Text.ToString().Trim() != ""))
             {
-                FormLupa FML = new FormLupa($"Select MateriaID, Nombre, Año, CargaHoraria [Carga Horaria] from Materia where Año = {cmbAño.Text.Trim()} and CarreraID = {carreraid}");
+                    FormLupa FML = new FormLupa($"Select MateriaID, Nombre, Año, CargaHoraria [Carga Horaria] from Materia where Año = {cmbAño.Text.Trim()} and CarreraID = {carreraid}");
+                    FML.ConfigurarGrilla(new int[] { 0 });
+                    FML.ShowDialog();
+                    if (FML.Valores != null)
+                    {
+                        txtMateria.Text = FML.Valores[1].ToString();
+                        materiaidp = Convert.ToInt32(FML.Valores[0]);
+                        GrillaMatCorrelativas.Rows.Clear();
+                        if ((dsaux = dalcons.TraerCorMat(materiaidp)).Rows.Count != 0)
+                        {
+                            for (int i = 0; i < dsaux.Rows.Count; i++)
+                            {
+                                GrillaMatCorrelativas.Rows.Add(dsaux.Rows[i][0], dsaux.Rows[i][1], dsaux.Rows[i][2], dsaux.Rows[i][3]);
+                            }
+                        }
+                    }
+            }else { MessageBox.Show("Debe Seleccionar los datos anteriores"); }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if ((txtCarrera.Text.Trim() != null) && (txtCarrera.Text.Trim() != "") && (cmbAño.Text.ToString().Trim() != ""))
+            {
+                bool comparador = true;
+                FormLupa FML = new FormLupa($"Select MateriaID, Nombre, Año, CargaHoraria [Carga Horaria] from Materia where Año < {cmbAño.Text.Trim()} and CarreraID = {carreraid}");
                 FML.ConfigurarGrilla(new int[] { 0 });
                 FML.ShowDialog();
                 if (FML.Valores != null)
                 {
-                    txtMateria.Text = FML.Valores[1].ToString();
-                    materiaidp = Convert.ToInt32(FML.Valores[0]);
-                    GrillaMatCorrelativas.Rows.Clear();
-                    if ((dsaux = dalcons.TraerCorMat(materiaidp)).Rows.Count != 0)
-                    {
-                        for (int i = 0; i < dsaux.Rows.Count; i++)
-                        {
-                                GrillaMatCorrelativas.Rows.Add(dsaux.Rows[i][0], dsaux.Rows[i][1], dsaux.Rows[i][2], dsaux.Rows[i][3]);
-                        }
-                    }
-                }
-            }
-        }
-        
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            bool comparador = true;
-            FormLupa FML = new FormLupa($"Select MateriaID, Nombre, Año, CargaHoraria [Carga Horaria] from Materia where Año < {cmbAño.Text.Trim()} and CarreraID = {carreraid}");
-            FML.ConfigurarGrilla(new int[] { 0 });
-            FML.ShowDialog();
-            if (FML.Valores != null)
-            {
-                if (GrillaMatCorrelativas.Rows.Count == 0)
-                {
-                    GrillaMatCorrelativas.Rows.Add(FML.Valores);
-                }
-                else
-                {
-                    for (int i = 0; i < GrillaMatCorrelativas.Rows.Count; i++)
-                    {
-                        if ((int)GrillaMatCorrelativas.Rows[i].Cells[0].Value == (int)FML.Valores[0])
-                        {
-                            comparador = false;
-                        }
-                    }
-                    if (comparador)
+                    if (GrillaMatCorrelativas.Rows.Count == 0)
                     {
                         GrillaMatCorrelativas.Rows.Add(FML.Valores);
                     }
                     else
                     {
-                        MessageBox.Show("Materia ya agregada a la tabla");
+                        for (int i = 0; i < GrillaMatCorrelativas.Rows.Count; i++)
+                        {
+                            if ((int)GrillaMatCorrelativas.Rows[i].Cells[0].Value == (int)FML.Valores[0])
+                            {
+                                comparador = false;
+                            }
+                        }
+                        if (comparador)
+                        {
+                            GrillaMatCorrelativas.Rows.Add(FML.Valores);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Materia ya agregada a la tabla");
+                        }
                     }
                 }
-            }
+            } else { MessageBox.Show("Debe seleccionar los datos anteriores"); }
         }
         
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            GrillaMatCorrelativas.Rows.Remove(GrillaMatCorrelativas.CurrentCell.OwningRow);
+                if (GrillaMatCorrelativas.Rows.Count != 0)
+                {
+                    GrillaMatCorrelativas.Rows.Remove(GrillaMatCorrelativas.CurrentCell.OwningRow);
+                }
+                else { MessageBox.Show("No hay materias en la grilla");}
         }
         
         private void btnGuardar_Click(object sender, EventArgs e)

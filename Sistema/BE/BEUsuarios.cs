@@ -24,8 +24,8 @@ namespace Sistema.BE
             }
             if (bPermiso == 0)
             {
-                MessageBox.Show("Debe elegir un nivel de Permiso");
-                return;
+                Exception ex = new Exception("Debe elegir un nivel de Permiso");
+                throw ex;
             }
 
             try
@@ -47,8 +47,8 @@ namespace Sistema.BE
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en BE ObtenerUsuario");
-                throw ex;
+                throw new Exception("Error en BE ObtenerUsuario", ex);
+
             }
 
         }

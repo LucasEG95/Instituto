@@ -70,9 +70,9 @@ namespace Sistema.DAL
             {
                 return ConexionBD.consultar($"select * from Personas where DNI={DNI}").Tables[0];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Error en DAL ObtenerPersona");
+                Exception ex = new Exception("Error en DAL ObtenerPersona");
                 throw ex;
             }
 

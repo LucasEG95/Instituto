@@ -67,18 +67,18 @@ namespace Sistema.BE
 
             if (bNombre.Length <= 0)
             {
-                MessageBox.Show("Debe ingresar el Nombre");
-                return;
+                Exception ex = new Exception("Debe ingresar el Nombre");
+                throw ex;
             }
             if (bApellido.Length <= 0)
             {
-                MessageBox.Show("Debe ingresar el Apellido");
-                return;
+                Exception ex = new Exception("Debe ingresar el Apellido");
+                throw ex;
             }
             if (bDNI.Length <= 0)
             {
-                MessageBox.Show("Debe ingresar el DNI");
-                return;
+                Exception ex = new Exception("Debe ingresar el DNI");
+                throw ex;
             }
             if (bTelefono.Length <= 0)
             {
@@ -122,9 +122,9 @@ namespace Sistema.BE
             {
                 return DalPer.ObtenerPersonaDAL(DNI);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                MessageBox.Show("Error en BE ObtenerPersona");
+                Exception ex = new Exception("Error en BE ObtenerPersona");
                 throw ex;
             }
 

@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombres = new System.Windows.Forms.TextBox();
-            this.txtDNI = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,14 +50,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.rbDirect = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSecret = new System.Windows.Forms.CheckBox();
+            this.chkDir = new System.Windows.Forms.CheckBox();
             this.chkAlumn = new System.Windows.Forms.CheckBox();
             this.chkProf = new System.Windows.Forms.CheckBox();
-            this.rbSecret = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.chkInactivo = new System.Windows.Forms.CheckBox();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.txtDNI = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,15 +76,6 @@
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(192, 20);
             this.txtNombres.TabIndex = 1;
-            // 
-            // txtDNI
-            // 
-            this.txtDNI.Location = new System.Drawing.Point(67, 9);
-            this.txtDNI.MaxLength = 8;
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(192, 20);
-            this.txtDNI.TabIndex = 0;
-            this.txtDNI.Leave += new System.EventHandler(this.txtDNI_Leave);
             // 
             // label2
             // 
@@ -256,35 +246,45 @@
             this.label11.TabIndex = 33;
             this.label11.Text = "Usuario";
             // 
-            // rbDirect
-            // 
-            this.rbDirect.AutoSize = true;
-            this.rbDirect.Location = new System.Drawing.Point(24, 24);
-            this.rbDirect.Name = "rbDirect";
-            this.rbDirect.Size = new System.Drawing.Size(73, 17);
-            this.rbDirect.TabIndex = 43;
-            this.rbDirect.TabStop = true;
-            this.rbDirect.Text = "Director/a";
-            this.rbDirect.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnReset);
+            this.groupBox1.Controls.Add(this.chkSecret);
+            this.groupBox1.Controls.Add(this.chkDir);
             this.groupBox1.Controls.Add(this.chkAlumn);
             this.groupBox1.Controls.Add(this.chkProf);
-            this.groupBox1.Controls.Add(this.rbSecret);
-            this.groupBox1.Controls.Add(this.rbDirect);
             this.groupBox1.Location = new System.Drawing.Point(318, 62);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 119);
+            this.groupBox1.Size = new System.Drawing.Size(210, 169);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Permisos";
             // 
+            // chkSecret
+            // 
+            this.chkSecret.AutoSize = true;
+            this.chkSecret.Location = new System.Drawing.Point(24, 42);
+            this.chkSecret.Name = "chkSecret";
+            this.chkSecret.Size = new System.Drawing.Size(85, 17);
+            this.chkSecret.TabIndex = 49;
+            this.chkSecret.Text = "Secretario/a";
+            this.chkSecret.UseVisualStyleBackColor = true;
+            this.chkSecret.Click += new System.EventHandler(this.chkSecret_Click);
+            // 
+            // chkDir
+            // 
+            this.chkDir.AutoSize = true;
+            this.chkDir.Location = new System.Drawing.Point(24, 19);
+            this.chkDir.Name = "chkDir";
+            this.chkDir.Size = new System.Drawing.Size(74, 17);
+            this.chkDir.TabIndex = 50;
+            this.chkDir.Text = "Director/a";
+            this.chkDir.UseVisualStyleBackColor = true;
+            this.chkDir.Click += new System.EventHandler(this.chkDir_Click);
+            // 
             // chkAlumn
             // 
             this.chkAlumn.AutoSize = true;
-            this.chkAlumn.Location = new System.Drawing.Point(24, 93);
+            this.chkAlumn.Location = new System.Drawing.Point(24, 88);
             this.chkAlumn.Name = "chkAlumn";
             this.chkAlumn.Size = new System.Drawing.Size(72, 17);
             this.chkAlumn.TabIndex = 47;
@@ -295,24 +295,13 @@
             // chkProf
             // 
             this.chkProf.AutoSize = true;
-            this.chkProf.Location = new System.Drawing.Point(24, 70);
+            this.chkProf.Location = new System.Drawing.Point(24, 65);
             this.chkProf.Name = "chkProf";
             this.chkProf.Size = new System.Drawing.Size(76, 17);
             this.chkProf.TabIndex = 48;
             this.chkProf.Text = "Profesor/a";
             this.chkProf.UseVisualStyleBackColor = true;
             this.chkProf.CheckedChanged += new System.EventHandler(this.chkProf_CheckedChanged);
-            // 
-            // rbSecret
-            // 
-            this.rbSecret.AutoSize = true;
-            this.rbSecret.Location = new System.Drawing.Point(24, 47);
-            this.rbSecret.Name = "rbSecret";
-            this.rbSecret.Size = new System.Drawing.Size(84, 17);
-            this.rbSecret.TabIndex = 44;
-            this.rbSecret.TabStop = true;
-            this.rbSecret.Text = "Secretario/a";
-            this.rbSecret.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -336,21 +325,23 @@
             this.chkInactivo.UseVisualStyleBackColor = false;
             this.chkInactivo.CheckedChanged += new System.EventHandler(this.chkInactivo_CheckedChanged);
             // 
-            // btnReset
+            // txtDNI
             // 
-            this.btnReset.Location = new System.Drawing.Point(129, 50);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 48;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.txtDNI.Location = new System.Drawing.Point(67, 10);
+            this.txtDNI.Mask = "99999999";
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.PromptChar = ' ';
+            this.txtDNI.Size = new System.Drawing.Size(192, 20);
+            this.txtDNI.TabIndex = 0;
+            this.txtDNI.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtDNI.Leave += new System.EventHandler(this.txtDNI_Leave);
             // 
             // CargaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 265);
+            this.Controls.Add(this.txtDNI);
             this.Controls.Add(this.chkInactivo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -373,7 +364,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtDNI);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombres);
             this.Controls.Add(this.label1);
@@ -392,7 +382,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombres;
-        private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label3;
@@ -413,13 +402,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RadioButton rbDirect;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbSecret;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox chkProf;
         private System.Windows.Forms.CheckBox chkAlumn;
         private System.Windows.Forms.CheckBox chkInactivo;
-        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.CheckBox chkSecret;
+        private System.Windows.Forms.CheckBox chkDir;
+        private System.Windows.Forms.MaskedTextBox txtDNI;
     }
 }

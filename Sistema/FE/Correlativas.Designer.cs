@@ -78,6 +78,7 @@
             // 
             this.txtMateria.Location = new System.Drawing.Point(84, 89);
             this.txtMateria.Name = "txtMateria";
+            this.txtMateria.ReadOnly = true;
             this.txtMateria.Size = new System.Drawing.Size(229, 20);
             this.txtMateria.TabIndex = 2;
             // 
@@ -105,6 +106,7 @@
             // 
             this.txtCarrera.Location = new System.Drawing.Point(85, 23);
             this.txtCarrera.Name = "txtCarrera";
+            this.txtCarrera.ReadOnly = true;
             this.txtCarrera.Size = new System.Drawing.Size(229, 20);
             this.txtCarrera.TabIndex = 0;
             // 

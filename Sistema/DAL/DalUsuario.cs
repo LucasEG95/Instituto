@@ -20,8 +20,7 @@ namespace Sistema.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en DAL ObtenerUsuario");
-                throw ex;
+                throw new Exception("Error en consultar DAL");
             }
 
         }

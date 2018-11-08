@@ -16,6 +16,8 @@ namespace Sistema.FE
         DataTable dtLupa = new DataTable();
         DataTable dtLlenar, dtLlenar2 = new DataTable();
 
+        public int Mask { get; set; }
+
         bool usu, Per;
         byte Alumn, Prof;
         int Permiso;
@@ -48,8 +50,8 @@ namespace Sistema.FE
             Per = false;
             txtUsuario.Text = "";
             txtContraseña.Text = "";
-            rbDirect.Checked = false;
-            rbSecret.Checked = false;
+            chkSecret.Checked = false;
+            chkDir.Checked = false;
             chkProf.Checked = false;
             chkAlumn.Checked = false;
             chkInactivo.Checked = false;
@@ -63,17 +65,17 @@ namespace Sistema.FE
                 Permiso = 0;
                 if (chkAlumn.Checked) { Permiso = 4; Alumn = 0; }
                 if (chkProf.Checked & (Permiso > 3 | Permiso == 0)) { Permiso = 3; Prof = 0; }
-                if (rbSecret.Checked & (Permiso > 2 | Permiso == 0)) Permiso = 2;
-                else if (rbDirect.Checked & (Permiso > 1 | Permiso == 0)) Permiso = 1;
+                if (chkSecret.Checked & (Permiso > 2 | Permiso == 0)) Permiso = 2;
+                else if (chkDir.Checked & (Permiso > 1 | Permiso == 0)) Permiso = 1;
                 //
                 BePer.CargarTodo(txtDNI.Text, txtNombres.Text, txtApellidos.Text, txtTelefono.Text, txtCelular.Text, txtEmail.Text, txtDireccion.Text, txtLocalidad.Text, txtUsuario.Text, txtContraseña.Text, Permiso, "", "", Alumn, Prof, usu, Per);
                     
                 MessageBox.Show("Guardado Correctamente");
                 Nuevo();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Error al cargar la Persona");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -84,13 +86,16 @@ namespace Sistema.FE
             {
                 try
                 {
-                    BePer.EliminarTodo(txtDNI.Text, txtNombres.Text, txtApellidos.Text, txtTelefono.Text, txtCelular.Text, txtEmail.Text, txtDireccion.Text, txtLocalidad.Text, txtUsuario.Text, txtContraseña.Text, Permiso, "", "", Alumn, Prof, usu, Per);
-                    MessageBox.Show("Eliminado Correctamente");
-                    Nuevo();
+                    if (BePer.ExistePersona(txtDNI.Text.ToString().Trim()))
+                    {
+                        BePer.EliminarTodo(txtDNI.Text, txtNombres.Text, txtApellidos.Text, txtTelefono.Text, txtCelular.Text, txtEmail.Text, txtDireccion.Text, txtLocalidad.Text, txtUsuario.Text, txtContraseña.Text, Permiso, "", "", Alumn, Prof, usu, Per);
+                        MessageBox.Show("Eliminado Correctamente");
+                        Nuevo();
+                    }
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -136,10 +141,10 @@ namespace Sistema.FE
                 switch (Permiso)
                 {
                     case 1:
-                        rbDirect.Checked = true;
+                        chkDir.Checked = true;
                         break;
                     case 2:
-                        rbSecret.Checked = true;
+                        chkSecret.Checked = true;
                         break;
                 }
                 if ( (BeAl.AlumnoON(DNILupa.ToString())) ) { chkAlumn.Checked = true; Alumn = 0; }
@@ -161,15 +166,21 @@ namespace Sistema.FE
             txtContraseña.Text = txtDNI.Text;
         }
 
-
-        private void btnReset_Click(object sender, EventArgs e)
+        private void chkDir_Click(object sender, EventArgs e)
         {
-            rbDirect.Checked = false;
-            rbSecret.Checked = false;
-            chkAlumn.Checked = false;
-            chkProf.Checked = false;
+            if (!chkDir.Checked) chkDir.Checked = false;
+            else { chkDir.Checked = true; chkSecret.Checked = false; }
+            //if (chkDir.Checked) { chkDir.Checked = false; }
+            //else {chkSecret.Checked = false; chkDir.Checked = true;}
+            //chkSecret.Checked = false;
+            //chkDir.Checked = true;
         }
 
+        private void chkSecret_Click(object sender, EventArgs e)
+        {
+            if (!chkSecret.Checked) chkSecret.Checked = false;
+            else { chkSecret.Checked = true; chkDir.Checked = false; } 
+        }
 
         private void chkAlumn_CheckedChanged(object sender, EventArgs e)
         {
