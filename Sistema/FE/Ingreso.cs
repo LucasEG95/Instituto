@@ -41,12 +41,19 @@ namespace Sistema.FE
 
         private void Ingreso_Load(object sender, EventArgs e)
         {
-
+            linkLabel1.Top = btnIngresar.Bottom + 10;
+            linkLabel1.Left = btnIngresar.Left - 20;
         }
 
         private void txtContraseña_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OlvidoContraseña OC = new OlvidoContraseña();
+            OC.ShowDialog();
         }
     }
 }

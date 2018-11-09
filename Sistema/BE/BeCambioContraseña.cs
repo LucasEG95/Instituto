@@ -44,6 +44,32 @@ namespace Sistema.BE
 
            
         }
+        public string OlvidoContraPregunta(string Usuario)
+        { DalCambioContraseña DCC = new DalCambioContraseña();
+            if (!(Usuario == ""))
+            {
+                return DCC.OlvidoContraseña(Usuario);
 
+            }else { return "NO"; }
+            }
+            private bool Respuesta (string respuesta, string Usuario) {
+            DalCambioContraseña DCC = new DalCambioContraseña();
+            return DCC.ExisteRespuesta(respuesta, Usuario);
+              }
+        public string OlvidoContraCambio(string respuesta, string Usuario, string Contraseña, string RepeContraseña)
+        {
+            if (this.Respuesta(respuesta, Usuario))
+            { if (Contraseña == RepeContraseña)
+                {if (Contraseña == "") { return "Campo contraseña vacio"; } else {
+                        DalCambioContraseña DCC = new DalCambioContraseña();
+                        DCC.CambiarContraseña(Contraseña, Usuario);
+                        return "OK";
+                    }
+                    }
+                else { return "El campo Nueva Contraseña y Repetir Contraseña no coinciden"; }
+            }
+            else { return "Respuesta incorrecta"; }
+            
+        }
     }
 }
