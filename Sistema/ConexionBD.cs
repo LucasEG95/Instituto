@@ -236,8 +236,52 @@ namespace Sistema
         /// <returns>DataSet con datos</returns>
         public static DataSet StoredConDatos(string stored, params object[] Parametros)
         {
+            DataSet DS = new DataSet();
+            try {
+                SqlCommand cmd = new SqlCommand(obtenerConsulta(stored,Parametros), conection);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(DS);
+
+                return DS;
             
-            string comando = $"exec {stored} " ;
+            }catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// lo mismo que el que tiene datos pero este no devuelve un dataset XD
+        /// </summary>
+        /// <param name="stored"></param>
+        /// <returns></returns>
+        public static bool StoredSinDatos(string stored, params object[] Parametros)
+        {
+            try
+            {
+                
+                SqlCommand cmd = new SqlCommand(obtenerConsulta(stored, Parametros),conection);
+                if (cmd.ExecuteNonQuery() >= 0)
+                {
+                    return true;
+                }
+                throw new Exception("Error al ejecutar el comando");
+            }catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+
+        #endregion
+
+        #region utiles
+
+        private static string obtenerConsulta(string stored, object[] Parametros)
+        {
+
+            string comando = $"exec {stored} ";
             for (int i = 0; i < Parametros.Length; i++)
             {
                 Type t = Parametros[i].GetType();
@@ -260,82 +304,14 @@ namespace Sistema
                 else if (t.Equals(typeof(string)))
                 {
                     comando += $"'{Parametros[i]}'";
-                }else if (t.Equals(typeof(bool)))
+                }
+                else if (t.Equals(typeof(bool)))
                 {
                     comando += $"{Parametros[i]}";
                 }
             }
-            
-            DataSet DS = new DataSet();
-            try {
-                SqlCommand cmd = new SqlCommand(comando, conection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(DS);
-
-                return DS;
-            
-            }catch(Exception e)
-            {
-                throw e;
-            }
+            return comando;
         }
-
-        /// <summary>
-        /// lo mismo que el que tiene datos pero este no devuelve un dataset XD
-        /// </summary>
-        /// <param name="stored"></param>
-        /// <returns></returns>
-        public static bool StoredSinDatos(string stored, params object[] Parametros)
-        {
-            string comando = $"exec {stored} ";
-            try
-            {
-                for (int i = 0; i < Parametros.Length; i++)
-                {
-                    Type t = Parametros[i].GetType();
-                    if (i > 0)
-                    {
-                        comando += ", ";
-                    }
-                    if (t.Equals(typeof(int)))
-                    {
-                        comando += $"{Parametros[i]}";
-                    }
-                    else if (t.Equals(typeof(decimal)))
-                    {
-                        comando += $"{convertirDecimal((decimal)Parametros[i])}";
-                    }
-                    else if (t.Equals(typeof(DateTime)))
-                    {
-                        comando += $"'{convertirFecha((DateTime)Parametros[i])}'";
-                    }
-                    else if (t.Equals(typeof(string)))
-                    {
-                        comando += $"'{Parametros[i]}'";
-                    }
-                    else if (t.Equals(typeof(bool)))
-                    {
-                        comando += $"{Parametros[i]}";
-                    }
-
-                }
-                SqlCommand cmd = new SqlCommand(comando,conection);
-                if (cmd.ExecuteNonQuery() >= 0)
-                {
-                    return true;
-                }
-                throw new Exception("Error al ejecutar el comando");
-            }catch(Exception e)
-            {
-                throw e;
-            }
-        }
-
-
-
-        #endregion
-
-        #region utiles
         private static string convertirFecha(DateTime fecha)
         {
             string lefecha = fecha.Date.ToString("yyyyMMdd");
