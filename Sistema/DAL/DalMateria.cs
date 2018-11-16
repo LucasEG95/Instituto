@@ -69,6 +69,7 @@ namespace Sistema.DAL
                     try
                     {
                         ConexionBD.Eliminar("delete from Materia where MateriaID =" + IDMateria);
+                        ConexionBD.Commit();
                         return true;
 
                     }
@@ -81,11 +82,13 @@ namespace Sistema.DAL
                 }
                 ConexionBD.Eliminar("delete from Correlatividades where MateriaID =" + IDMateria + " or MateriaIDp =" + IDMateria);
                 ConexionBD.Eliminar("delete from Materia where MateriaID =" + IDMateria);
-                return true;
                 ConexionBD.Commit();
+                return true;
+                
             }
             catch (Exception)
             {
+                ConexionBD.Rollback();
                 return false;
                  
 
